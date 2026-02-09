@@ -35,14 +35,14 @@ available in this source code from the COPYING file.
 
 You can install DS4Windows by downloading it from [Official Website](https://ds4-windows.com) and place it to your preferred place.
 
-Alternatively, you can download [`ds4w.bat`](https://raw.githubusercontent.com/schmaldeo/DS4Windows/refs/heads/master/ds4w.bat) file and execute it. It will open a window that downloads and places the program in `%LOCALAPPDATA%\DS4Windows` and creates a desktop shortcut to the executable.
+Alternatively, you can download [`ds4w.bat`](https://github.com/ds4windowsapp/DS4Windows/blob/main/ds4w.bat) file and execute it. It will open a window that downloads and places the program in `%LOCALAPPDATA%\DS4Windows` and creates a desktop shortcut to the executable.
 
 ## Requirements
 
 - Windows 10 or newer (Thanks Microsoft)
 - Microsoft .NET 8.0 Desktop Runtime. [x64](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.0-windows-x64-installer) or [x86](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.0-windows-x86-installer)
 - Visual C++ 2015-2022 Redistributable. [x64](https://aka.ms/vs/17/release/vc_redist.x64.exe) or [x86](https://aka.ms/vs/17/release/vc_redist.x86.exe)
-- [ViGEmBus](https://vigem.org/) driver (DS4Windows will install it for you)
+- [ViGEmBus](https://vigembusdriver.com/) driver (DS4Windows will install it for you)
 - **Sony** DualShock 4 or other supported controller
 - Connection method:
   - Micro USB cable

@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accel" xml:space="preserve">
+    <value>Hizlanma</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Aksiyon</value>
+  </data>
+  <data name="AddDirectory" xml:space="preserve">
+    <value>Dizin Ekle</value>
+  </data>
+  <data name="AddPrograms" xml:space="preserve">
+    <value>Program Ekle</value>
+  </data>
+  <data name="AddStartMenuPrograms" xml:space="preserve">
+    <value>Baslat Menüsü Programi Ekle</value>
+  </data>
+  <data name="AddSteamGames" xml:space="preserve">
+    <value>Steam Oyunu Ekle</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tümü</value>
+  </data>
+  <data name="AutoProfiles" xml:space="preserve">
+    <value>Otomatik Profiller</value>
+  </data>
+  <data name="Battery" xml:space="preserve">
+    <value>Pil</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Gözat</value>
+  </data>
+  <data name="BrowseOtherPrograms" xml:space="preserve">
+    <value>Diger Programlara Gözat</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Vazgeç</value>
+  </data>
+  <data name="CheckUpdateNow" xml:space="preserve">
+    <value>Güncellemeleri Kontrol Et</value>
+  </data>
+  <data name="CheckUpdateStartup" xml:space="preserve">
+    <value>Primora Açildiginda Güncellemeleri Kontrol Et</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Temizle</value>
+  </data>
+  <data name="CloseMinimizes" xml:space="preserve">
+    <value>Kapatirken Küçült</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Renk</value>
+  </data>
+  <data name="Controller1Text" xml:space="preserve">
+    <value>Denetleyici 1</value>
+  </data>
+  <data name="Controller2Text" xml:space="preserve">
+    <value>Denetleyici 2</value>
+  </data>
+  <data name="Controller3Text" xml:space="preserve">
+    <value>Denetleyici 3</value>
+  </data>
+  <data name="Controller4Text" xml:space="preserve">
+    <value>Denetleyici 4</value>
+  </data>
+  <data name="Controllers" xml:space="preserve">
+    <value>Denetleyiciler</value>
+  </data>
+  <data name="ControlPanel" xml:space="preserve">
+    <value>Kontrol Paneli</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="DriverSetup" xml:space="preserve">
+    <value>Denetleyici/Sürücü Kurulumu</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Çogalt</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="EditAction" xml:space="preserve">
+    <value>Aksiyon Düzenle</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Disari Aktar</value>
+  </data>
+  <data name="Full" xml:space="preserve">
+    <value>Dolu</value>
+  </data>
+  <data name="Gyro" xml:space="preserve">
+    <value>Jiroskop</value>
+  </data>
+  <data name="HideUnchecked" xml:space="preserve">
+    <value>Isaretlenmemisleri Gizle</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Içeri Aktar</value>
+  </data>
+  <data name="LeftStick" xml:space="preserve">
+    <value>Sol Çubuk</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Günlük</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Isim</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Yeni</value>
+  </data>
+  <data name="NewAction" xml:space="preserve">
+    <value>Yeni Aksiyon</value>
+  </data>
+  <data name="NewProfile" xml:space="preserve">
+    <value>Yeni Profil</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Yok</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Yol</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="ProfileFolder" xml:space="preserve">
+    <value>Profil Klasörü</value>
+  </data>
+  <data name="QuickCharge" xml:space="preserve">
+    <value>Hizli Sarj</value>
+  </data>
+  <data name="RecordText" xml:space="preserve">
+    <value>Kayit</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Kaldir</value>
+  </data>
+  <data name="RemoveAction" xml:space="preserve">
+    <value>Aksiyonu Kaldir</value>
+  </data>
+  <data name="RightStick" xml:space="preserve">
+    <value>Sag Çubuk</value>
+  </data>
+  <data name="Rumble" xml:space="preserve">
+    <value>Titresim</value>
+  </data>
+  <data name="RunAtStartup" xml:space="preserve">
+    <value>Baslangiçta Çalistir</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="SaveProfile" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ayarlar</value>
+  </data>
+  <data name="ShowNotifications" xml:space="preserve">
+    <value>Bildirimleri Göster</value>
+  </data>
+  <data name="StartMinimized" xml:space="preserve">
+    <value>Küçültülmüs Olarak Baslat</value>
+  </data>
+  <data name="StartText" xml:space="preserve">
+    <value>Baslangiç</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="StopText" xml:space="preserve">
+    <value>Dur</value>
+  </data>
+  <data name="TouchScroll" xml:space="preserve">
+    <value>Kaydirma</value>
+  </data>
+  <data name="TouchSlide" xml:space="preserve">
+    <value>Kaydirma</value>
+  </data>
+  <data name="TouchTap" xml:space="preserve">
+    <value>Dokunma</value>
+  </data>
+  <data name="Trigger" xml:space="preserve">
+    <value>Tetik</value>
+  </data>
+  <data name="WarningsOnly" xml:space="preserve">
+    <value>Sadece uyarilar</value>
+  </data>
+  <data name="RumbleMaxSecs" xml:space="preserve">
+    <value>saniye</value>
+  </data>
+  <data name="RumbleMaxSecsTip" xml:space="preserve">
+    <value>Titresimi saniyeler içinde otomatik durdur (0=otomatik durdurma devre disi)</value>
+  </data>
+  <data name="WindowTitle" xml:space="preserve">
+    <value>Pencere Basligi</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Yukari Oynat</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>Asagi Oynat</value>
+  </data>
+  <data name="AutoProfPathTip" xml:space="preserve">
+    <value>Islem yolu. ^ABC = Dizinin basinda eslesme (^) | ABC$ = Dizinin sonunda eslesme ($) | *ABC =Dizi içeriyor (*)</value>
+  </data>
+  <data name="AutoProfTitleTip" xml:space="preserve">
+    <value>Pencere basligi. ^ABC = Dizinin basinda eslesme (^) | ABC$ = Dizinin sonunda eslesme ($) | *ABC =Dizi içeriyor (*)</value>
+  </data>
+  <data name="GamepadTest" xml:space="preserve">
+    <value>Oyun Kumandasi Testi</value>
+  </data>
+  <data name="EnableOutputDataToDS4" xml:space="preserve">
+    <value>DS4 Için Veri Çikisini Etkinlestir</value>
+  </data>
+  <data name="EnableOutputDataToDS4Tip" xml:space="preserve">
+    <value>Isik bari ve titresim verisini periyodik olarak DS4 oyun kumandasina ilet. Oyun kumandasi veri almayi desteklemiyorsa tiki kaldirin.
+Bu seçenekteki degisiklikler denetleyici baglandiginda geçerli olur.</value>
+    <comment>To enter a line break into a string resource value in VisualStudio resource editor press Shift+Enter.</comment>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Uygula</value>
+  </data>
+  <data name="HidNinja" xml:space="preserve">
+    <value>HidNinja</value>
+  </data>
+  <data name="CustomExeName" xml:space="preserve">
+    <value>Özel Exe Adi</value>
+  </data>
+  <data name="CustomExeNameInfo" xml:space="preserve">
+    <value>Bazi oyunlar, Primora.exe veya InputMapper.exe'nin çalistigini algiladiklarinda DS4 girdisini yok sayar. Primora.exe'yi yeniden adlandirarak oyunun yaptigi engelleme asilabilir. Özel bir exe adi belirlemek DS4Updater'in Primora'un istenen isimli özel bir kopyasini güncellemesini saglar. Uzantiyi atladiginizdan emin olun.
+
+Örnek: whyme_Primora</value>
+  </data>
+  <data name="XInputChecker" xml:space="preserve">
+    <value>XInput Testi</value>
+  </data>
+  <data name="Controller5Text" xml:space="preserve">
+    <value>Denetleyici 5</value>
+  </data>
+  <data name="Controller6Text" xml:space="preserve">
+    <value>Denetleyici 6</value>
+  </data>
+  <data name="Controller7Text" xml:space="preserve">
+    <value>Denetleyici 7</value>
+  </data>
+  <data name="Controller8Text" xml:space="preserve">
+    <value>Denetleyici 8</value>
+  </data>
+  <data name="GamepadGyroCameraDescription" xml:space="preserve">
+    <value>Denetleyici çiktisini standart XInput oyun kumandasi veya DS4 kumandasina esler. Jiroskop, Mouse Seklinde Oyun Çubugu ile eslenmistir.</value>
+  </data>
+  <data name="GamepadGyroCameraName" xml:space="preserve">
+    <value>Mouse Seklinde Oyun Çubuk'lu Oyun Kumandasi</value>
+  </data>
+  <data name="GamepadPresetDescription" xml:space="preserve">
+    <value>Denetleyici çiktisini standart oyun kumandasina esler</value>
+  </data>
+  <data name="GamepadPresetName" xml:space="preserve">
+    <value>Oyun kumandasi</value>
+  </data>
+  <data name="KBMGyroMouseDescription" xml:space="preserve">
+    <value>Denetleyici çiktisini sanal Klavye+Mouse kontrollerine esler. Oyun kumandasi destegi olmayan FPS oyunlarini oynarken kullanislidir. Jiroskop sanal Mouse ile eslenmistir.</value>
+  </data>
+  <data name="KBMGyroMouseName" xml:space="preserve">
+    <value>Jiroskop Mouse'li Klavye+Mouse Kontrolleri</value>
+  </data>
+  <data name="KBMPresetDescription" xml:space="preserve">
+    <value>Denetleyici çiktisini sanal Klavye+Mouse kontrollerine esler. Oyun kumandasi destegi olmayan FPS oyunlarini oynarken kullanislidir.</value>
+  </data>
+  <data name="KBMPresetName" xml:space="preserve">
+    <value>Klavye+Mouse Kontrolleri</value>
+  </data>
+  <data name="MixedGyroMousePresetDescription" xml:space="preserve">
+    <value>Buton ve eksenleri standart oyun kumandasina esler. Jiroskop'u sanal mouse'a esler.</value>
+  </data>
+  <data name="MixedGyroMousePresetName" xml:space="preserve">
+    <value>Jiroskop Mouse'li Oyun Kumandasi</value>
+  </data>
+  <data name="MixedPresetDescription" xml:space="preserve">
+    <value>Denetleyici çiktisini birlestirilmis XInput oyun kumandasi + Sag Çubuk mouse ile esler.</value>
+  </data>
+  <data name="MixedPresetName" xml:space="preserve">
+    <value>Yüksek Hassasiyet Kamera'li Oyun Kumandasi</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Açiklama</value>
+  </data>
+  <data name="PresetIntroText" xml:space="preserve">
+    <value>Ön ayar kullanmak istiyor musunuz? Hayiri seçmek Profil Düzenleyicisinin bos bir Oyun Kumandasi profili kullanmasini saglar.</value>
+  </data>
+  <data name="Presets" xml:space="preserve">
+    <value>Ön Ayarlar</value>
+  </data>
+  <data name="Changelog" xml:space="preserve">
+    <value>Degisim Günlügü</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Profiller</value>
+  </data>
+  <data name="NoControllersConnected" xml:space="preserve">
+    <value>Bagli Denetleyici Yok (En fazla {0})</value>
+  </data>
+  <data name="FlickThreshold" xml:space="preserve">
+    <value>Titreme Esigi</value>
+  </data>
+  <data name="FlickTime" xml:space="preserve">
+    <value>Titreme Zamani</value>
+  </data>
+  <data name="MinAngleThreshold" xml:space="preserve">
+    <value>Minimum Açi Esigi</value>
+  </data>
+  <data name="RealWorldCalibration" xml:space="preserve">
+    <value>Gerçek Dünya Kalibrasyonu</value>
+  </data>
+  <data name="ViGEmPluginFailure" xml:space="preserve">
+    <value>ViGEm Cihaz Eklentisi Basarisiz Oldu. Hata Kodu {0}. Muhtemelen dahili ViGEmBus sorunu. Baglanti kapatiliyor. Eger sorun devam ediyorsa, lütfen Primora'u kapatin ve Windows'u yeninden baslatin.</value>
+  </data>
+  <data name="CRC32Fail" xml:space="preserve">
+    <value>Kablosuz cihaz için Veri bütünlügü kontrolleri basarisiz oldu. Cihaz Kapatiliyor.</value>
+  </data>
+  <data name="FutureNetNotInstalled" xml:space="preserve">
+    <value>Sisteminizde .NET 5 Runtime tespit edilemedi. Gelecek Primora derlemeleri ile uyum saglamak için lütfen .NET 5 Runtime indirin ve yükleyin. Bu pencereyi kapattiktan sonra .NET 5 Runtime indirme sayfasina yönlendireleceksiniz.</value>
+  </data>
+  <data name="UpgradeNetCaption" xml:space="preserve">
+    <value>Lütfen .NET Runtime'i güncelleyin</value>
+  </data>
+  <data name="HidHide" xml:space="preserve">
+    <value>HidHide</value>
+  </data>
+  <data name="HidHideConfigClient" xml:space="preserve">
+    <value>HidHide Yapilandirma Istemcisi</value>
+  </data>
+  <data name="ExclusiveAccess" xml:space="preserve">
+    <value>Özel Erisim</value>
+  </data>
+  <data name="HidGuardianAccess" xml:space="preserve">
+    <value>HidGuardian Erisimi</value>
+  </data>
+  <data name="HidHideAccess" xml:space="preserve">
+    <value>HidHide Erisimi</value>
+  </data>
+  <data name="SharedAccess" xml:space="preserve">
+    <value>Paylasilmis Erisim</value>
+  </data>
+  <data name="RenameProfile" xml:space="preserve">
+    <value>Yeniden Adlandir</value>
+  </data>
+  <data name="DisableVirtualController" xml:space="preserve">
+    <value>Sanal denetleyiciyi devre disi birak</value>
+  </data>
+  <data name="DisableVirtualControllerTip" xml:space="preserve">
+    <value>Bu profili kullanarak bagli denetleyiciler için sanal denetleyici olusturma/iliskilendirme (Profil kaydedildigince uygulanir)</value>
+  </data>
+  <data name="EmulatedController" xml:space="preserve">
+    <value>Emule Edilmis Denetleyici</value>
+  </data>
+  <data name="OutContNotice" xml:space="preserve">
+    <value>Sanal denetleyici çiktisinin tipini belirleyin (Profil kaydedildigince uygulanir)</value>
+  </data>
+  <data name="VirtualControllerSettings" xml:space="preserve">
+    <value>Sanal Denetleyici Ayarlari</value>
+  </data>
+  <data name="ChangeOnNewDeviceConn" xml:space="preserve">
+    <value>Degisiklikler yeni cihaz baglandiginda geçerli olur</value>
+  </data>
+  <data name="StickFuzzTooltip" xml:space="preserve">
+    <value>Fuzz, analog çubuk hareketinin en düsük birimi sayisini belirler, aktif bölgede, çikti esleyicide degistirildigi sekilde kaydedilmeden önce. Bu ayar sabit bir posizyon koruyamayan eskimis çubuklar için kullanisli olabilir. Deger, ham çubuk biriminde ifade edilmistir.</value>
+  </data>
+  <data name="StickMaxOutputForceTooltip" xml:space="preserve">
+    <value>Her zaman maksimum çikti ayarini tercih etmeye zorla. Dairesel çikti degeri için 100% Maksimum Çikti ve kisitlama degerinde kullanislidir. </value>
+  </data>
+  <data name="StickMaxOutputTooltip" xml:space="preserve">
+    <value>Bazi durumlarda, analog çubuk çiktisinin maksimum çikti degerini limitlemek kullanisli olabilir. Maksimum Çikti analog çubugun final çikti degerini kisitlayabilmeyi saglar.</value>
+  </data>
+  <data name="AntiDeadzoneTooltip" xml:space="preserve">
+    <value>Anti-ölü bölge, bir ekseni kullanirken, o eksinin atanmis ölü bölgesini astiktan sonra üretilen minimum çikis degerini ayarlamak için kullanilir. Bu özellik, bir ekseni bir video oyunundaki atanmis ölü bölge degeri ile daha iyi eslestirmeye yardimci olmak amaciyla tasarlanmistir. Örnegin, bir video oyununda XInput LS (Sol Joystick) için tipik atanmis ölü bölge degeri yaklasik 8000 (yüzde 25) olabilir. Bir anti-ölü bölge atanmamissa, bir eksinin Primora ile atanmis ölü bölgenin yani sira oyunun atanmis eksil ölü bölgesini geçmesi gerekir.</value>
+  </data>
+  <data name="StickInputCurveTooltip" xml:space="preserve">
+    <value>ESKI VE KULLANILMAYAN AYAR. Ölü bölge bilgisi uygulanmadan önce ham giris koordinatlarina dayali bir egri uygulama girisimidir. Karmasiktir.</value>
+  </data>
+  <data name="TouchpadMinThresholdTooltip" xml:space="preserve">
+    <value>Sisteme bir Mouse olayi gönderilmeden önce hesaplanan minimum çikti hareketi.</value>
+  </data>
+  <data name="TouchpadRotationTooltip" xml:space="preserve">
+    <value>Belirtilen dönüs açisina göre bir dokunmatik ped kaydirmasini ayarlar. Normal bir dokunmatik ped kaydirmasi düz bir çizgi olmadiginda kullanislidir. Degerler -180 ila 180 arasinda olabilir. Varsayilan deger 0'dir.</value>
+  </data>
+  <data name="TouchpadSlideTooltip" xml:space="preserve">
+    <value>Çoklu dokunma Mouse Tekerlegi Kaydirma eylemini etkinlestirmek için kullanilan hassasiyet.</value>
+  </data>
+  <data name="TouchpadTapTooltip" xml:space="preserve">
+    <value>Dokunmatik pede dokunarak Mouse Sol Tiklamasini etkinlestir. Maksimum zaman araligi (deger * 2) ms seklinde ayarlanir.</value>
+  </data>
+  <data name="TouchpadTrackballEnableTooltip" xml:space="preserve">
+    <value>Dokunmatik ped kaydirmasi sirasinda bir parmak kaldirildiginda kaydirmaya hiz kazandirir. Dokunmatik pedde sinirli alanda mümkün olmayan ek mouse imleci hareketini mümkün kilar.</value>
+  </data>
+  <data name="TouchpadTrackballFrictionTooltip" xml:space="preserve">
+    <value>Trackball'a sürtünme ekler. Azalan sürtünme son mouse imleci hareket süresini artirir.</value>
+  </data>
+  <data name="StickOuterBindDeadTooltip" xml:space="preserve">
+    <value>Bir eylemin gerçeklesecegi esik degeri</value>
+  </data>
+  <data name="StickOuterBindInvertTooltip" xml:space="preserve">
+    <value>Esik degerine ulasmadan önce dis baglantinin tetiklenmesini saglar. Eylem, esik degeri asildiginda serbest birakilir</value>
+  </data>
+  <data name="StickOuterBindTooltip" xml:space="preserve">
+    <value>Oyun Çubugu hareketi belirli bir esigi astiginda gerçeklestirilecek eylem. Yürüme veya Kosma gibi tuslari atamak için kullanislidir. Tersine çevirme, eylemin esik degerine kadar tetiklenmesine neden olur.</value>
+  </data>
+  <data name="SASteeringWheelFuzzTooltip" xml:space="preserve">
+    <value>Fuzz, en düsük cihaz birimi sayisini belirler, aktif bölgede, Hizlanma, çikti degistirilmis olarak kaydedilmeden önce çevirilmelidir. Deger, ham Hizlanma biriminde ifade edilmistir.</value>
+  </data>
+  <data name="StickRotationTooltip" xml:space="preserve">
+    <value>+ = Saat yönünde. - = Saat yönünün tersinde.
+
+Döndürme ayari, analog bir çubugu hareket ettirirken parmaginiz hafifçe kaymissa çubugun yönlendirmesini düzeltmeye yardimci olmak amaciyla kullanilir. Örnegin, analog çubuk tamamen kuzeye hareket ettiginde parmaginiz merkezden hafifçe kaymis olabilir. DS4'ü tutma seklim nedeniyle, analog çubugu tamamen kuzeye hareket ettirirken parmaklarim hafifçe saga kayar. Kullanilan deger, son eksen çikis degerini ayarlamak için kullanilan derece sayisini belirtir. Degerler -180 ila 180 arasinda olabilir. Varsayilan deger 0'dir.</value>
+  </data>
+  <data name="TouchpadJitterCompTooltip" xml:space="preserve">
+    <value>Dokunmatik ped hareketinin düsük ucunu limitler. Dokunmatik pedi çogunlukla sabit bir posizyonda tutarken yanlislikla olusan mouse imleci hareketlerini azaltir</value>
+  </data>
+  <data name="DS4BTPollRate" xml:space="preserve">
+    <value>DS4 BT Aktarim Orani</value>
+  </data>
+  <data name="DS4LightbarPassthruDisabled" xml:space="preserve">
+    <value>Driver problemleri yüzünden özellik devre disi birakilmistir. Umariz gelecek bir güncellemede problem çözülür.</value>
+  </data>
+  <data name="DualSRumbleForceGenericRescale" xml:space="preserve">
+    <value>Her iki % güç seviyelerinin kullanimini zorla (Genel ve DualSense özelinde)</value>
+  </data>
+  <data name="DualSRumbleModeDisabled" xml:space="preserve">
+    <value>Devre Disi</value>
+  </data>
+  <data name="DualSRumbleModeAccurate" xml:space="preserve">
+    <value>Dogruluk</value>
+  </data>
+  <data name="DualSRumbleModeLegacy" xml:space="preserve">
+    <value>Geleneksel Mod</value>
+  </data>
+  <data name="DualSRumbleModeNPowerLevelTxt" xml:space="preserve">
+    <value>Titresim modu ve güç seviyesi:</value>
+  </data>
+  <data name="DualSRumbleModePassthru" xml:space="preserve">
+    <value>Dogrudan Aktarim</value>
+  </data>
+  <data name="DualSRumbleSpecificSettings" xml:space="preserve">
+    <value>DualSense özelinde titresim ayarlari</value>
+  </data>
+  <data name="DualSRumbleForceGenericRescale_Tip" xml:space="preserve">
+    <value>DEVRE DISI birakilmasi tavsiye edilir.
+
+- Devre Disi: Titresim, denetleyici tarafindan tanimlanan güç seviyesine göre yerel olarak yeniden ölçeklendirilecektir (daha iyi kalite)
+
+- Etkin: Hem Primora genel titresim yeniden ölçekleme hem de DualSense'in yerel kontrolü etkin olacaktir</value>
+  </data>
+  <data name="DualSRumbleModes_Tip" xml:space="preserve">
+    <value>Dogru Mod (tavsiye edilir):
+- DualShock 4 / Xbox 360 denetleyici titresim hissini daha iyi taklit eder
+- Oyunun amaçladigi titresim efektlerini daha kesin olarak gerçeklestirir
+- Titresim daha fazla derinlige sahiptir. Ayni güç seviyesi içinde, gerçek düsükten baslayarak tanimlanan güç seviyesinin maksimum gücüne kadar degisen,
+oyun içi titresim etkinlestirmesinde minimum ve maksimum arasinda daha büyük bir fark bulunur
+
+Geleneksel Mod:
+- Genel olarak daha güçlüdür, ancak derinlik eksikligi vardir
+- Daha "keskin" bir hissiyati vardir
+- Oyun içinde minimum ve maksimum etkinlestirme sirasiyla sadece seçilen güç seviyesi gücünün hafif altinda ve hafif üstünde olacaktir
+
+Devre Disi:
+- Titresimi tamamen devre disi birakir</value>
+  </data>
+  <data name="DualSRumblePowerLevel_Tip" xml:space="preserve">
+    <value>DualSense'in yerel titresim Güç Seviyesi ölçekleyicisi.
+
+- Dogru Mod'da, titresimin [ min // max ] degeri [ 1% /// Seçilen Güç Seviyesi ] olacaktir
+    - Örnek (62%): [ min = 1% /// max = 62% ]
+
+- Geleneksel Mod'da, titresimin [ min /// max ] degeri yaklasik olarak [ Güç Seviyesi - 12% /// Güç Seviyesi + 12% ] olacaktir
+    - Örnek (62%): [ min = 50% /// max = 74% ]</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Kabul Et</value>
+  </data>
+  <data name="Black" xml:space="preserve">
+    <value>Siyah</value>
+  </data>
+  <data name="Colored" xml:space="preserve">
+    <value>Renkli</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Varsayilan</value>
+  </data>
+  <data name="DeviceType" xml:space="preserve">
+    <value>Cihaz türü</value>
+  </data>
+  <data name="DisconnectFromBtWhenStopping" xml:space="preserve">
+    <value>Durdururken BT baglantisini kes</value>
+  </data>
+  <data name="Dynamic" xml:space="preserve">
+    <value>Dinamik</value>
+  </data>
+  <data name="FlashLightbarAtHighLatency" xml:space="preserve">
+    <value>Yüksek Gecikmede Isik Barini Aç Kapat</value>
+  </data>
+  <data name="HidePrimoraController" xml:space="preserve">
+    <value>DS4 Denetleyicisini Gizle</value>
+  </data>
+  <data name="HotkeysAbout" xml:space="preserve">
+    <value>Kisayollar/Hakkinda</value>
+  </data>
+  <data name="IconChoice" xml:space="preserve">
+    <value>Simge Seçimi</value>
+  </data>
+  <data name="MinimizeToTaskbar" xml:space="preserve">
+    <value>Görev Çubuguna Küçült</value>
+  </data>
+  <data name="MinimizeToTaskbarTip" xml:space="preserve">
+    <value>Sistem Tepsisi yerine Görev Çubuguna Küçült</value>
+  </data>
+  <data name="OutputSlots" xml:space="preserve">
+    <value>Çikti Yuvalari</value>
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value>Kalici</value>
+  </data>
+  <data name="Plug" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+  <data name="RevertToDefaultProfileOnUnknown" xml:space="preserve">
+    <value>Bilinmeyende varsayilan profile geri dön</value>
+  </data>
+  <data name="ShowAutoProfileDebugMessages" xml:space="preserve">
+    <value>Otomatik-profil hata ayiklama mesajlarini göster</value>
+  </data>
+  <data name="SwipeTouchpadToSwitchProfiles" xml:space="preserve">
+    <value>Profil Degistirmek için Dokunmatik Pedi Kaydir</value>
+  </data>
+  <data name="TurnOffPrimoraTemporarily" xml:space="preserve">
+    <value>Primora'u Geçici Olarak Kapat</value>
+  </data>
+  <data name="Unplug" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Beyaz</value>
+  </data>
+  <data name="AppTheme" xml:space="preserve">
+    <value>Uygulama Temasi</value>
+  </data>
+  <data name="CheckEvery" xml:space="preserve">
+    <value>Her birini kontrol et</value>
+  </data>
+  <data name="OscServerHeading" xml:space="preserve">
+    <value>Harici OSC Kontrolü &amp; Monitoring</value>
+  </data>
+  <data name="EnableOscServer" xml:space="preserve">
+    <value>Kontrol Sunucusunu Etkinlestir</value>
+  </data>
+  <data name="EnableInterpretingOscMonitoring" xml:space="preserve">
+    <value>Izleme Mesajlarini Yürüt</value>
+  </data>
+  <data name="EnableOscSender" xml:space="preserve">
+    <value>Izleme Servisini Etkinlestir</value>
+  </data>
+  <data name="ControllerSupportDS4" xml:space="preserve">
+    <value>DS4 Denetleyici Destegi</value>
+  </data>
+  <data name="ControllerSupportDualSense" xml:space="preserve">
+    <value>DualSense Denetleyici Destegi</value>
+  </data>
+  <data name="ControllerSupportJoyCon" xml:space="preserve">
+    <value>JoyCon Denetleyici Destegi</value>
+  </data>
+  <data name="ControllerSupportSwitchPro" xml:space="preserve">
+    <value>Switch Pro Denetleyici Destegi</value>
+  </data>
+  <data name="Copycat" xml:space="preserve">
+    <value>Taklitçi</value>
+  </data>
+  <data name="CopycatTip" xml:space="preserve">
+    <value>Sony olmayan bir DS4 denetleyicisi için kullanilan bazi bayraklari degistirin. Bu, bazi üçüncü taraf DS4 kopyalari için titresim ve isik çubugu destegini düzeltebilir.</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Karanlik</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Gün</value>
+  </data>
+  <data name="DetectedControllers" xml:space="preserve">
+    <value>Tanimlanan Denetleyiciler</value>
+  </data>
+  <data name="DeviceOptions" xml:space="preserve">
+    <value>Cihaz Ayarlari</value>
+  </data>
+  <data name="EnableVerboseLog" xml:space="preserve">
+    <value>Ayrintili günlügü etkinlestir</value>
+  </data>
+  <data name="EnableVerboseLogTip" xml:space="preserve">
+    <value>Bir oyun kumandasi baglandiginda ek günlük mesajlarini göster</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Saat</value>
+  </data>
+  <data name="UseCustomSteamFolder" xml:space="preserve">
+    <value>Özel Steam Klasörü Kullan</value>
+  </data>
+  <data name="Utils" xml:space="preserve">
+    <value>Araçlar</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="RunAs" xml:space="preserve">
+    <value>Olarak Çalistir</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Görev</value>
+  </data>
+  <data name="GyroTriggerJitterCompensationTooltip" xml:space="preserve">
+    <value>Cihazin sarsilmasini hesaba katmak için egrinin düsük ucunda ek bir kontrol ekleyin.</value>
+  </data>
+  <data name="WakeupFromSuspend" xml:space="preserve">
+    <value>Uykudan Uyanma</value>
+  </data>
+  <data name="ControllerSupportDS3" xml:space="preserve">
+    <value>DS3 Denetleyici Destegi</value>
+  </data>
+  <data name="FirstLaunch.DeviceIntroText" xml:space="preserve">
+    <value>Diger esleyicilerin (örnegin Steam Input gibi) varsayilan olarak birden fazla cihaz türünü desteklemesinden dolayi, Primora yalnizca varsayilan olarak DS4 denetleyicilerinden okuma destegi saglar. Diger desteklenen cihaz türleri için burada esleyici destegini belirtebilirsiniz. Primora'i ayni anda çalistiran diger olasi esleyicileri kullanirken dikkatli olun.</value>
+  </data>
+  <data name="FirstLaunch.DS3EnableCkbLabel" xml:space="preserve">
+    <value>DS3 Cihaz Destegi</value>
+  </data>
+  <data name="FirstLaunch.DS3EnableText" xml:space="preserve">
+    <value>DualShock 3 (PS3) denetleyicileri için destek. ViGEm projesinin (nefarius) DsHidMini sürücüsünün kullanilmasini gerektirir.</value>
+  </data>
+  <data name="FirstLaunch.DS4EnableCkbLabel" xml:space="preserve">
+    <value>DS4 Cihaz Destegi</value>
+  </data>
+  <data name="FirstLaunch.DS4EnableText" xml:space="preserve">
+    <value>Bilinen DualShock 4 denetleyicileri için destek.</value>
+  </data>
+  <data name="FirstLaunch.DSEnableCkbLabel" xml:space="preserve">
+    <value>DualSense Cihaz Destegi</value>
+  </data>
+  <data name="FirstLaunch.DSEnableText" xml:space="preserve">
+    <value>DualSense (PS5) denetleyicileri için destek. Temel model ve DS Edge</value>
+  </data>
+  <data name="FirstLaunch.Header" xml:space="preserve">
+    <value>Etkinlestirilen Cihazlar Esleyici Destegi</value>
+  </data>
+  <data name="FirstLaunch.JoyConEnableCkbLabel" xml:space="preserve">
+    <value>JoyCon Cihaz Destegi</value>
+  </data>
+  <data name="FirstLaunch.JoyConEnableText" xml:space="preserve">
+    <value>JoyCon (Nintendo Switch) denetleyicileri için destek.</value>
+  </data>
+  <data name="FirstLaunch.SwitchProEnableCkbLabel" xml:space="preserve">
+    <value>Switch Pro Cihaz Destegi</value>
+  </data>
+  <data name="FirstLaunch.SwitchProEnableText" xml:space="preserve">
+    <value>Switch Pro (Nintendo Switch) denetleyicileri için destek.</value>
+  </data>
+  <data name="FirstLaunch.WinTitle" xml:space="preserve">
+    <value>Ilk Çalistirma</value>
+  </data>
+  <data name="AutoProfiles.DisplaySwitchVia" xml:space="preserve">
+    <value>Profil Degisimini Sununla Göster:</value>
+  </data>
+  <data name="AutoProfiles.LogAndNotification" xml:space="preserve">
+    <value>Günlük + Bildirim</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Bildirim</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Aydinlik</value>
+  </data>
+  <data name="ProfileEditor.VirtualDS4TrigOutput" xml:space="preserve">
+    <value>DS4 Tetik Çikti Modu</value>
+  </data>
+  <data name="Analog" xml:space="preserve">
+    <value>Analog</value>
+  </data>
+  <data name="Buttons" xml:space="preserve">
+    <value>Butonlar</value>
+  </data>
+  <data name="DS4OutputTriggersDefault" xml:space="preserve">
+    <value>Varsayilan (Analog + Butonlar)</value>
+  </data>
+</root>

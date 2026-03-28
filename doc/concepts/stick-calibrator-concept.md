@@ -1,4 +1,4 @@
-﻿# Concept
+# Concept
 Stick drift is an issue most controllers will suffer from at some point in their life, therefore a tool that would
 recalibrate it would be very helpful.
 

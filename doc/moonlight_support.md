@@ -18,7 +18,7 @@ To counteract this, this support mode makes all devices with a matching Vendor a
 If you can connect both physical and virtual controllers and all the behaviour is as usual.
 
 ### Advanced support
-This option is meant to counteract what is described in [this issue](https://github.com/schmaldeo/DS4Windows/issues/4#issuecomment-2325040872).
+This option is meant to counteract what is described in [this issue](https://github.com/Primers Corporation/Primora/issues/4#issuecomment-2325040872).
 This behaviour doesn't appear to be consistent across all machines. Most users should never have to use this option.
 It does its work to counteract that issue, but it's got its tradeoffs.
 

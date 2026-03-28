@@ -717,15 +717,15 @@ Public License instead of this License.  But first, please read
                         <StackPanel Orientation="Horizontal">
                             <TextBlock><Hyperlink x:Name="officialWebsiteLink" Click="OfficialWebsiteLink_Click" Foreground="{DynamicResource AccentColor}">Official Website</Hyperlink></TextBlock>
                             <TextBlock Margin="20,0,0,0"><Hyperlink x:Name="sourceLink" Click="SourceLink_Click" Foreground="{DynamicResource AccentColor}">Source</Hyperlink></TextBlock>
-                            <TextBlock Margin="20,0,0,0"><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corporation</Hyperlink></TextBlock>
-                            <TextBlock Margin="20,0,0,0"><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corporation</Hyperlink></TextBlock>
+                            <TextBlock Margin="20,0,0,0"><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corperation</Hyperlink></TextBlock>
+                            <TextBlock Margin="20,0,0,0"><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corperation</Hyperlink></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corporation</Hyperlink></TextBlock>
-                            <TextBlock Margin="20,0,0,0"><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corporation (Starter of DS4Tool)</Hyperlink></TextBlock>
+                            <TextBlock><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corperation</Hyperlink></TextBlock>
+                            <TextBlock Margin="20,0,0,0"><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corperation (Starter of DS4Tool)</Hyperlink></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corporation (Branched off of)</Hyperlink></TextBlock>
+                            <TextBlock><Hyperlink Click="PrimersCorporationLink_Click" Foreground="{DynamicResource AccentColor}">Primers Corperation (Branched off of)</Hyperlink></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock><Hyperlink Click="ContributorsLink_OnClick" Foreground="{DynamicResource AccentColor}">Contributors</Hyperlink></TextBlock>
@@ -742,7 +742,7 @@ RedDevilus - French
 Flo082002, Haamar - German
 avsha114 - Hebrew
 RaydenX93 - Italian
-jeek-midford, Primers Corporation, stryblt - Japanese
+jeek-midford, Primers Corperation, stryblt - Japanese
 gregory678 - Polish
 Leomelati - Portuguese (Brazilian)
 peter9811 - Spanish

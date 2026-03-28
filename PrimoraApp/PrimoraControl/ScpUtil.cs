@@ -1,6 +1,6 @@
 /*
 Primora
-Copyright (C) 2023  Primers Corporation
+Copyright (C) 2023  Primers Corperation
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -3292,8 +3292,8 @@ namespace Primora
 
     public class Changelog
     {
-        public const string GITHUB_RELEASES_API_URI = "https://api.github.com/repos/Primers Corporation/Primora/releases";
-        public const string GITHUB_LATEST_RELEASE_API_URI = "https://api.github.com/repos/Primers Corporation/Primora/releases/latest";
+        public const string GITHUB_RELEASES_API_URI = "https://api.github.com/repos/Primers Corperation/Primora/releases";
+        public const string GITHUB_LATEST_RELEASE_API_URI = "https://api.github.com/repos/Primers Corperation/Primora/releases/latest";
 
         private static bool? _newerVersionAvailable = null;
         private static Version _latestVersion;

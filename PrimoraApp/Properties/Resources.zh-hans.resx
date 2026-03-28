@@ -333,7 +333,7 @@
         <value>当通过USB连接时自动禁用蓝牙</value>
     </data>
     <data name="QuitOtherPrograms" xml:space="preserve">
-        <value>在启用隐藏DS4控制器之前，你必须退出其他 UWP 应用 (Netflix), Steam, Uplay, Edge, NVIDIA IN-GAME。详见：https://github.com/Primers Corporation/Primora/wiki/Exclusive-Mode-(Hide-DS4-Controller-config-option)-tips-and-issues</value>
+        <value>在启用隐藏DS4控制器之前，你必须退出其他 UWP 应用 (Netflix), Steam, Uplay, Edge, NVIDIA IN-GAME。详见：https://github.com/Primers Corperation/Primora/wiki/Exclusive-Mode-(Hide-DS4-Controller-config-option)-tips-and-issues</value>
     </data>
     <data name="RecordText" xml:space="preserve">
         <value>录制</value>

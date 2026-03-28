@@ -1,6 +1,6 @@
 /*
 Primora
-Copyright (C) 2023  Primers Corporation
+Copyright (C) 2023  Primers Corperation
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,13 +29,13 @@ namespace PrimoraTests
     public class ProfileMigrationTests
     {
         private const int EXPECTED_JAYS_MIGRATED_VERSION = 5;
-        private string ds4winPrimers CorporationOldProfile = string.Empty;
-        private string ds4winPrimers CorporationExpectedMigratedProfile = string.Empty;
+        private string ds4winPrimers CorperationOldProfile = string.Empty;
+        private string ds4winPrimers CorperationExpectedMigratedProfile = string.Empty;
 
         public ProfileMigrationTests()
         {
             #region TempDS4WinProfileXML
-            ds4winPrimers CorporationOldProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
+            ds4winPrimers CorperationOldProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
 
 <Primora>
   <flushHIDQueue>True</flushHIDQueue>
@@ -82,7 +82,7 @@ namespace PrimoraTests
   <ShiftControl />
 </Primora>";
 
-            ds4winPrimers CorporationExpectedMigratedProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
+            ds4winPrimers CorperationExpectedMigratedProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
 
 <Primora>
   <touchToggle>True</touchToggle>
@@ -357,7 +357,7 @@ namespace PrimoraTests
         [TestMethod]
         public void CheckMigration()
         {
-            ProfileMigration migration = new ProfileMigration(ds4winPrimers CorporationOldProfile);
+            ProfileMigration migration = new ProfileMigration(ds4winPrimers CorperationOldProfile);
             bool requiredMigration = migration.RequiresMigration();
 
             Assert.AreEqual(true, requiredMigration);
@@ -383,7 +383,7 @@ namespace PrimoraTests
         [TestMethod]
         public void CheckJaysProfileRead()
         {
-            ProfileMigration migration = new ProfileMigration(ds4winPrimers CorporationOldProfile);
+            ProfileMigration migration = new ProfileMigration(ds4winPrimers CorperationOldProfile);
             migration.Migrate();
             string profileXml = migration.CurrentMigrationText;
             migration.Close();
@@ -411,7 +411,7 @@ namespace PrimoraTests
 
             // Check that profile migration worked as expected
             string testMigratedProfileStr = ObtainConvertedJaysXML(tempStore);
-            Assert.AreEqual(ds4winPrimers CorporationExpectedMigratedProfile, testMigratedProfileStr);
+            Assert.AreEqual(ds4winPrimers CorperationExpectedMigratedProfile, testMigratedProfileStr);
         }
 
         private string ObtainConvertedJaysXML(BackingStore tempStore)

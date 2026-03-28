@@ -1,6 +1,6 @@
 /*
 Primora
-Copyright (C) 2023  Primers Corporation
+Copyright (C) 2023  Primers Corperation
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ namespace Primora.PrimoraForms.ViewModels
         private string DownloadUpstreamUpdaterVersion()
         {
             // Sorry other devs, gonna have to find your own server
-            Uri url = new Uri("https://api.github.com/repos/Primers Corporation/DS4Updater/releases/latest");
+            Uri url = new Uri("https://api.github.com/repos/Primers Corperation/DS4Updater/releases/latest");
 
             Task<System.Net.Http.HttpResponseMessage> requestTask = App.requestClient.GetAsync(url.ToString());
             requestTask.Wait();
@@ -104,7 +104,7 @@ namespace Primora.PrimoraForms.ViewModels
         public void DownloadUpstreamVersionInfo()
         {
             // Sorry other devs, gonna have to find your own server
-            Uri url = new Uri("https://api.github.com/repos/Primers Corporation/Primora/releases/latest");
+            Uri url = new Uri("https://api.github.com/repos/Primers Corperation/Primora/releases/latest");
             string filename = Global.appdatapath + "\\version.txt";
             bool success = false;
             using (StreamWriter streamWriter = new(filename, false))

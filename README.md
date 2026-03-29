@@ -1,6 +1,6 @@
 # Primora
 
-Like those other DS4 tools, but sexier.
+Like those other legacy translation tools, but sexier.
 
 Primora is an extract anywhere program that allows you to get the best
 DualShock 4 experience on your PC. By emulating an Xbox 360 controller, many
@@ -29,11 +29,11 @@ available in this source code from the COPYING file.
 
 ## Downloads
 
-- **[Main builds of Primora](https://ds4-windows.com)**
+- **[Main builds of Primora](https://primora-website.vercel.app)**
 
 ## Install
 
-You can install Primora by downloading it from [Official Website](https://ds4-windows.com) and place it to your preferred place.
+You can install Primora by downloading it from [Official Website](https://primora-website.vercel.app) and place it to your preferred place.
 
 Alternatively, you can download [`ds4w.bat`](https://github.com/Primoraapp/Primora/blob/main/ds4w.bat) file and execute it. It will open a window that downloads and places the program in `%LOCALAPPDATA%\Primora` and creates a desktop shortcut to the executable.
 
@@ -50,7 +50,7 @@ Alternatively, you can download [`ds4w.bat`](https://github.com/Primoraapp/Primo
   - Bluetooth 4.0 (via an
   [adapter like this](https://www.newegg.com/Product/Product.aspx?Item=N82E16833166126)
   or built in pc). Only use of Microsoft BT stack is supported. CSR BT stack is
-  confirmed to not work with the DS4 even though some CSR adapters work fine
+  confirmed to not work with the DualShock 4 even though some CSR adapters work fine
   using Microsoft BT stack. Toshiba's adapters currently do not work.
   *Disabling 'Enable output data' in the controller profile settings might help with latency issues, but will disable lightbar and rumble support.*
 - Disable **PlayStation Configuration Support** and

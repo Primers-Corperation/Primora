@@ -8,7 +8,7 @@
     <Grid Background="{DynamicResource BackgroundColor}">
         <StackPanel Margin="20">
             <TextBlock Text="Primora Neural Stick Optimizer" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource AccentColor}" Margin="0,0,0,10"/>
-            <TextBlock Text="AI-Powered Stick Analysis & Deadzone Prediction" Foreground="#FFCCCCCC" Margin="0,0,0,20"/>
+            <TextBlock Text="AI-Powered Stick Analysis &amp; Deadzone Prediction" Foreground="#FFCCCCCC" Margin="0,0,0,20"/>
             
             <Border BorderThickness="1" BorderBrush="{DynamicResource BorderColor}" CornerRadius="10" Padding="20" Background="{DynamicResource SecondaryColor}">
                 <StackPanel>

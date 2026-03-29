@@ -1,0 +1,24 @@
+Primora v1.1.0 - The Liquid Glass Update
+Date: 03/29/2026
+-----------------------------------------
+
+💎 BRAND REVOLUTION: LIQUID GLASS UI
+- Absolute redesign based on high-fidelity monochrome aesthetics.
+- Ultra-thin (0.5px) glass borders with pervasive backdrop-blur effects.
+- Custom Window Chrome for a minimalist, distraction-free environment.
+- Integrated "Neuro-Kinetic" background breathing pulses.
+
+🛡️ ENGINEERED PRECISION: NEURO-KINETIC HUB
+- Implemented Assistive Precision Smoothing via adaptive EMA filters.
+- Eliminates mechanical sensor noise and high-frequency hardware variance.
+- Quantitative Hardware Integrity Audit: Real-time scan for component fatigue.
+- Direct-to-Hub health reporting for stick-drift and button wear detection.
+
+🔋 INTELLIGENT ENERGY MANAGEMENT
+- Battery-Aware Low Power Mode: Automatic LED deactivation at <20% battery.
+- Performance Throttling: Intelligent processing frequency reduction to extend battery life.
+
+⚡ CORE OPTIMIZATIONS
+- Refined input dispatch cycle for zero-latency signal processing.
+- Optimized ViGEmBus feedback synchronization.
+- Seamless "Assistant" integration for high-performance controller tuning.

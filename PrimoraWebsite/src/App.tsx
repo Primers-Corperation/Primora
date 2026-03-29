@@ -16,35 +16,34 @@ const App = () => {
           <a href="#optimization">Optimization</a>
           <a href="#credits">Credits</a>
         </div>
-        <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.0.0" className="btn-primary">Download v1.0.0</a>
+        <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.1.0" className="btn-primary">Download v1.1.0</a>
       </nav>
 
       <section className="hero">
-        <img src="/primora_logo.png" alt="Primora Banner" className="hero-banner" />
-        <h1>Beyond Emulation.<br/>Engineered Precision.</h1>
-        <p>Primora is the premium successor to legacy gamepad mapping tools. Re-engineered for reliability, performance, and cutting-edge intelligence by the Primers Corperation.</p>
+        <h1 className="glass-title">Liquid Glass UI.<br/>Neuro-Kinetic Precision.</h1>
+        <p>Primora v1.1.0 is here. Re-engineered with ultra-low latency signal filtering and the premium Liquid Glass aesthetic for the ultimate competitive edge.</p>
         <div className="hero-buttons">
           <a href="#features" className="btn-primary explore-btn">Explore Features</a>
-          <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.0.0" className="btn-primary">Get Primora</a>
+          <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.1.0" className="btn-primary">Download v1.1.0</a>
         </div>
       </section>
 
       <section id="features" className="features">
-        <div className="feature-card">
-          <h3>Neural Stick Optimizer</h3>
-          <p>Proprietary AI-driven baseline calibration eliminates hardware jitter and suggests the ideal deadzone for your specific controller sensor wear.</p>
+        <div className="feature-card glass-panel">
+          <h3>Neuro-Kinetic Filter</h3>
+          <p>Adaptive signal smoothing via second-order EMA algorithm. Eliminates hardware variance for pinpoint accuracy in every frame.</p>
         </div>
-        <div className="feature-card">
-          <h3>Hyper-Response Latency</h3>
-          <p>Optimized polling and priority handling ensure every millisecond counts, providing the fastest response times for competitive gaming.</p>
+        <div className="feature-card glass-panel">
+          <h3>Liquid Glass UI</h3>
+          <p>A premium, minimalist experience inspired by iOS 26. Ultra-thin glass borders, monochrome clarity, and dynamic background breathing.</p>
         </div>
-        <div className="feature-card">
-          <h3>Smart Profile Logic</h3>
-          <p>Advanced automatic profile switching that intelligently adapts to your active game, controller battery, and system resource state.</p>
+        <div className="feature-card glass-panel">
+          <h3>Hardware Integrity audit</h3>
+          <p>Quantitative component health diagnostic. Detect mechanical wear and sensor fatigue before it impacts your performance.</p>
         </div>
-        <div className="feature-card">
+        <div className="feature-card glass-panel">
           <h3>Universal peripheral Stack</h3>
-          <p>Deep native support for DualSense, DualShock 4, Nintendo Switch, and Joycon peripherals with advanced gyro and haptic mapping.</p>
+          <p>Deep native support for DualSense, DS4, Switch Pro, and Joycon peripherals with advanced haptic and gyro mapping.</p>
         </div>
       </section>
 

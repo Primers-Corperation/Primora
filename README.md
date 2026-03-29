@@ -1,10 +1,10 @@
-# Primora v1.1.0 — Liquid Glass Edition
+# Primora 
 
 **The premium evolution of precision gamepad mapping.**
 
 Primora is the high-fidelity successor to legacy mapping tools, re-engineered for absolute reliability, ultra-low latency, and the stunning "Liquid Glass" UI aesthetic. Supporting DualSense, DS4, Switch Pro, and JoyCon peripherals, Primora bridges the gap between human intent and digital execution.
 
-## 💎 What's New in v1.1.0 (Liquid Glass)
+## 💎 What's New in Primora
 
 - **Liquid Glass UI**: A complete visual overhaul with monochrome clarity, ultra-thin borders, and dynamic background breathing.
 - **Neuro-Kinetic Hub**: Integrated assistive precision smoothing (EMA filtering) and real-time hardware integrity audits.
@@ -30,7 +30,7 @@ available in this source code from the COPYING file.
 
 You can install Primora by downloading it from [Official Website](https://primora-website.vercel.app) and place it to your preferred place.
 
-Alternatively, you can download [`ds4w.bat`](https://github.com/Primoraapp/Primora/blob/main/ds4w.bat) file and execute it. It will open a window that downloads and places the program in `%LOCALAPPDATA%\Primora` and creates a desktop shortcut to the executable.
+Alternatively, you can download [`primora.bat`](https://github.com/Primoraapp/Primora/blob/main/ds4w.bat) file and execute it. It will open a window that downloads and places the program in `%LOCALAPPDATA%\Primora` and creates a desktop shortcut to the executable.
 
 ## Requirements
 

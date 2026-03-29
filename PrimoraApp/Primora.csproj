@@ -16,9 +16,9 @@
 		<EnableNETAnalyzers>false</EnableNETAnalyzers>
 		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
 		<ServerGarbageCollection>true</ServerGarbageCollection>
-		<AssemblyVersion>3.5</AssemblyVersion>
-		<FileVersion>3.5</FileVersion>
-		<Version>3.5</Version>
+		<AssemblyVersion>3.5.1</AssemblyVersion>
+		<FileVersion>3.5.1</FileVersion>
+		<Version>3.5.1</Version>
 		<Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">x64</Platform>
 		<Copyright>Copyright © Primers 2026</Copyright>

@@ -1,24 +1,19 @@
-# Primora
+# Primora v1.1.0 — Liquid Glass Edition
 
-Like those other legacy translation tools, but sexier.
+**The premium evolution of precision gamepad mapping.**
 
-Primora is an extract anywhere program that allows you to get the best
-DualShock 4 experience on your PC. By emulating an Xbox 360 controller, many
-more games are accessible. Other input controllers are also supported including the
-DualSense, Switch Pro, and JoyCon controllers (**first party hardware only**).
+Primora is the high-fidelity successor to legacy mapping tools, re-engineered for absolute reliability, ultra-low latency, and the stunning "Liquid Glass" UI aesthetic. Supporting DualSense, DS4, Switch Pro, and JoyCon peripherals, Primora bridges the gap between human intent and digital execution.
 
-This project is a fork of the work of Primers Corporation and Primers Corporation. It adds various new features like switch 
-[debouncing](https://www.ganssle.com/debouncing.pdf), a tool that helps to fix stick drift and pitch and roll simulation
-for DS3 based on accelerometer value (which is a work of [sunnyqeen](https://github.com/sunnyqeen)).
+## 💎 What's New in v1.1.0 (Liquid Glass)
 
-## About this fork
+- **Liquid Glass UI**: A complete visual overhaul with monochrome clarity, ultra-thin borders, and dynamic background breathing.
+- **Neuro-Kinetic Hub**: Integrated assistive precision smoothing (EMA filtering) and real-time hardware integrity audits.
+- **Intelligent Power Hub**: Automated Low Power Mode (<20% battery) with performance throttling and LED management.
+- **Precision Diagnostics**: Mechanical wear detection and health scoring for every connected peripheral.
 
-I've made this fork because some of the buttons on my controller started bouncing. Normally I would just add a
-feature that would fix my problem, make a pull request to the original repo and forget about the project. 
-The issue here is that Primers Corporation stopped maintaining the original project, so I decided to make slight 
-modifications to the code that detects if the installed version is up-to-date, so it now pulls version info from my 
-repo. This way if you install my version, you don't get the annoying popup saying your version is outdated. If there 
-are any feature requests, I'm more than happy to at least look at them and assess whether I could add them.
+## 🛠️ About Primora
+
+This project is the definitive fork of the original mapping vision, evolved for modern hardware synergy. We focus on enhancing the bridge between high-frequency controller signals and virtual output accuracy, ensuring your hardware performs at its absolute mathematical peak.
 
 ## License
 

@@ -25,9 +25,9 @@
 		<Description>Sony DualShock 4 to Microsoft Xinput controller mapper - Primora Edition</Description>
 		<Authors>Primers</Authors>
 		<Company>Primers</Company>
-		<PackageProjectUrl>https://Primers Corporation.github.io/PrimoraDocs</PackageProjectUrl>
+		<PackageProjectUrl>https://primers-corperation.github.io/PrimoraDocs</PackageProjectUrl>
 		<PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.txt</PackageLicenseUrl>
-		<RepositoryUrl>https://github.com/Primers Corporation/Primora</RepositoryUrl>
+		<RepositoryUrl>https://github.com/Primers-Corperation/Primora</RepositoryUrl>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

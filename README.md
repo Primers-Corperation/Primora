@@ -1,17 +1,17 @@
-# Primora 
+# Primora v2.0.0 — Liquid Glass Edition
 
 **The premium evolution of precision gamepad mapping.**
 
 Primora is the high-fidelity successor to legacy mapping tools, re-engineered for absolute reliability, ultra-low latency, and the stunning "Liquid Glass" UI aesthetic. Supporting DualSense, DS4, Switch Pro, and JoyCon peripherals, Primora bridges the gap between human intent and digital execution.
 
-##  What's New in Primora
+## 💎 What's New in v2.0.0 (Liquid Glass)
 
 - **Liquid Glass UI**: A complete visual overhaul with monochrome clarity, ultra-thin borders, and dynamic background breathing.
 - **Neuro-Kinetic Hub**: Integrated assistive precision smoothing (EMA filtering) and real-time hardware integrity audits.
 - **Intelligent Power Hub**: Automated Low Power Mode (<20% battery) with performance throttling and LED management.
 - **Precision Diagnostics**: Mechanical wear detection and health scoring for every connected peripheral.
 
-##  About Primora
+## 🛠️ About Primora
 
 This project is the definitive fork of the original mapping vision, evolved for modern hardware synergy. We focus on enhancing the bridge between high-frequency controller signals and virtual output accuracy, ensuring your hardware performs at its absolute mathematical peak.
 
@@ -28,9 +28,9 @@ available in this source code from the COPYING file.
 
 ## Install
 
-You can install Primora by downloading it from [Official Website](https://primora-website.vercel.app) and place it to your preferred place.
+You can install Primora by downloading it from the [Official Website](https://primora-website.vercel.app) and place it to your preferred place.
 
-Alternatively, you can download [`primora.bat`](https://github.com/Primoraapp/Primora/blob/main/ds4w.bat) file and execute it. It will open a window that downloads and places the program in `%LOCALAPPDATA%\Primora` and creates a desktop shortcut to the executable.
+Alternatively, you can download the [`primora.bat`](https://github.com/Primoraapp/Primora/blob/main/ds4w.bat) file and execute it. It will open a window that downloads and places the program in `%LOCALAPPDATA%\Primora` and creates a desktop shortcut to the executable.
 
 ## Requirements
 
@@ -42,11 +42,6 @@ Alternatively, you can download [`primora.bat`](https://github.com/Primoraapp/Pr
 - Connection method:
   - Micro USB cable
   - [Sony Wireless Adapter](https://www.amazon.com/gp/product/B01KYVLKG2)
-  - Bluetooth 4.0 (via an
-  [adapter like this](https://www.newegg.com/Product/Product.aspx?Item=N82E16833166126)
-  or built in pc). Only use of Microsoft BT stack is supported. CSR BT stack is
-  confirmed to not work with the DualShock 4 even though some CSR adapters work fine
-  using Microsoft BT stack. Toshiba's adapters currently do not work.
+  - Bluetooth 4.0 (via an [adapter like this](https://www.newegg.com/Product/Product.aspx?Item=N82E16833166126) or built in pc). Only use of Microsoft BT stack is supported. CSR BT stack is confirmed to not work with the DualShock 4 even though some CSR adapters work fine using Microsoft BT stack. Toshiba's adapters currently do not work.
   *Disabling 'Enable output data' in the controller profile settings might help with latency issues, but will disable lightbar and rumble support.*
-- Disable **PlayStation Configuration Support** and
-**Xbox Configuration Support** options in Steam
+- Disable **PlayStation Configuration Support** and **Xbox Configuration Support** options in Steam

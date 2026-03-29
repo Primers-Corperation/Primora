@@ -16,15 +16,15 @@ const App = () => {
           <a href="#optimization">Optimization</a>
           <a href="#credits">Credits</a>
         </div>
-        <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.1.0" className="btn-primary">Download v1.1.0</a>
-      </nav>
+        <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v2.0.0" className="btn-primary">Download v2.0.0</a>
+</nav>
 
       <section className="hero">
         <h1 className="glass-title">Liquid Glass UI.<br/>Neuro-Kinetic Precision.</h1>
-        <p>Primora v1.1.0 is here. Re-engineered with ultra-low latency signal filtering and the premium Liquid Glass aesthetic for the ultimate competitive edge.</p>
+        <p>Primora v2.0.0 is here. Re-engineered with ultra-low latency signal filtering and the premium Liquid Glass aesthetic for the ultimate competitive edge.</p>
         <div className="hero-buttons">
           <a href="#features" className="btn-primary explore-btn">Explore Features</a>
-          <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.1.0" className="btn-primary">Download v1.1.0</a>
+          <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v2.0.0" className="btn-primary">Download v2.0.0</a>
         </div>
       </section>
 

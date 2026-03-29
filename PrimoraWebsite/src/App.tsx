@@ -16,7 +16,7 @@ const App = () => {
           <a href="#optimization">Optimization</a>
           <a href="#credits">Credits</a>
         </div>
-        <a href="https://github.com/Primers-Corperation/Primora/releases/download/v1.0.0/Primora.exe" className="btn-primary">Download v1.0.0</a>
+        <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.0.0" className="btn-primary">Download v1.0.0</a>
       </nav>
 
       <section className="hero">
@@ -25,7 +25,7 @@ const App = () => {
         <p>Primora is the premium successor to legacy gamepad mapping tools. Re-engineered for reliability, performance, and cutting-edge intelligence by the Primers Corperation.</p>
         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
           <a href="#features" className="btn-primary" style={{ background: 'transparent', border: '1px solid var(--accent)' }}>Explore Features</a>
-          <a href="https://github.com/Primers-Corperation/Primora/releases/download/v1.0.0/Primora.exe" className="btn-primary">Get Primora</a>
+          <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.0.0" className="btn-primary">Get Primora</a>
         </div>
       </section>
 

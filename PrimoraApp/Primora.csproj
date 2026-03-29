@@ -14,6 +14,7 @@
 		<NeutralLanguage>en</NeutralLanguage>
 		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
 		<EnableNETAnalyzers>false</EnableNETAnalyzers>
+		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
 		<ServerGarbageCollection>true</ServerGarbageCollection>
 		<AssemblyVersion>3.5</AssemblyVersion>
 		<FileVersion>3.5</FileVersion>
@@ -317,78 +318,7 @@
 			<DependentUpon>Strings.resx</DependentUpon>
 		</Compile>
 
-		<EmbeddedResource Update="Translations\Strings.ar.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.cs.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.de.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.el.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.es.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.fi.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.fr.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.he.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.hu-HU.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.idn.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.it.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.ja.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.ms.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.nl.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.pl.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.pt.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.pt-BR.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.ru.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.se.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.tr.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.uk-UA.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.vi.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.zh-Hans.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Translations\Strings.zh-Hant.resx">
-			<DependentUpon>Strings.resx</DependentUpon>
-		</EmbeddedResource>
+		<!-- Translated resources excluded temporarily due to encoding corruption -->
 	</ItemGroup>
 
 	<ItemGroup>

@@ -4,14 +4,14 @@
 
 Primora is the high-fidelity successor to legacy mapping tools, re-engineered for absolute reliability, ultra-low latency, and the stunning "Liquid Glass" UI aesthetic. Supporting DualSense, DS4, Switch Pro, and JoyCon peripherals, Primora bridges the gap between human intent and digital execution.
 
-## 💎 What's New in Primora
+##  What's New in Primora
 
 - **Liquid Glass UI**: A complete visual overhaul with monochrome clarity, ultra-thin borders, and dynamic background breathing.
 - **Neuro-Kinetic Hub**: Integrated assistive precision smoothing (EMA filtering) and real-time hardware integrity audits.
 - **Intelligent Power Hub**: Automated Low Power Mode (<20% battery) with performance throttling and LED management.
 - **Precision Diagnostics**: Mechanical wear detection and health scoring for every connected peripheral.
 
-## 🛠️ About Primora
+##  About Primora
 
 This project is the definitive fork of the original mapping vision, evolved for modern hardware synergy. We focus on enhancing the bridge between high-frequency controller signals and virtual output accuracy, ensuring your hardware performs at its absolute mathematical peak.
 

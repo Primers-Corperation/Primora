@@ -2695,7 +2695,7 @@ namespace Primora
         public static List<PrimoraControlSettings> getDS4CSettings(int device) => m_Config.ds4settings[device];
         public static PrimoraControlSettings GetDS4CSetting(int deviceNum, string control) => m_Config.GetDS4CSetting(deviceNum, control);
         public static PrimoraControlSettings GetDS4CSetting(int deviceNum, PrimoraControls control) => m_Config.GetDS4CSetting(deviceNum, control);
-        public static ControlSettingsGroup GetControlSettingsGroup(int deviceNum) => m_Config.PrimoraControlSettings[deviceNum];
+        public static ControlSettingsGroup GetControlSettingsGroup(int deviceNum) => m_Config.controlSettingsGroups[deviceNum];
         public static bool HasCustomActions(int deviceNum) => m_Config.HasCustomActions(deviceNum);
         public static bool HasCustomExtras(int deviceNum) => m_Config.HasCustomExtras(deviceNum);
 
@@ -3166,10 +3166,10 @@ namespace Primora
 
         public static void RefreshExtrasButtons(int deviceNum, List<PrimoraControls> devButtons)
         {
-            m_Config.PrimoraControlSettings[deviceNum].ResetExtraButtons();
+            m_Config.controlSettingsGroups[deviceNum].ResetExtraButtons();
             if (devButtons != null)
             {
-                m_Config.PrimoraControlSettings[deviceNum].EstablishExtraButtons(devButtons);
+                m_Config.controlSettingsGroups[deviceNum].EstablishExtraButtons(devButtons);
             }
         }
 
@@ -3835,7 +3835,7 @@ namespace Primora
         public List<PrimoraControlSettings>[] ds4settings = new List<PrimoraControlSettings>[Global.TEST_PROFILE_ITEM_COUNT]
             { new List<PrimoraControlSettings>(), new List<PrimoraControlSettings>(), new List<PrimoraControlSettings>(),
               new List<PrimoraControlSettings>(), new List<PrimoraControlSettings>(), new List<PrimoraControlSettings>(), new List<PrimoraControlSettings>(), new List<PrimoraControlSettings>(), new List<PrimoraControlSettings>() };
-        public ControlSettingsGroup[] PrimoraControlSettings;
+        public ControlSettingsGroup[] controlSettingsGroups;
 
         public List<string>[] profileActions = new List<string>[Global.TEST_PROFILE_ITEM_COUNT] { null, null, null, null, null, null, null, null, null };
         public int[] profileActionCount = new int[Global.TEST_PROFILE_ITEM_COUNT] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -4016,7 +4016,7 @@ namespace Primora
 
         public BackingStore()
         {
-            PrimoraControlSettings = new ControlSettingsGroup[Global.TEST_PROFILE_ITEM_COUNT];
+            controlSettingsGroups = new ControlSettingsGroup[Global.TEST_PROFILE_ITEM_COUNT];
 
             for (int i = 0; i < Global.TEST_PROFILE_ITEM_COUNT; i++)
             {
@@ -4026,7 +4026,7 @@ namespace Primora
                         ds4settings[i].Add(new PrimoraControlSettings(dc));
                 }
 
-                PrimoraControlSettings[i] = new ControlSettingsGroup(ds4settings[i]);
+                controlSettingsGroups[i] = new ControlSettingsGroup(ds4settings[i]);
 
                 EstablishDefaultSpecialActions(i);
                 CacheExtraProfileInfo(i);

@@ -20,8 +20,7 @@ namespace Primora.PrimoraForms
         {
             InitializeComponent();
 
-            // About window header branding
-            headerLb.Content = $"Primora v{Global.exeversion} (Powered by Primers Corperation)";
+
         }
 
 

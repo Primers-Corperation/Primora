@@ -1,19 +1,9 @@
 /*
 Primora
-Copyright (C) 2023  Primers Corperation
+Copyright (C) 2026 Primers Corperation
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+This software is governed by the Primora Software License Agreement.
+See LICENSE.txt in the root directory for full details.
 */
 
 using Primora;
@@ -31,23 +21,23 @@ namespace Primora.PrimoraForms
             InitializeComponent();
 
             // About window header branding
-            headerLb.Content = $"Primora v{Global.exeversion} (Created by DS4-Windows.com Team)";
+            headerLb.Content = $"Primora v{Global.exeversion} (Powered by Primers Corperation)";
         }
 
 
         private void OfficialWebsiteLink_Click(object sender, RoutedEventArgs e)
         {
-            Util.StartProcessHelper("https://ds4-windows.com");
+            Util.StartProcessHelper("https://primora-corperation.vercel.app");
         }
 
         private void SourceLink_Click(object sender, RoutedEventArgs e)
         {
-            Util.StartProcessHelper("https://github.com/Primoraapp");
+            Util.StartProcessHelper("https://github.com/Primers-Corperation/Primora");
         }
 
         private void PrimersCorporationLink_Click(object sender, RoutedEventArgs e)
         {
-            Util.StartProcessHelper("https://github.com/PrimersCorporation");
+            Util.StartProcessHelper("https://github.com/Primers-Corperation");
         }
 
         private void ViGEmBusLink_Click(object sender, RoutedEventArgs e)
@@ -87,7 +77,7 @@ namespace Primora.PrimoraForms
 
         private void ContributorsLink_OnClick(object sender, RoutedEventArgs e)
         {
-            Util.StartProcessHelper("https://github.com/PrimersCorporation/Primora/blob/master/contributors.txt");
+            Util.StartProcessHelper("https://github.com/Primers-Corperation/Primora/blob/main/contributors.txt");
         }
     }
 }

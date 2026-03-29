@@ -1,13 +1,13 @@
-<!-- Profile Configuration Data. 03/29/2026 18:00:00 -->
-<!-- Made with Primora v2.0.0 - The Liquid Glass Major Release -->
-<!-- Date: 03/29/2026 -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Profile Configuration Data. 03/29/2026 20:02:13 -->
+<!-- Made with Primora version 3.5 -->
 
-<Profile app_version="2.0.0" config_version="4">
+<Profile app_version="3.5" config_version="2">
   <useExclusiveMode>False</useExclusiveMode>
   <startMinimized>False</startMinimized>
   <minimizeToTaskbar>False</minimizeToTaskbar>
-  <formWidth>782</formWidth>
-  <formHeight>550</formHeight>
+  <formWidth>1500</formWidth>
+  <formHeight>625</formHeight>
   <formLocationX>305</formLocationX>
   <formLocationY>305</formLocationY>
   <ProcessPriority>0</ProcessPriority>
@@ -19,15 +19,15 @@
   <Controller6>Default</Controller6>
   <Controller7>Default</Controller7>
   <Controller8>Default</Controller8>
-  <LastChecked>03/29/2026 16:58:00</LastChecked>
+  <LastChecked>03/29/2026 19:59:49</LastChecked>
   <CheckWhen>24</CheckWhen>
   <Notifications>2</Notifications>
   <ProfileChangedNotification>False</ProfileChangedNotification>
   <DisconnectBTAtStop>False</DisconnectBTAtStop>
   <SwipeProfiles>True</SwipeProfiles>
   <QuickCharge>False</QuickCharge>
-  <UseMoonlight>false</UseMoonlight>
-  <UseAdvancedMoonlight>false</UseAdvancedMoonlight>
+  <UseMoonlight>true</UseMoonlight>
+  <UseAdvancedMoonlight>true</UseAdvancedMoonlight>
   <CloseMinimizes>False</CloseMinimizes>
   <UseLang />
   <DownloadLang>False</DownloadLang>
@@ -69,7 +69,7 @@
       <JoinedGyroProvider>JoyConL</JoinedGyroProvider>
     </JoyConSupportSettings>
     <DS3SupportSettings>
-      <Enabled>True</Enabled>
+      <Enabled>False</Enabled>
     </DS3SupportSettings>
   </DeviceOptions>
   <CustomLed1>True:232,140,42</CustomLed1>

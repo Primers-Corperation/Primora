@@ -30,17 +30,21 @@
 
     <Grid>
         <Border x:Name="GlassBackground" Background="#0C000000" CornerRadius="2">
-            <Image x:Name="bgPulseImg" Source="/Primora;component/Resources/neural_ai_gaming_viz.png" Opacity="0.05" Stretch="UniformToFill">
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="Image.Loaded">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="bgPulseImg" Storyboard.TargetProperty="Opacity" From="0.03" To="0.08" Duration="0:0:4" AutoReverse="True" RepeatBehavior="Forever" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
+            <Grid>
+                <Image x:Name="bgPulseImg" Source="/Primora;component/Resources/neural_ai_gaming_viz.png" Opacity="0.05" Stretch="UniformToFill">
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Image.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="bgPulseImg" Storyboard.TargetProperty="Opacity" From="0.03" To="0.08" Duration="0:0:4" AutoReverse="True" RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+                <!-- Target for dynamic cross-fading via BackgroundService -->
+                <Image x:Name="bgPulseImgNext" Opacity="0" Stretch="UniformToFill" />
+            </Grid>
         </Border>
 
         <DockPanel Margin="10">

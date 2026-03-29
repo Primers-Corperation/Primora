@@ -2641,6 +2641,16 @@ namespace Primora
                     tempControlState = CurrentState[ind];
                 }
 
+                // Primora: Apply Neuro-Kinetic Smoothing
+                cState.ApplyNeuroSmoothing();
+
+                // Primora: Low Power Mode Performance Throttle
+                if (Global.LowPowerActive)
+                {
+                    // Artificially reduce processing frequency to save CPU and controller battery
+                    Thread.Sleep(2); 
+                }
+
                 DS4State pState = device.getPreviousStateRef();
                 //device.getPreviousState(PreviousState[ind]);
                 //DS4State pState = PreviousState[ind];

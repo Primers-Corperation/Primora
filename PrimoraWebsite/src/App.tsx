@@ -9,7 +9,7 @@ const App = () => {
       <nav>
         <div className="logo-container">
           <img src="/primora_icon.png" alt="Primora Icon" />
-          <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>Primora</span>
+          <span className="logo-text">Primora</span>
         </div>
         <div className="nav-links">
           <a href="#features">Features</a>
@@ -20,11 +20,11 @@ const App = () => {
       </nav>
 
       <section className="hero">
-        <img src="/primora_logo.png" alt="Primora Banner" style={{ width: '100%', maxWidth: '1200px', marginBottom: '3rem', borderRadius: '32px' }} />
+        <img src="/primora_logo.png" alt="Primora Banner" className="hero-banner" />
         <h1>Beyond Emulation.<br/>Engineered Precision.</h1>
         <p>Primora is the premium successor to legacy gamepad mapping tools. Re-engineered for reliability, performance, and cutting-edge intelligence by the Primers Corperation.</p>
-        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-          <a href="#features" className="btn-primary" style={{ background: 'transparent', border: '1px solid var(--accent)' }}>Explore Features</a>
+        <div className="hero-buttons">
+          <a href="#features" className="btn-primary explore-btn">Explore Features</a>
           <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v1.0.0" className="btn-primary">Get Primora</a>
         </div>
       </section>
@@ -48,17 +48,17 @@ const App = () => {
         </div>
       </section>
 
-      <section id="optimization" style={{ textAlign: 'center' }}>
-        <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Primers Corperation Intelligence</h2>
-        <p style={{ maxWidth: '700px', margin: '0 auto 3rem', color: 'var(--text-dim)', fontSize: '1.2rem' }}>Our mission is to bridge the gap between human intent and digital execution. Primora is built on the foundations of the open-source community, with a focused evolution toward modern hardware synergy.</p>
+      <section id="optimization" className="intel-section">
+        <h2 className="intel-h2">Primers Corperation Intelligence</h2>
+        <p className="intel-p">Our mission is to bridge the gap between human intent and digital execution. Primora is built on the foundations of the open-source community, with a focused evolution toward modern hardware synergy.</p>
       </section>
 
       <footer id="credits">
-        <div style={{ marginBottom: '2rem' }}>
-          <span style={{ fontSize: '1.2rem', fontWeight: 600 }}>Primora</span>
-          <p style={{ marginTop: '0.5rem' }}>© 2026 Primers Corperation. All Rights Reserved.</p>
+        <div className="footer-brand">
+          <span className="footer-logo">Primora</span>
+          <p className="footer-copyright">© 2026 Primers Corperation. All Rights Reserved.</p>
         </div>
-        <p style={{ fontSize: '0.9rem' }}>Built with respect for the original open-source visionaries including Ryochan7, Jays2Kings, and the global DS4Windows community.</p>
+        <p className="footer-credits">Built with respect for the original open-source visionaries including Ryochan7, Jays2Kings, and the global DS4Windows community.</p>
       </footer>
     </div>
   );

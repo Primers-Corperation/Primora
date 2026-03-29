@@ -13,14 +13,44 @@
         xmlns:localConverters="clr-namespace:Primora.PrimoraForms.Converters"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xml:lang="en-US"
-        mc:Ignorable="d"
-        Title="Primora" Height="500" Width="800" Closing="MainDS4Window_Closing" Closed="MainDS4Window_Closed" StateChanged="MainDS4Window_StateChanged" SizeChanged="MainDS4Window_SizeChanged" LocationChanged="MainDS4Window_LocationChanged" MinWidth="600" MinHeight="250"
-        Style="{DynamicResource WindowStyle}">
+        mc:Ignorable="d" 
+        Title="Primora" Height="650" Width="1000" Closing="MainDS4Window_Closing" Closed="MainDS4Window_Closed" 
+        StateChanged="MainDS4Window_StateChanged" SizeChanged="MainDS4Window_SizeChanged" LocationChanged="MainDS4Window_LocationChanged" 
+        MinWidth="800" MinHeight="500"
+        Style="{StaticResource WindowStyle}"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="40" ResizeBorderThickness="8" GlassFrameThickness="-1" CornerRadius="2"/>
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <local:ImageLocationPaths x:Key="ImgLocPaths" />
     </Window.Resources>
-    <DockPanel>
+
+    <Grid>
+        <Border x:Name="GlassBackground" Background="#0C000000" CornerRadius="2">
+            <Image x:Name="bgPulseImg" Source="/Primora;component/Resources/neural_ai_gaming_viz.png" Opacity="0.05" Stretch="UniformToFill">
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Image.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="bgPulseImg" Storyboard.TargetProperty="Opacity" From="0.03" To="0.08" Duration="0:0:4" AutoReverse="True" RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
+        </Border>
+
+        <DockPanel Margin="10">
+            <Grid DockPanel.Dock="Top" Height="40" Background="Transparent" x:Name="TitleBar">
+                <TextBlock Text="Primora" VerticalAlignment="Center" Margin="15,0,0,0" Foreground="#A0FFFFFF" FontWeight="Light" FontSize="16"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button Content="—" Style="{StaticResource ButtonStyle}" BorderThickness="0" Background="Transparent" Width="40" Height="40" Click="Minimize_Click"/>
+                    <Button Content="✕" Style="{StaticResource ButtonStyle}" BorderThickness="0" Background="Transparent" Width="40" Height="40" Click="Close_Click"/>
+                </StackPanel>
+            </Grid>
         <tb:TaskbarIcon x:Name="notifyIcon" IconSource="{Binding IconSource,Mode=OneWay}" ToolTipText="{Binding TooltipText,Mode=OneWay}" MenuActivation="RightClick" TrayRightMouseUp="NotifyIcon_TrayRightMouseUp" TrayMiddleMouseDown="NotifyIcon_TrayMiddleMouseDown" TrayMouseDoubleClick="NotifyIcon_TrayMouseDoubleClick">
             <!--<tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>

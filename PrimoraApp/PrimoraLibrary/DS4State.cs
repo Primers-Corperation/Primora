@@ -258,6 +258,22 @@ namespace Primora
             state.TrackPadTouch1 = TrackPadTouch1;
         }
 
+        private static double lastLX, lastLY, lastRX, lastRY;
+        private const double SMOOTH_ALPHA = 0.65; // Balanced smoothing
+
+        public void ApplyNeuroSmoothing()
+        {
+            if (!Global.UseAssistiveSmoothing) return;
+
+            // Apply EMA filter
+            LX = (byte)(SMOOTH_ALPHA * LX + (1 - SMOOTH_ALPHA) * lastLX);
+            LY = (byte)(SMOOTH_ALPHA * LY + (1 - SMOOTH_ALPHA) * lastLY);
+            RX = (byte)(SMOOTH_ALPHA * RX + (1 - SMOOTH_ALPHA) * lastRX);
+            RY = (byte)(SMOOTH_ALPHA * RY + (1 - SMOOTH_ALPHA) * lastRY);
+
+            lastLX = LX; lastLY = LY; lastRX = RX; lastRY = RY;
+        }
+
         public void calculateStickAngles()
         {
             double lsangle = Math.Atan2(-(LY - 128), (LX - 128));

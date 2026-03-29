@@ -600,6 +600,12 @@ namespace Primora
         public static bool[] useDInputOnly = new bool[TEST_PROFILE_ITEM_COUNT] { true, true, true, true, true, true, true, true, true };
         public static bool[] linkedProfileCheck = new bool[MAX_DS4_CONTROLLER_COUNT] { false, false, false, false, false, false, false, false };
         public static bool[] touchpadActive = new bool[TEST_PROFILE_ITEM_COUNT] { true, true, true, true, true, true, true, true, true };
+
+        // Liquid Glass UI Enhancements
+        public static bool UseLiquidGlass = true;
+        public static bool UseAssistiveSmoothing = false; // Enabled by user in Neural Hub
+        public static bool UseLowPowerMode = true; // Safe by default
+        public static bool LowPowerActive = false;
         // Used to hold device type desired from Profile Editor
         public static OutContType[] outDevTypeTemp = new OutContType[TEST_PROFILE_ITEM_COUNT] { Primora.OutContType.X360, Primora.OutContType.X360,
             Primora.OutContType.X360, Primora.OutContType.X360,

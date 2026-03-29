@@ -5,12 +5,15 @@
                     xmlns:themes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=DotNetProjects.Wpf.Extended.Toolkit"
                     xmlns:themes1="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
 
-    <!-- Brushes -->
-    <SolidColorBrush x:Key="BackgroundColor" Color="#0A0014" />
-    <SolidColorBrush x:Key="BorderColor" Color="#8A2BE2" />
-    <SolidColorBrush x:Key="ForegroundColor" Color="#EAEAEA" />
-    <SolidColorBrush x:Key="SecondaryColor" Color="#1A0B2E" />
-    <SolidColorBrush x:Key="AccentColor" Color="#D500F9" />
+    <!-- Liquid Glass Brushes -->
+    <SolidColorBrush x:Key="BackgroundColor" Color="#000000" />
+    <SolidColorBrush x:Key="SecondaryColor" Color="#05FFFFFF" />
+    <SolidColorBrush x:Key="BorderColor" Color="#15FFFFFF" />
+    <SolidColorBrush x:Key="ForegroundColor" Color="#E0E0E0" />
+    <SolidColorBrush x:Key="AccentColor" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="GlassColor" Color="#0AFFFFFF" />
+    <SolidColorBrush x:Key="GlassBorder" Color="#20FFFFFF" />
+    <SolidColorBrush x:Key="GlowColor" Color="#FFFFFF" />
 
     <system:String x:Key="KeyImageImg">key-solid_white.png</system:String>
     <system:String x:Key="CancelImg">cancel_white.png</system:String>
@@ -80,8 +83,20 @@
 
     <!-- Window Style -->
     <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
-        <Setter Property="Background" Value="{StaticResource BackgroundColor}" />
+        <Setter Property="Background" Value="#00000000" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundColor}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Border CornerRadius="2" Background="#15000000" BorderThickness="0.5" BorderBrush="{StaticResource GlassBorder}">
+                        <Grid>
+                            <Border Opacity="0.5" Background="#10FFFFFF" CornerRadius="2"/>
+                            <ContentPresenter Margin="0"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!-- Label Style -->
@@ -93,31 +108,23 @@
     <!-- Button Style -->
     <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="Background" Value="{StaticResource GlassColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource GlassBorder}"/>
         <Setter Property="Foreground" Value="{StaticResource ForegroundColor}"/>
-        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Padding" Value="12,6"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="2" BorderThickness="0.5" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
                         <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsDefaulted" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource SecondaryColor}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource AccentColor}"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource GlassBorder}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#40FFFFFF"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource AccentColor}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource SecondaryColor}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BorderColor}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="DimGray"/>
+                            <Setter Property="Background" TargetName="border" Value="#60FFFFFF"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -332,24 +339,22 @@
 
     <!-- TextBox Style -->
     <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
-        <Setter Property="Background" Value="{StaticResource BackgroundColor}" />
+        <Setter Property="Background" Value="{StaticResource GlassColor}" />
         <Setter Property="Foreground" Value="{StaticResource ForegroundColor}" />
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}" />
+        <Setter Property="BorderBrush" Value="{StaticResource GlassBorder}" />
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0.5" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryColor}"/>
+                            <Setter Property="BorderBrush" Value="#40FFFFFF"/>
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryColor}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="border" Value="0.8" />
+                            <Setter Property="BorderBrush" Value="#80FFFFFF"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -448,7 +453,7 @@
 
     <!-- TabControl style -->
     <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
-        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -457,16 +462,11 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Border Padding="0,2,0,0">
+                        <Border Padding="10,5,10,0" Background="{StaticResource BackgroundColor}">
                             <TabPanel IsItemsHost="True"/>
                         </Border>
-                        <Border BorderThickness="0,2,0,0" BorderBrush="{StaticResource AccentColor}" Grid.Row="1">
-                            <Border BorderThickness="0,0,0,2" BorderBrush="{StaticResource BorderColor}">
-                                <Grid Margin="0,5,0,0">
-                                    <ContentPresenter x:Name="PART_Presenter" ContentSource="SelectedContent" HorizontalAlignment="Stretch"/>
-                                    <Rectangle x:Name="PART_TempArea"/>
-                                </Grid>
-                            </Border>
+                        <Border Background="{StaticResource GlassColor}" BorderThickness="0,0.5,0,0" BorderBrush="{StaticResource GlassBorder}" Grid.Row="1">
+                            <ContentPresenter x:Name="PART_Presenter" ContentSource="SelectedContent" Margin="20" HorizontalAlignment="Stretch"/>
                         </Border>
                     </Grid>
                 </ControlTemplate>
@@ -476,38 +476,25 @@
 
     <!-- TabItem style -->
     <Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
-        <Setter Property="Background" Value="{StaticResource AccentColor}"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundColor}"/>
-        <Setter Property="MinHeight"             Value="20" />
-        <Setter Property="MinWidth"              Value="50" />
-        <Setter Property="Padding" Value="10,0,10,0"/>
-        <Setter Property="LayoutTransform" >
-            <Setter.Value>
-                <ScaleTransform x:Name="scaleTransform" />
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#80FFFFFF"/>
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="Padding" Value="20,0,20,0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
-                    <Border BorderBrush="Transparent" Width="{TemplateBinding Width}" 
-                                    Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
-                        <TextBlock Text="{TemplateBinding Header}" Foreground="{TemplateBinding Foreground}"/>
+                    <Border x:Name="border" BorderThickness="0,0,0,1" BorderBrush="Transparent" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{StaticResource AccentColor}" />
-                            <Setter Property="Foreground" Value="{StaticResource ForegroundColor}" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="#FFFFFF" />
+                            <Setter Property="Foreground" Value="#FFFFFF" />
                         </Trigger>
-                        <Trigger Property="IsMouseDirectlyOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource ForegroundColor}"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource GlassColor}"/>
                         </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="False"/>
-                                <Condition Property="IsSelected" Value="False"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="Transparent"/>
-                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

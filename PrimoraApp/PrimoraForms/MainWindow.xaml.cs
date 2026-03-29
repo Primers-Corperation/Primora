@@ -187,6 +187,16 @@ namespace Primora.PrimoraForms
             timerThread.Join();
         }
 
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         public void LateChecks(ArgumentParser parser)
         {
             Task tempTask = Task.Run(() =>

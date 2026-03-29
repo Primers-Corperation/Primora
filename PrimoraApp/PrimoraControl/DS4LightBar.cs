@@ -69,11 +69,23 @@ namespace Primora
             bool useForceLight = forcelight[deviceNum];
             LightbarSettingInfo lightbarSettingInfo = getLightbarSettingsInfo(deviceNum);
             LightbarDS4WinInfo lightModeInfo = lightbarSettingInfo.ds4winSettings;
+            LightbarSettingInfo lightbarSettingInfo = getLightbarSettingsInfo(deviceNum);
+            LightbarDS4WinInfo lightModeInfo = lightbarSettingInfo.ds4winSettings;
             bool useLightRoutine = lightbarSettingInfo.mode == LightbarMode.DS4Win;
-            //bool useLightRoutine = false;
-            if (!defaultLight && !useForceLight && useLightRoutine)
+
+            // Low Power Mode Implementation
+            if (Global.UseLowPowerMode && device.getBattery() < 20 && !device.isCharging())
             {
-                if (lightModeInfo.useCustomLed)
+                color = new DS4Color(0, 0, 0);
+                Global.LowPowerActive = true;
+                useLightRoutine = true;
+            }
+            else
+            {
+                Global.LowPowerActive = false;
+            }
+
+            if (!defaultLight && !useForceLight && useLightRoutine && !Global.LowPowerActive)
                 {
                     color = lightModeInfo.m_CustomLed; //getCustomColor(deviceNum);
                 }

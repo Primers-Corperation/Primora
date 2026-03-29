@@ -439,6 +439,10 @@ namespace Primora
         public static void On_Removal(object sender, EventArgs e)
         {
             DS4Device device = (DS4Device)sender;
+
+            // v2.0.0 Liquid Glass: Call robust management logic to prevent critical crashes
+            ControllerManager.Instance.HandleControllerDisconnection(device);
+
             RemoveDevice(device);
         }
 

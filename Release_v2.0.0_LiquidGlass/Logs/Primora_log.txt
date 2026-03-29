@@ -1,34 +1,23 @@
-2026-03-29 16:57:43.7700|INFO|Primora version 3.5
-2026-03-29 16:57:43.7700|INFO|Primora exe file: Primora.exe
-2026-03-29 16:57:43.7700|INFO|Primora Assembly Architecture: x64
-2026-03-29 16:57:43.7700|INFO|OS Version: Microsoft Windows NT 10.0.26200.0
-2026-03-29 16:57:43.7700|INFO|OS Product Name: Windows 10 Pro
-2026-03-29 16:57:43.7700|INFO|OS Release ID: 2009
-2026-03-29 16:57:43.7700|INFO|System Architecture: x64
-2026-03-29 16:57:43.7700|INFO|Logger created
-2026-03-29 16:57:57.6234|INFO|No config found. Creating default config
-2026-03-29 16:57:57.8719|INFO|Default config created
-2026-03-29 16:57:57.9002|INFO|LinkedProfiles.xml can't be found.
-2026-03-29 16:57:59.5630|INFO|Running as User
-2026-03-29 16:57:59.5630|INFO|HidHide control device found
-2026-03-29 16:57:59.5630|INFO|Primora not found in HidHide whitelist. Adding to list
-2026-03-29 16:58:06.7453|INFO|Starting...
-2026-03-29 16:58:08.7468|INFO|Some applications may block controller inputs. (Windows UAC Conflictions). Please go to https://Primers Corperation.github.io/Primora-site/troubleshooting/kb-mouse-issues/#windows-not-responding-to-ds4ws-kb-m-commands-in-some-situations for more information and workarounds.
-2026-03-29 16:58:08.7468|INFO|Using output KB+M handler: SendInput
-2026-03-29 16:58:08.7468|INFO|Connection to ViGEmBus 1.21.442.0 established
-2026-03-29 16:58:08.7496|INFO|Searching for controllers...
-2026-03-29 16:58:08.7496|INFO|Using Shared Mode
-2026-03-29 16:58:20.8681|INFO|Found Controller: 0A:35:F9:B5:8B:3B (BT) (DS4 v.2).
-2026-03-29 16:58:21.9218|INFO|Plugging in virtual X360 controller (XInput slot #1) in output slot #1
-2026-03-29 16:58:21.9218|INFO|Associated input controller #1 (DS4 v.2) to virtual X360 Controller in output slot #1
-2026-03-29 16:58:21.9809|INFO|Controller 1 is using Profile "Default". Battery level is 25%
-2026-03-29 17:01:37.6117|WARN|0A:35:F9:B5:8B:3B disconnected due to read failure: 1167
-2026-03-29 17:01:37.6117|INFO|Gamepad data write connection is lost. Disconnecting the gamepad. LastErrorCode=1167
-2026-03-29 17:01:37.6117|INFO|Disassociated virtual X360 Controller in output slot #1 from input controller #1 (DS4 v.2)
-2026-03-29 17:01:37.6233|INFO|Unplugging virtual X360 Controller from output slot #1
-2026-03-29 17:01:37.6233|INFO|Controller 1 was removed or lost connection. Charge the battery
-2026-03-29 17:28:17.0156|INFO|Stopping Virtual Output Controllers
-2026-03-29 17:28:17.0156|INFO|Closing connection to ViGEmBus
-2026-03-29 17:28:17.0156|INFO|Stopping DS4 Input Controllers
-2026-03-29 17:28:17.0156|INFO|Stopped Primora
-2026-03-29 17:28:17.0156|INFO|Closing connection to output handler SendInput
+2026-03-29 19:59:45.6617|INFO|Primora version 3.5
+2026-03-29 19:59:45.6617|INFO|Primora exe file: Primora.exe
+2026-03-29 19:59:45.6617|INFO|Primora Assembly Architecture: x64
+2026-03-29 19:59:45.6617|INFO|OS Version: Microsoft Windows NT 10.0.26200.0
+2026-03-29 19:59:45.6617|INFO|OS Product Name: Windows 10 Pro
+2026-03-29 19:59:45.6617|INFO|OS Release ID: 2009
+2026-03-29 19:59:45.6617|INFO|System Architecture: x64
+2026-03-29 19:59:45.6617|INFO|Logger created
+2026-03-29 19:59:47.9876|INFO|Running as User
+2026-03-29 19:59:47.9876|INFO|HidHide control device found
+2026-03-29 19:59:47.9876|INFO|Primora not found in HidHide whitelist. Adding to list
+2026-03-29 19:59:54.1435|INFO|Starting...
+2026-03-29 19:59:56.1440|INFO|Some applications may block controller inputs. (Windows UAC Conflictions). Please go to https://Primers Corperation.github.io/Primora-site/troubleshooting/kb-mouse-issues/#windows-not-responding-to-ds4ws-kb-m-commands-in-some-situations for more information and workarounds.
+2026-03-29 19:59:56.1440|INFO|Using output KB+M handler: SendInput
+2026-03-29 19:59:56.1440|INFO|Connection to ViGEmBus 1.21.442.0 established
+2026-03-29 19:59:56.1440|INFO|Searching for controllers...
+2026-03-29 19:59:56.1440|INFO|Using Shared Mode
+2026-03-29 20:00:09.9314|INFO|Stopping Virtual Output Controllers
+2026-03-29 20:00:09.9314|INFO|Closing connection to ViGEmBus
+2026-03-29 20:00:09.9314|INFO|Stopping DS4 Input Controllers
+2026-03-29 20:00:09.9314|INFO|Stopped Primora
+2026-03-29 20:00:09.9355|INFO|Closing connection to output handler SendInput
+2026-03-29 20:02:13.7836|INFO|Request App Shutdown

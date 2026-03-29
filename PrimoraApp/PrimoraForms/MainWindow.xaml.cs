@@ -185,6 +185,12 @@ namespace Primora.PrimoraForms
             timerThread.Start();
             // Wait for thread tasks to finish before continuing
             timerThread.Join();
+
+            // v2.0.0 Liquid Glass: Initialize Dynamic Background Transition Service
+            UI.BackgroundService.Instance.Start();
+
+            // v2.0.0 Liquid Glass: Enforce Monochrome Consistency across the UI
+            UI.StyleManager.Instance.EnforceMonochrome(this);
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)

@@ -129,13 +129,6 @@ section {
   margin-bottom: 3rem;
 }
 
-.hero-banner {
-  width: 100%;
-  max-width: 1200px;
-  margin-bottom: 3rem;
-  border-radius: 32px;
-}
-
 .hero-buttons {
   display: flex;
   gap: 1.5rem;

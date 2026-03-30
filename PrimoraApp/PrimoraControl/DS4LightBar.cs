@@ -69,8 +69,6 @@ namespace Primora
             bool useForceLight = forcelight[deviceNum];
             LightbarSettingInfo lightbarSettingInfo = getLightbarSettingsInfo(deviceNum);
             LightbarDS4WinInfo lightModeInfo = lightbarSettingInfo.ds4winSettings;
-            LightbarSettingInfo lightbarSettingInfo = getLightbarSettingsInfo(deviceNum);
-            LightbarDS4WinInfo lightModeInfo = lightbarSettingInfo.ds4winSettings;
             bool useLightRoutine = lightbarSettingInfo.mode == LightbarMode.DS4Win;
 
             // Low Power Mode Implementation
@@ -86,18 +84,18 @@ namespace Primora
             }
 
             if (!defaultLight && !useForceLight && useLightRoutine && !Global.LowPowerActive)
+            {
+                color = lightModeInfo.m_CustomLed; //getCustomColor(deviceNum);
+            }
+            else if (!useForceLight && !shuttingdown)
+            {
+                double rainbow = lightModeInfo.rainbow;// getRainbow(deviceNum);
+                if (rainbow > 0)
                 {
-                    color = lightModeInfo.m_CustomLed; //getCustomColor(deviceNum);
-                }
-                else
-                {
-                    double rainbow = lightModeInfo.rainbow;// getRainbow(deviceNum);
-                    if (rainbow > 0)
+                    // Display rainbow
+                    DateTime now = DateTime.UtcNow;
+                    if (now >= oldnow[deviceNum] + TimeSpan.FromMilliseconds(10)) //update by the millisecond that way it's a smooth transtion
                     {
-                        // Display rainbow
-                        DateTime now = DateTime.UtcNow;
-                        if (now >= oldnow[deviceNum] + TimeSpan.FromMilliseconds(10)) //update by the millisecond that way it's a smooth transtion
-                        {
                             int diffMs = now.Subtract(oldnow[deviceNum]).Milliseconds;
                             oldnow[deviceNum] = now;
                             if (device.isCharging())
@@ -286,7 +284,6 @@ namespace Primora
                         default: break;
                     }
                 }
-            }
             else if (useForceLight)
             {
                 color = forcedColor[deviceNum];

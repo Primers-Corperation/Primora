@@ -171,12 +171,12 @@ namespace Primora
 
             var ov = new NativeOverlapped { EventHandle = wait.SafeWaitHandle.DangerousGetHandle() };
 
-            if (PInvoke.ReadFile(SafeReadHandle, inputBuffer, null, &ov))
+            if (PInvoke.ReadFile(SafeReadHandle, inputBuffer, out uint bytesRead, ref ov))
                 return ReadStatus.Success;
 
             if (Marshal.GetLastWin32Error() != (uint)WIN32_ERROR.ERROR_IO_PENDING) return ReadStatus.ReadError;
 
-            if (!PInvoke.GetOverlappedResultEx(SafeReadHandle, ov, out _, timeout, true))
+            if (!PInvoke.GetOverlappedResultEx(SafeReadHandle, ref ov, out _, timeout, true))
                 return ReadStatus.ReadError;
 
             return ReadStatus.Success;
@@ -195,12 +195,12 @@ namespace Primora
                 using AutoResetEvent wait = new(false);
                 var ov = new NativeOverlapped { EventHandle = wait.SafeWaitHandle.DangerousGetHandle() };
 
-                if (PInvoke.WriteFile(SafeReadHandle, outputBuffer, null, &ov))
+                if (PInvoke.WriteFile(SafeReadHandle, outputBuffer, out uint bytesWritten, ref ov))
                     return true;
 
                 if (Marshal.GetLastWin32Error() != (uint)WIN32_ERROR.ERROR_IO_PENDING) return false;
 
-                if (!PInvoke.GetOverlappedResult(SafeReadHandle, ov, out _, true))
+                if (!PInvoke.GetOverlappedResult(SafeReadHandle, ref ov, out _, true))
                     return false;
 
                 return true;

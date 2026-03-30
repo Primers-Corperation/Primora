@@ -535,4 +535,5 @@
 
         </TabControl>
     </DockPanel>
+    </Grid>
 </Window>

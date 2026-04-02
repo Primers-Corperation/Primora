@@ -1,5 +1,6 @@
 
 import './index.css';
+import Pricing from './components/Pricing';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         </div>
         <div className="nav-links">
           <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
           <a href="#optimization">Optimization</a>
           <a href="#credits">Credits</a>
         </div>
@@ -51,6 +53,8 @@ const App = () => {
         <h2 className="intel-h2">Primers Corperation Intelligence</h2>
         <p className="intel-p">Our mission is to bridge the gap between human intent and digital execution. Primora is built on the foundations of the open-source community, with a focused evolution toward modern hardware synergy.</p>
       </section>
+
+      <Pricing />
 
       <footer id="credits">
         <div className="footer-brand">

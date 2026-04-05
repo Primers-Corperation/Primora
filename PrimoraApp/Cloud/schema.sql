@@ -65,3 +65,39 @@ CREATE POLICY "Users can view own sync_logs"
 CREATE POLICY "Users can insert own sync_logs"
     ON public.sync_log FOR INSERT
     WITH CHECK (auth.uid() = user_id);
+
+-- Marketplace profiles table
+CREATE TABLE public.marketplace_profiles (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    creator_user_id UUID REFERENCES public.users(id) ON DELETE CASCADE NOT NULL,
+    creator_name TEXT NOT NULL DEFAULT '',
+    profile_name TEXT NOT NULL,
+    controller_type TEXT NOT NULL,
+    description TEXT DEFAULT '',
+    price NUMERIC(10,2) NOT NULL DEFAULT 0.00,
+    download_count INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- Enable RLS
+ALTER TABLE public.marketplace_profiles ENABLE ROW LEVEL SECURITY;
+
+-- Anyone can read marketplace listings
+CREATE POLICY "Public can view marketplace profiles"
+    ON public.marketplace_profiles FOR SELECT
+    USING (true);
+
+-- Only the creator can insert their own listings
+CREATE POLICY "Creators can insert own listings"
+    ON public.marketplace_profiles FOR INSERT
+    WITH CHECK (auth.uid() = creator_user_id);
+
+-- Only the creator can update their own listings
+CREATE POLICY "Creators can update own listings"
+    ON public.marketplace_profiles FOR UPDATE
+    USING (auth.uid() = creator_user_id);
+
+-- Only the creator can delete their own listings
+CREATE POLICY "Creators can delete own listings"
+    ON public.marketplace_profiles FOR DELETE
+    USING (auth.uid() = creator_user_id);

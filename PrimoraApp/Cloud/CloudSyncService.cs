@@ -91,5 +91,44 @@ namespace Primora.Cloud
                 return false;
             }
         }
+
+        public bool IsAuthenticated => _isAuthenticated;
+        public string CurrentUserEmail => _client.Auth.CurrentUser?.Email;
+
+        public async Task SignOutAsync()
+        {
+            await _client.Auth.SignOut();
+            _isAuthenticated = false;
+        }
+
+        /// <summary>
+        /// Fetches the authenticated user's license tier from the users table.
+        /// Fails gracefully to Free if anything goes wrong.
+        /// </summary>
+        public async Task<Primora.Licensing.LicenseTier> GetUserTierAsync()
+        {
+            try
+            {
+                var userId = _client.Auth.CurrentUser?.Id;
+                if (string.IsNullOrEmpty(userId)) return Primora.Licensing.LicenseTier.Free;
+
+                var response = await _client.From<UserEntity>()
+                    .Where(u => u.Id == Guid.Parse(userId))
+                    .Single();
+
+                return response?.LicenseTier switch
+                {
+                    "Pro"   => Primora.Licensing.LicenseTier.Pro,
+                    "Elite" => Primora.Licensing.LicenseTier.Elite,
+                    _       => Primora.Licensing.LicenseTier.Free
+                };
+            }
+            catch (Exception ex)
+            {
+                NLog.LogManager.GetCurrentClassLogger()
+                    .Warn($"[CloudSync] GetUserTierAsync failed gracefully: {ex.Message}");
+                return Primora.Licensing.LicenseTier.Free;
+            }
+        }
     }
 }

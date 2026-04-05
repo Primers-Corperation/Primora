@@ -87,26 +87,38 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.230" />
 		<PackageReference Include="NLog" Version="5.1.1" />
-		<!--<PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.230" />-->
+
 		<PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+
+		<PackageReference Include="postgrest-csharp" Version="3.5.1" />
+		<PackageReference Include="supabase-csharp" Version="0.16.2" />
 		<PackageReference Include="System.Management" Version="7.0.2" />
 		<PackageReference Include="System.Memory" Version="4.5.5" />
 		<PackageReference Include="TaskScheduler" Version="2.10.1" />
 		<PackageReference Include="WPFLocalizeExtension" Version="3.9.4" />
 		<PackageReference Include="WpfScreenHelper" Version="2.1.0" />
 
-		<Reference Include="FakerInputWrapper">
-			<HintPath>libs\$(Platform)\FakerInputWrapper\FakerInputWrapper.dll</HintPath>
+		<Reference Include="FakerInputWrapper" Condition="'$(Platform)' == 'x86'">
+		  <HintPath>libs\x86\FakerInputWrapper\FakerInputWrapper.dll</HintPath>
+		  <Private>true</Private>
+		</Reference>
+		<Reference Include="FakerInputWrapper" Condition="'$(Platform)' != 'x86'">
+		  <HintPath>libs\x64\FakerInputWrapper\FakerInputWrapper.dll</HintPath>
+		  <Private>true</Private>
 		</Reference>
 
-		<Reference Include="SharpOSC">
-			<HintPath>libs\$(Platform)\SharpOSC\SharpOSC.dll</HintPath>
+		<Reference Include="SharpOSC" Condition="'$(Platform)' == 'x86'">
+		  <HintPath>libs\x86\SharpOSC\SharpOSC.dll</HintPath>
+		  <Private>true</Private>
+		</Reference>
+		<Reference Include="SharpOSC" Condition="'$(Platform)' != 'x86'">
+		  <HintPath>libs\x64\SharpOSC\SharpOSC.dll</HintPath>
+		  <Private>true</Private>
 		</Reference>
 
-		<Reference Include="Nefarius.ViGEm.Client">
-			<HintPath>libs\$(Platform)\Nefarius.ViGEm.Client\Nefarius.ViGEm.Client.dll</HintPath>
-		</Reference>
+
 	</ItemGroup>
 
 	<!-- Apparently the None tags are needed as well as the Resource tags.
@@ -326,9 +338,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="libs\$(Platform)\FakerInputWrapper\FakerInputDll.dll">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<Link>FakerInputDll.dll</Link>
+		<None Update="libs\x64\FakerInputWrapper\FakerInputDll.dll">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="libs\x86\FakerInputWrapper\FakerInputDll.dll">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="NLog.config">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

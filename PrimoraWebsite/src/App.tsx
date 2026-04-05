@@ -1,6 +1,7 @@
 
 import './index.css';
 import Pricing from './components/Pricing';
+import Marketplace from './components/Marketplace';
 
 const App = () => {
   return (
@@ -55,6 +56,8 @@ const App = () => {
       </section>
 
       <Pricing />
+
+      <Marketplace />
 
       <footer id="credits">
         <div className="footer-brand">

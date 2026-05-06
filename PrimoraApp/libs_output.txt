@@ -1,0 +1,16 @@
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64\FakerInputWrapper
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64\Nefarius.ViGEm.Client
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64\SharpOSC
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64\FakerInputWrapper\FakerInputDll.dll
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64\FakerInputWrapper\FakerInputWrapper.dll
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64\Nefarius.ViGEm.Client\Nefarius.ViGEm.Client.dll
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x64\SharpOSC\SharpOSC.dll
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86\FakerInputWrapper
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86\Nefarius.ViGEm.Client
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86\SharpOSC
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86\FakerInputWrapper\FakerInputDll.dll
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86\FakerInputWrapper\FakerInputWrapper.dll
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86\Nefarius.ViGEm.Client\Nefarius.ViGEm.Client.dll
+C:\Users\jerry\OneDrive\Documents\DS4Windows\PrimoraApp\libs\x86\SharpOSC\SharpOSC.dll

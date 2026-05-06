@@ -1,81 +1,127 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: Define the installation path in AppData local folder
-set INSTALL_PATH=%LOCALAPPDATA%\DS4Windows
+title Primora Installer
 
-:: Prompt for version choice
-set /p VERSION_CHOICE="Do you want to install the latest version? (y/n): "
-if /i "%VERSION_CHOICE%"=="y" (
-    :: Get the latest version using GitHub API
-    for /f "delims=" %%A in ('powershell -Command "(Invoke-WebRequest -Uri 'https://api.github.com/repos/schmaldeo/DS4Windows/releases/latest' -Headers @{ 'User-Agent' = 'Mozilla/5.0' }).Content | ConvertFrom-Json | Select-Object -ExpandProperty tag_name"') do (
-        set LATEST_VERSION=%%A
-    )
-    
-    :: Ensure the version starts with 'v' and remove only the leading 'v'
-    if "!LATEST_VERSION:~0,1!"=="v" (
-        set LATEST_VERSION=!LATEST_VERSION:~1!
-    )
+echo.
+echo  =========================================
+echo   Primora - Controller Mapping Tool
+echo   Installer by Primers Corporation
+echo  =========================================
+echo.
 
-    echo Latest version is !LATEST_VERSION!.
-    set VERSION=!LATEST_VERSION!
-) else (
-    :: Prompt for specific version
-    :prompt_version
-    set /p VERSION="Enter the version (e.g., x.x.x): "
-    if "!VERSION!"=="" (
-        echo Version cannot be empty. Please try again.
-        goto prompt_version
-    )
+:: Define paths
+set INSTALL_PATH=%LOCALAPPDATA%\Primora
+set SHORTCUT_PATH=%USERPROFILE%\Desktop\Primora.lnk
+set GITHUB_API=https://api.github.com/repos/Primers-Corperation/Primora/releases/latest
+
+:: Fetch latest version tag from GitHub
+echo [*] Fetching latest version from GitHub...
+for /f "delims=" %%A in ('powershell -Command ^
+  "try { (Invoke-WebRequest -Uri '%GITHUB_API%' -UseBasicParsing -Headers @{'User-Agent'='PrimoraInstaller'}).Content | ConvertFrom-Json | Select-Object -ExpandProperty tag_name } catch { Write-Output 'ERROR' }"') do (
+  set LATEST_TAG=%%A
 )
 
-:: Prompt for architecture
-:prompt_arch
-set /p ARCH="Enter the architecture (x64 or x86, default is x64): "
-if "%ARCH%"=="" (
-    set ARCH=x64
+if "!LATEST_TAG!"=="ERROR" (
+  echo [!] Could not reach GitHub. Check your internet connection and try again.
+  goto :error
 )
 
-set BASE_URL=https://github.com/schmaldeo/DS4Windows/releases/download
-set DOWNLOAD_URL=%BASE_URL%/v!VERSION!/DS4Windows_!VERSION!_!ARCH!.zip
+:: Strip leading 'v' if present
+if "!LATEST_TAG:~0,1!"=="v" set VERSION=!LATEST_TAG:~1!
+if not "!LATEST_TAG:~0,1!"=="v" set VERSION=!LATEST_TAG!
 
-:: Download the file
-echo Downloading !DOWNLOAD_URL! ...
-powershell -Command "Invoke-WebRequest -Uri '!DOWNLOAD_URL!' -OutFile 'DS4Windows_!VERSION!_!ARCH!.zip'"
+echo [*] Latest version: !VERSION!
+echo.
 
-if %errorLevel% neq 0 (
-    echo Download failed. Please check the version and architecture.
-    exit /b
+:: Build download URL
+set DOWNLOAD_URL=https://github.com/Primers-Corperation/Primora/releases/download/!LATEST_TAG!/Primora_!VERSION!_x64.zip
+set ZIP_FILE=%TEMP%\Primora_!VERSION!_x64.zip
+set EXTRACT_DIR=%TEMP%\Primora_Extract
+
+:: Download release zip
+echo [*] Downloading Primora v!VERSION!...
+powershell -Command ^
+  "Invoke-WebRequest -Uri '!DOWNLOAD_URL!' -OutFile '!ZIP_FILE!' -UseBasicParsing" 2>nul
+
+if not exist "!ZIP_FILE!" (
+  echo [!] Download failed. Please check your connection or download manually from:
+  echo     https://primora-website.vercel.app/
+  goto :error
 )
 
-echo Download completed.
+echo [*] Download complete.
 
-:: Remove the previous version if it exists
+:: Clean up any previous install
 if exist "%INSTALL_PATH%" (
-    echo Removing previous version from %INSTALL_PATH%...
-    rmdir /S /Q "%INSTALL_PATH%"
+  echo [*] Removing previous installation...
+  rmdir /S /Q "%INSTALL_PATH%"
 )
 
-:: Unpack the ZIP file
-echo Unpacking the ZIP file...
-powershell -Command "Expand-Archive -Path 'DS4Windows_!VERSION!_!ARCH!.zip' -DestinationPath 'DS4Windows'"
+:: Extract
+echo [*] Extracting files...
+if exist "!EXTRACT_DIR!" rmdir /S /Q "!EXTRACT_DIR!"
+powershell -Command "Expand-Archive -Path '!ZIP_FILE!' -DestinationPath '!EXTRACT_DIR!' -Force"
 
-:: Move the folder to AppData local
-echo Moving DS4Windows folder to %INSTALL_PATH%...
-move /Y "DS4Windows\DS4Windows" "%INSTALL_PATH%"
+:: Handle both flat and nested zip structures
+for /d %%D in ("!EXTRACT_DIR!\*") do set INNER_DIR=%%D
+if exist "!INNER_DIR!\Primora.exe" (
+  move /Y "!INNER_DIR!" "%INSTALL_PATH%" >nul
+) else (
+  move /Y "!EXTRACT_DIR!" "%INSTALL_PATH%" >nul
+)
 
-:: Create a shortcut on the desktop
-set SHORTCUT_PATH="%USERPROFILE%\Desktop\DS4Windows.lnk"
-powershell -Command "$s = New-Object -COMObject WScript.Shell; $shortcut = $s.CreateShortcut('%SHORTCUT_PATH%'); $shortcut.TargetPath = '%INSTALL_PATH%\DS4Windows.exe'; $shortcut.IconLocation = '%INSTALL_PATH%\DS4Windows.exe'; $shortcut.Save()"
+if not exist "%INSTALL_PATH%\Primora.exe" (
+  echo [!] Extraction failed. Could not find Primora.exe in expected location.
+  goto :error
+)
 
-:: Clean up downloaded and unpacked files
-echo Cleaning up...
-del /Q "DS4Windows_!VERSION!_!ARCH!.zip"
-rmdir /S /Q "DS4Windows"
+:: Create Desktop Shortcut
+echo [*] Creating desktop shortcut...
+powershell -Command ^
+  "$s = New-Object -COMObject WScript.Shell; $sc = $s.CreateShortcut('%SHORTCUT_PATH%'); $sc.TargetPath = '%INSTALL_PATH%\Primora.exe'; $sc.WorkingDirectory = '%INSTALL_PATH%'; $sc.Description = 'Primora - Controller Mapping Tool'; $sc.IconLocation = '%INSTALL_PATH%\Primora.exe,0'; $sc.Save()"
 
-echo Installation completed.
+:: Register in Add/Remove Programs
+echo [*] Registering in Windows...
+set REG_PATH=HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\Primora
+reg add "%REG_PATH%" /v "DisplayName"     /t REG_SZ /d "Primora" /f >nul
+reg add "%REG_PATH%" /v "DisplayVersion"  /t REG_SZ /d "!VERSION!" /f >nul
+reg add "%REG_PATH%" /v "Publisher"       /t REG_SZ /d "Primers Corporation" /f >nul
+reg add "%REG_PATH%" /v "InstallLocation" /t REG_SZ /d "%INSTALL_PATH%" /f >nul
+reg add "%REG_PATH%" /v "DisplayIcon"     /t REG_SZ /d "%INSTALL_PATH%\Primora.exe" /f >nul
+reg add "%REG_PATH%" /v "UninstallString" /t REG_SZ /d "powershell.exe -ExecutionPolicy Bypass -File \"%INSTALL_PATH%\Uninstall-Primora.ps1\"" /f >nul
 
-:: Wait for user input before closing
-echo Press any key to exit...
+:: Write uninstaller
+(
+echo # Primora Uninstaller - Primers Corporation
+echo $installPath = "$env:LOCALAPPDATA\Primora"
+echo $shortcut    = "$env:USERPROFILE\Desktop\Primora.lnk"
+echo $regPath     = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Primora"
+echo Write-Host "[*] Uninstalling Primora..." -ForegroundColor Yellow
+echo if (Test-Path $shortcut^)    { Remove-Item $shortcut -Force }
+echo if (Test-Path $regPath^)     { Remove-Item $regPath -Recurse -Force }
+echo if (Test-Path $installPath^) { Remove-Item $installPath -Recurse -Force }
+echo Write-Host "[+] Primora removed successfully." -ForegroundColor Green
+) > "%INSTALL_PATH%\Uninstall-Primora.ps1"
+
+:: Cleanup temp files
+del /Q "!ZIP_FILE!" >nul 2>&1
+
+echo.
+echo  =========================================
+echo   [+] Primora v!VERSION! installed!
+echo   Shortcut created on your Desktop.
+echo  =========================================
+echo.
+echo  Press any key to launch Primora...
 pause >nul
+start "" "%INSTALL_PATH%\Primora.exe"
+goto :end
+
+:error
+echo.
+echo  Installation did not complete. Press any key to exit.
+pause >nul
+
+:end
 endlocal

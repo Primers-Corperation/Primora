@@ -1,0 +1,10 @@
+﻿		<!--<PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.230" />-->
+		<PackageReference Include="supabase-csharp" Version="0.16.2" />
+		<Reference Include="FakerInputWrapper">
+			<HintPath>libs\$(Platform)\FakerInputWrapper\FakerInputWrapper.dll</HintPath>
+		<Reference Include="SharpOSC">
+			<HintPath>libs\$(Platform)\SharpOSC\SharpOSC.dll</HintPath>
+		<Reference Include="Nefarius.ViGEm.Client">
+			<HintPath>libs\$(Platform)\Nefarius.ViGEm.Client\Nefarius.ViGEm.Client.dll</HintPath>
+		<None Update="libs\$(Platform)\FakerInputWrapper\FakerInputDll.dll">
+			<Link>FakerInputDll.dll</Link>

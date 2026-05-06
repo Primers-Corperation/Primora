@@ -1,0 +1,17 @@
+﻿Project 'Primora' has the following package references
+   [net8.0-windows7.0]: 
+   Top-level Package                          Requested   Resolved
+   > bloomtom.HttpProgress                    2.3.2       2.3.2   
+   > DotNetProjects.Extended.Wpf.Toolkit      5.0.106     5.0.106 
+   > H.NotifyIcon.Wpf                         2.3.2       2.3.2   
+   > MdXaml                                   1.27.0      1.27.0  
+   > Microsoft.Windows.CsWin32                0.3.269     0.3.269 
+   > NLog                                     5.1.1       5.1.1   
+   > Ookii.Dialogs.Wpf                        5.0.1       5.0.1   
+   > supabase-csharp                          0.16.2      0.16.2  
+   > System.Management                        7.0.2       7.0.2   
+   > System.Memory                            4.5.5       4.5.5   
+   > TaskScheduler                            2.10.1      2.10.1  
+   > WPFLocalizeExtension                     3.9.4       3.9.4   
+   > WpfScreenHelper                          2.1.0       2.1.0   
+

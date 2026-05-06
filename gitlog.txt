@@ -1,0 +1,6 @@
+﻿f11cff2 feat: Phase 4 ΓÇö Marketplace model, service, schema, and website component
+1a8400c feat: Phase 3 ΓÇö Liquid Glass Auth window, dual-state UI, GetUserTierAsync, SignOutAsync
+a5fe434 feat: Phase 2 ΓÇö Supabase cloud sync architecture, ProfileEntity model, licensing layer fixes, and dependency resolution
+21addb1 feat: Phase 1 ΓÇö Licensing architecture and Pricing page scaffold
+ea7361a Website: Bump version to 2.0.0 and trigger fresh Vercel build to clear stale banner state
+369c1e9 Website: Remove central hero banner image and dead CSS ΓÇö clean Liquid Glass hero layout

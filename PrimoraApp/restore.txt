@@ -1,0 +1,12 @@
+﻿
+         NuGet Config 
+files used:
+             C:\Users\jer
+ry\AppData\Roaming\NuGet\
+NuGet.Config
+             https://api.
+nuget.org/v3/index.json
+    0 Warning(s)
+    0 Error(s)
+
+

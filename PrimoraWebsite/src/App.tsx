@@ -19,27 +19,19 @@ const App = () => {
           <a href="#optimization">Optimization</a>
           <a href="#credits">Credits</a>
         </div>
-        <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v2.0.0" className="btn-primary">Download v2.0.0</a>
+        <a href="https://github.com/Primers-Corperation/Primora/releases/download/v1.0.0/Primora.exe" className="btn-primary" download>Download v2.0.0</a>
 </nav>
 
       <section className="hero">
-        <h1 className="glass-title">Liquid Glass UI.<br/>Neuro-Kinetic Precision.</h1>
-        <p>Primora v2.0.0 is here. Re-engineered with ultra-low latency signal filtering and the premium Liquid Glass aesthetic for the ultimate competitive edge.</p>
+        <h1 className="glass-title">Absolute Precision.</h1>
+        <p>Primora v2.0.0 is here. Re-engineered for peak performance and a premium experience, giving you the ultimate competitive edge.</p>
         <div className="hero-buttons">
           <a href="#features" className="btn-primary explore-btn">Explore Features</a>
-          <a href="https://github.com/Primers-Corperation/Primora/releases/tag/v2.0.0" className="btn-primary">Download v2.0.0</a>
+          <a href="https://github.com/Primers-Corperation/Primora/releases/download/v1.0.0/Primora.exe" className="btn-primary" download>Download v2.0.0</a>
         </div>
       </section>
 
       <section id="features" className="features">
-        <div className="feature-card glass-panel">
-          <h3>Neuro-Kinetic Filter</h3>
-          <p>Adaptive signal smoothing via second-order EMA algorithm. Eliminates hardware variance for pinpoint accuracy in every frame.</p>
-        </div>
-        <div className="feature-card glass-panel">
-          <h3>Liquid Glass UI</h3>
-          <p>A premium, minimalist experience inspired by iOS 26. Ultra-thin glass borders, monochrome clarity, and dynamic background breathing.</p>
-        </div>
         <div className="feature-card glass-panel">
           <h3>Hardware Integrity audit</h3>
           <p>Quantitative component health diagnostic. Detect mechanical wear and sensor fatigue before it impacts your performance.</p>

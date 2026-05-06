@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const CONTROLLERS = ['All', 'DualSense', 'DualShock 4', 'Xbox Elite', 'Xbox One', '8BitDo'];
 

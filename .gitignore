@@ -531,3 +531,40 @@ P r i m o r a R e l e a s e /
  PrimoraRelease/
 PrimoraApp/Cloud/SupabaseConfig.cs
 VERCEL_DEPLOY_HOOK
+
+utils/gen_commits.py
+utils/.build_meta
+
+# -- Sensitive / Internal files ------------------------------
+# Supabase & API credentials
+**/SupabaseConfig.cs
+**/.env
+**/.env.*
+**/appsettings.*.json
+
+# Build logs & diagnostics
+build_log*.txt
+build_error*.txt
+build_errors.txt
+build_output.txt
+build_remaining.txt
+PrimoraApp/find.txt
+PrimoraApp/list.txt
+PrimoraApp/restore.txt
+PrimoraApp/libs_output.txt
+gitlog.txt
+
+# Internal utility scripts
+utils/gen_commits.py
+utils/.build_meta
+generate_commits*.py
+*_writeup*.txt
+
+# Temp / IDE artifacts
+.qodo/
+.openclaw/
+Ghidra_Temp/
+OUT/
+rcedit.exe
+convert_icon.ps1
+test_xaml.ps1

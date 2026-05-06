@@ -19,7 +19,7 @@ const App = () => {
           <a href="#optimization">Optimization</a>
           <a href="#credits">Credits</a>
         </div>
-        <a href="https://github.com/Primers-Corperation/Primora/archive/refs/tags/v1.0.1.zip" className="btn-primary" download>Download v1.0.1</a>
+        <a href="https://github.com/Primers-Corperation/Primora/raw/main/Release_v2.0.0_LiquidGlass/Primora.exe" className="btn-primary" download>Download v2.0.0</a>
 </nav>
 
       <section className="hero">
@@ -27,7 +27,7 @@ const App = () => {
         <p>Primora v2.0.0 is here. Re-engineered for peak performance and a premium experience, giving you the ultimate competitive edge.</p>
         <div className="hero-buttons">
           <a href="#features" className="btn-primary explore-btn">Explore Features</a>
-          <a href="https://github.com/Primers-Corperation/Primora/archive/refs/tags/v1.0.1.zip" className="btn-primary" download>Download v1.0.1</a>
+          <a href="https://github.com/Primers-Corperation/Primora/raw/main/Release_v2.0.0_LiquidGlass/Primora.exe" className="btn-primary" download>Download v2.0.0</a>
         </div>
       </section>
 

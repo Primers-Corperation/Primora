@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd PrimoraWebsite && npm install && npm run build",
+  "outputDirectory": "PrimoraWebsite/dist",
+  "installCommand": "cd PrimoraWebsite && npm install",
+  "framework": null
+}

@@ -44,11 +44,6 @@ export default function GamepadScene() {
       metalness: 0.45,
       roughness: 0.28,
     });
-    const gripMat = new THREE.MeshStandardMaterial({
-      color: 0x090d12,
-      metalness: 0.1,
-      roughness: 0.82,
-    });
     const stickBaseMat = new THREE.MeshStandardMaterial({
       color: 0x151e28,
       metalness: 0.2,
@@ -443,7 +438,6 @@ export default function GamepadScene() {
     let rafId: number;
     const clock = new THREE.Clock();
     let scanY = 1.3;
-    let scanPhase = 0; // 0 = sweeping, 1 = pause
 
     const annVec = new THREE.Vector3();
 
@@ -471,7 +465,7 @@ export default function GamepadScene() {
 
       // Scan line sweep
       scanY -= 0.02;
-      if (scanY < -1.4) { scanY = 1.4; scanPhase = 0; }
+      if (scanY < -1.4) { scanY = 1.4; }
       const scanPulse = 1 - Math.abs(scanY) / 1.4;
       scanMat.opacity = scanPulse * 0.32;
       scanLine.position.set(0, scanY + ctrl.position.y, 0.45);

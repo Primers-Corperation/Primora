@@ -1,19 +1,41 @@
-# Primora
+# Primora v2.0.0
 
 **The premium evolution of precision gamepad mapping.**
 
-Primora is the high-fidelity successor to legacy mapping tools, re-engineered for absolute reliability, ultra-low latency. Supporting DualSense, DS4, Switch Pro, and JoyCon peripherals, Primora bridges the gap between human intent and digital execution.
+Primora is the high-fidelity successor to legacy mapping tools, re-engineered for absolute reliability and ultra-low latency. Supporting DualSense, DS4, Switch Pro, and JoyCon peripherals, Primora bridges the gap between human intent and digital execution with zero compromises.
 
-##  What's New 
+## ✨ Key Features 
 
-- **Liquid Glass UI**: A complete visual overhaul with monochrome clarity, ultra-thin borders, and dynamic background breathing.
-- **Neuro-Kinetic Hub**: Integrated assistive precision smoothing (EMA filtering) and real-time hardware integrity audits.
-- **Intelligent Power Hub**: Automated Low Power Mode (<20% battery) with performance throttling and LED management.
-- **Precision Diagnostics**: Mechanical wear detection and health scoring for every connected peripheral.
+- **Liquid Glass UI**: Complete visual overhaul with monochrome clarity, ultra-thin borders, and dynamic background breathing
+- **Neuro-Kinetic Pipeline**: One-Euro Filter smoothing (0.8ms latency) + real-time hardware health monitoring
+- **Mechanical Health Monitor**: Drift detection, button chatter tracking, fatigue scoring (0-100)
+- **Advanced Analytics**: Per-controller metrics, polling rate detection, jitter analysis, p95/p99 latency percentiles
+- **Professional Licensing**: Free/Pro/Elite tiers with feature unlocking
+- **Intelligent Power Hub**: Automated Low Power Mode (<20% battery) with performance throttling
+- **Desktop + Web**: Native WPF app + modern React website with Three.js visualization
 
-##  About Primora
+## 📁 Project Structure
 
-This project is the definitive fork of the original mapping vision, evolved for modern hardware synergy. We focus on enhancing the bridge between high-frequency controller signals and virtual output accuracy, ensuring your hardware performs at its absolute mathematical peak.
+```
+Primora/
+├── PrimoraApp/           # WPF Desktop Application (.NET 8.0)
+│   ├── Health/           # Controller health monitoring
+│   ├── NeuroKinetic/     # Input smoothing algorithms
+│   ├── Performance/      # Analytics dashboard
+│   ├── Licensing/        # License key validation
+│   ├── PrimoraControl/   # Core I/O control
+│   ├── PrimoraForms/     # UI components
+│   └── PrimoraLibrary/   # Hardware libraries
+├── PrimoraTests/         # MSTest unit tests
+├── PrimoraWebsite/       # React 19 marketing site
+├── scripts/              # Build & deployment tools
+├── docs/                 # Documentation
+└── README.md            # This file
+```
+
+## 🏗️ About Primora
+
+This project represents a complete evolution of the controller mapping vision, optimized for modern hardware synergy. We focus on the bridge between high-frequency controller signals and virtual output accuracy, ensuring mathematical peak performance.
 
 ## License
 

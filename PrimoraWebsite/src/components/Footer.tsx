@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 
@@ -96,16 +97,24 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span
-              className="w-2 h-2 rounded-full"
-              style={{
-                background: '#4ade80',
-                boxShadow: '0 0 8px rgba(74,222,128,0.6)',
-                animation: 'glow-pulse 2.2s ease-in-out infinite',
-              }}
-            />
-            <span className="text-xs text-dim font-sans">Available for projects</span>
+          <div className="flex items-center gap-5">
+            <Link
+              to="/privacy"
+              className="text-xs text-dim hover:text-fg transition-colors font-sans"
+            >
+              Privacy
+            </Link>
+            <div className="flex items-center gap-2">
+              <span
+                className="w-2 h-2 rounded-full"
+                style={{
+                  background: '#4ade80',
+                  boxShadow: '0 0 8px rgba(74,222,128,0.6)',
+                  animation: 'glow-pulse 2.2s ease-in-out infinite',
+                }}
+              />
+              <span className="text-xs text-dim font-sans">Available for projects</span>
+            </div>
           </div>
         </motion.div>
 

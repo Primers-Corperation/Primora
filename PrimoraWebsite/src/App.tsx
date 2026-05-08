@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
 import CustomCursor from './components/CustomCursor';
@@ -12,9 +13,10 @@ import Stats from './components/Stats';
 import Pricing from './components/Pricing';
 import Marketplace from './components/Marketplace';
 import Footer from './components/Footer';
+import Privacy from './pages/Privacy';
 import './index.css';
 
-export default function App() {
+function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -45,5 +47,14 @@ export default function App() {
         <Footer />
       </div>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/privacy" element={<Privacy />} />
+    </Routes>
   );
 }

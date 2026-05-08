@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Primora v2.0.0 - WiX v5 MSI Package Definition
+  Primers Corporation
+  https://primora-website.vercel.app
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <Package
+    Name="Primora"
+    Manufacturer="Primers Corporation"
+    Version="$(ProductVersion)"
+    UpgradeCode="2F7B8C9D-E0A1-4B2C-8D3E-4F5A6B7C8D9E"
+    Language="1033"
+    InstallerVersion="500"
+    Compressed="yes"
+    Scope="perMachine">
+
+    <!-- Friendly summary for Add/Remove Programs and MSI dialogs -->
+    <SummaryInformation
+      Description="Primora $(ProductVersion) - Controller Mapping Tool"
+      Comments="Precision gamepad mapping for DualSense, DS4, Switch Pro, and JoyCons."
+      Manufacturer="Primers Corporation" />
+
+    <!-- Remove any older Primora installation on upgrade -->
+    <MajorUpgrade
+      AllowSameVersionUpgrades="yes"
+      DowngradeErrorMessage="A newer version of [ProductName] is already installed. Please uninstall it first." />
+
+    <!-- Embed all files in a single compressed cabinet -->
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <!-- ============================================================ -->
+    <!-- Properties                                                     -->
+    <!-- ============================================================ -->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+    <Property Id="ARPPRODUCTICON" Value="PrimoraIcon.exe" />
+    <Property Id="ARPURLINFOABOUT" Value="https://primora-website.vercel.app" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/Primers-Corperation/Primora/releases" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/Primers-Corperation/Primora/issues" />
+    <Property Id="ARPNOMODIFY" Value="1" />
+    <!-- Show a "Launch Primora" checkbox on the exit dialog -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Primora" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+
+    <!-- Icon shown in Add/Remove Programs -->
+    <Icon Id="PrimoraIcon.exe" SourceFile="Assets\primora.ico" />
+
+    <!-- ============================================================ -->
+    <!-- Directory Structure                                            -->
+    <!-- ============================================================ -->
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="PrimoraCorporationFolder" Name="Primers Corporation">
+        <Directory Id="INSTALLFOLDER" Name="Primora">
+          <!-- BezierCurveEditor sub-folder -->
+          <Directory Id="BezierCurveEditorFolder" Name="BezierCurveEditor" />
+          <!-- Profiles and Logs created at runtime, not installed -->
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="PrimoraStartMenuFolder" Name="Primora" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder" />
+
+    <!-- ============================================================ -->
+    <!-- Feature Tree                                                   -->
+    <!-- ============================================================ -->
+    <Feature Id="ProductFeature"
+             Title="Primora"
+             Description="Installs the full Primora controller mapping application."
+             Level="1"
+             Display="expand"
+             ConfigurableDirectory="INSTALLFOLDER">
+
+      <ComponentGroupRef Id="AppCoreComponents" />
+      <ComponentGroupRef Id="BezierEditorComponents" />
+      <ComponentGroupRef Id="ShortcutComponents" />
+      <ComponentGroupRef Id="RegistryComponents" />
+
+    </Feature>
+
+    <!-- ============================================================ -->
+    <!-- UI - Professional WixUI_InstallDir wizard                     -->
+    <!-- ============================================================ -->
+    <ui:WixUI Id="WixUI_InstallDir" />
+
+    <!-- Custom bitmaps and license -->
+    <WixVariable Id="WixUILicenseRtf"  Value="Assets\License.rtf" />
+    <WixVariable Id="WixUIBannerBmp"   Value="Assets\Banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp"   Value="Assets\Dialog.bmp" />
+
+    <!-- Launch Primora after install (tied to optional checkbox) -->
+    <CustomAction Id="LaunchApplication"
+                  FileRef="PrimoraExeFile"
+                  ExeCommand=""
+                  Execute="immediate"
+                  Impersonate="yes"
+                  Return="asyncNoWait" />
+
+    <InstallExecuteSequence>
+      <Custom Action="LaunchApplication"
+              After="InstallFinalize">
+        WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed
+      </Custom>
+    </InstallExecuteSequence>
+
+  </Package>
+</Wix>

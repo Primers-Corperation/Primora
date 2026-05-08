@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Files.wxs - All file components for Primora MSI
+  Source directory: Release_v2.0.0_LiquidGlass\
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <!-- ============================================================ -->
+  <!-- Core Application Files → %ProgramFiles%\Primers Corporation\Primora\ -->
+  <!-- ============================================================ -->
+  <ComponentGroup Id="AppCoreComponents" Directory="INSTALLFOLDER">
+
+    <!-- Main executable (self-contained, ~76 MB) -->
+    <Component Id="comp_PrimoraExe" Guid="1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D">
+      <File Id="PrimoraExeFile"
+            Name="Primora.exe"
+            Source="..\Release_v2.0.0_LiquidGlass\Primora.exe"
+            KeyPath="yes" />
+    </Component>
+
+    <!-- NLog logging configuration -->
+    <Component Id="comp_NLogConfig" Guid="2B3C4D5E-6F7A-8B9C-0D1E-2F3A4B5C6D7E">
+      <File Id="NLogConfigFile"
+            Name="NLog.config"
+            Source="..\Release_v2.0.0_LiquidGlass\NLog.config" />
+    </Component>
+
+    <!-- Default controller action mappings -->
+    <Component Id="comp_ActionsXml" Guid="3C4D5E6F-7A8B-9C0D-1E2F-3A4B5C6D7E8F">
+      <File Id="ActionsXmlFile"
+            Name="Actions.xml"
+            Source="..\Release_v2.0.0_LiquidGlass\Actions.xml" />
+    </Component>
+
+    <!-- Auto profile rules -->
+    <Component Id="comp_AutoProfilesXml" Guid="4D5E6F7A-8B9C-0D1E-2F3A-4B5C6D7E8F9A">
+      <File Id="AutoProfilesXmlFile"
+            Name="Auto Profiles.xml"
+            Source="..\Release_v2.0.0_LiquidGlass\Auto Profiles.xml" />
+    </Component>
+
+    <!-- Controller hardware configuration -->
+    <Component Id="comp_ControllerConfigsXml" Guid="5E6F7A8B-9C0D-1E2F-3A4B-5C6D7E8F9A0B">
+      <File Id="ControllerConfigsXmlFile"
+            Name="ControllerConfigs.xml"
+            Source="..\Release_v2.0.0_LiquidGlass\ControllerConfigs.xml" />
+    </Component>
+
+    <!-- Linked profile associations -->
+    <Component Id="comp_LinkedProfilesXml" Guid="6F7A8B9C-0D1E-2F3A-4B5C-6D7E8F9A0B1C">
+      <File Id="LinkedProfilesXmlFile"
+            Name="LinkedProfiles.xml"
+            Source="..\Release_v2.0.0_LiquidGlass\LinkedProfiles.xml" />
+    </Component>
+
+    <!-- Default profile collection -->
+    <Component Id="comp_ProfilesXml" Guid="7A8B9C0D-1E2F-3A4B-5C6D-7E8F9A0B1C2D">
+      <File Id="ProfilesXmlFile"
+            Name="Profiles.xml"
+            Source="..\Release_v2.0.0_LiquidGlass\Profiles.xml" />
+    </Component>
+
+    <!-- Create writable Logs directory (app writes here at runtime) -->
+    <Component Id="comp_LogsDir" Guid="8B9C0D1E-2F3A-4B5C-6D7E-8F9A0B1C2D3E">
+      <CreateFolder Directory="INSTALLFOLDER" />
+      <!-- Logs sub-directory is created by the app, not installed -->
+    </Component>
+
+  </ComponentGroup>
+
+  <!-- ============================================================ -->
+  <!-- BezierCurveEditor → Primora\BezierCurveEditor\              -->
+  <!-- ============================================================ -->
+  <ComponentGroup Id="BezierEditorComponents" Directory="BezierCurveEditorFolder">
+
+    <!-- JavaScript curve editor logic -->
+    <Component Id="comp_BezierBuildJs" Guid="9C0D1E2F-3A4B-5C6D-7E8F-9A0B1C2D3E4F">
+      <File Id="BezierBuildJsFile"
+            Name="build.js"
+            Source="..\Release_v2.0.0_LiquidGlass\BezierCurveEditor\build.js" />
+    </Component>
+
+    <!-- BezierCurveEditor HTML viewer -->
+    <Component Id="comp_BezierIndexHtml" Guid="0D1E2F3A-4B5C-6D7E-8F9A-0B1C2D3E4F5A">
+      <File Id="BezierIndexHtmlFile"
+            Name="index.html"
+            Source="..\Release_v2.0.0_LiquidGlass\BezierCurveEditor\index.html" />
+    </Component>
+
+  </ComponentGroup>
+
+</Wix>

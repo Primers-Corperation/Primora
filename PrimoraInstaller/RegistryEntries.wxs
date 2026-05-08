@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RegistryEntries.wxs - Application registry settings for Primora
+  Writes app metadata to HKCU so Primora can find its own install path,
+  version, and user preferences on first launch.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <ComponentGroup Id="RegistryComponents" Directory="INSTALLFOLDER">
+
+    <Component Id="comp_RegistryEntries" Guid="3A4B5C6D-7E8F-9A0B-1C2D-3E4F5A6B7C8D">
+
+      <!-- Application metadata (HKCU - no elevation needed at runtime) -->
+      <RegistryKey Root="HKCU" Key="Software\Primers Corporation\Primora">
+
+        <!-- Install location - used by Primora to resolve relative paths -->
+        <RegistryValue Name="InstallPath"   Value="[INSTALLFOLDER]" Type="string" />
+        <RegistryValue Name="Version"       Value="2.0.0"           Type="string" />
+        <RegistryValue Name="Publisher"     Value="Primers Corporation" Type="string" />
+        <RegistryValue Name="Website"       Value="https://primora-website.vercel.app" Type="string" />
+
+        <!-- First-run flag: cleared by Primora after initial setup wizard -->
+        <RegistryValue Name="FirstRun"      Value="1"               Type="integer" KeyPath="yes" />
+
+      </RegistryKey>
+
+      <!-- Windows Firewall exception placeholder key
+           (Primora's app code adds the actual rule at runtime with elevation;
+            this key lets the installer leave a breadcrumb for the uninstaller) -->
+      <RegistryKey Root="HKCU" Key="Software\Primers Corporation\Primora\Firewall">
+        <RegistryValue Name="RuleRegistered" Value="0" Type="integer" />
+      </RegistryKey>
+
+    </Component>
+
+  </ComponentGroup>
+
+</Wix>

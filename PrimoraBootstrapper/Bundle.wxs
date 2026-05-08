@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Bundle.wxs - Primora v2.0.0 Bootstrapper / Burn Bundle
-  -------------------------------------------------------
-  This produces "Primora-2.0.0-Setup.exe" — a single EXE that:
-    1. Detects and installs .NET 8.0 Desktop Runtime (x64) if missing
-    2. Detects and installs ViGEmBus driver if missing
-    3. Installs the Primora MSI package
-    4. Provides a progress UI throughout
-
-  Users only ever need to run this one EXE — they never touch the MSI directly.
--->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
 
@@ -19,82 +8,57 @@
     Version="$(ProductVersion)"
     UpgradeCode="3A5C7E9B-1D3F-5B7D-9E1C-3F5B7D9E1C3F"
     AboutUrl="https://primora-website.vercel.app"
-    IconSourceFile="..\PrimoraInstaller\Assets\primora.ico"
-    Compressed="yes">
+    IconSourceFile="PrimoraInstaller\Assets\primora.ico">
 
-    <!-- ============================================================ -->
-    <!-- Burn UI: WixStandardBootstrapperApplication                  -->
-    <!-- Provides the professional "Primora Setup" install wizard UI  -->
-    <!-- ============================================================ -->
-    <bal:WixStandardBootstrapperApplication
-      LicenseFile="..\PrimoraInstaller\Assets\License.rtf"
-      LogoFile="..\PrimoraInstaller\Assets\Logo.png"
-      ThemeFile="HyperlinkLicense"
-      SuppressOptionsUI="yes" />
+    <BootstrapperApplication>
+      <bal:WixStandardBootstrapperApplication
+        LicenseUrl="https://www.gnu.org/licenses/gpl-3.0.txt"
+        LogoFile="PrimoraInstaller\Assets\Logo.png"
+        Theme="hyperlinkLicense"
+        SuppressOptionsUI="yes" />
+    </BootstrapperApplication>
 
-    <!-- ============================================================ -->
-    <!-- Prerequisite Chain                                            -->
-    <!-- Packages install in order; each is skipped if already present -->
-    <!-- ============================================================ -->
     <Chain ParallelCache="yes">
 
-      <!-- 1. Visual C++ 2015-2022 Redistributable (x64)
-               Required by native shims inside .NET 8 self-contained mode -->
       <ExePackage
         Id="vcredist_x64"
-        Name="Microsoft Visual C++ 2015-2022 Redistributable (x64)"
+        Name="vc_redist.x64.exe"
+        Compressed="no"
         DownloadUrl="https://aka.ms/vs/17/release/vc_redist.x64.exe"
-        InstallCommand="/install /quiet /norestart"
-        RepairCommand="/repair /quiet /norestart"
-        UninstallCommand="/uninstall /quiet /norestart"
+        InstallArguments="/install /quiet /norestart"
+        RepairArguments="/repair /quiet /norestart"
+        UninstallArguments="/uninstall /quiet /norestart"
         DetectCondition="HKLM://SOFTWARE/Microsoft/VisualStudio/14.0/VC/Runtimes/X64[@Installed=1]"
         PerMachine="yes"
-        Vital="no">
-        <ExePackagePayload
-          Name="vc_redist.x64.exe"
-          DownloadUrl="https://aka.ms/vs/17/release/vc_redist.x64.exe" />
-      </ExePackage>
+        Vital="no" />
 
-      <!-- 2. .NET 8.0 Desktop Runtime (x64)
-               Primora.exe is framework-dependent when built in Release mode;
-               if distributed self-contained this package is automatically skipped -->
       <ExePackage
         Id="dotnet8_desktop_runtime"
-        Name="Microsoft .NET 8.0 Desktop Runtime (x64)"
-        DownloadUrl="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.0-windows-x64-installer"
-        InstallCommand="/install /quiet /norestart"
-        RepairCommand="/repair /quiet /norestart"
-        UninstallCommand="/uninstall /quiet /norestart"
-        DetectCondition="HKLM://SOFTWARE/dotnet/Setup/InstalledVersions/x64/sharedfx/Microsoft.WindowsDesktop.App/[@8.*=8.*]"
+        Name="windowsdesktop-runtime-8.0-win-x64.exe"
+        Compressed="no"
+        DownloadUrl="https://aka.ms/dotnet/8.0/windowsdesktop-runtime-win-x64.exe"
+        InstallArguments="/install /quiet /norestart"
+        RepairArguments="/repair /quiet /norestart"
+        UninstallArguments="/uninstall /quiet /norestart"
+        DetectCondition="HKLM://SOFTWARE/dotnet/Setup/InstalledVersions/x64/sharedfx/Microsoft.WindowsDesktop.App/[@8.*]"
         PerMachine="yes"
-        Vital="yes">
-        <ExePackagePayload
-          Name="windowsdesktop-runtime-8.0-win-x64.exe"
-          DownloadUrl="https://aka.ms/dotnet/8.0/windowsdesktop-runtime-win-x64.exe" />
-      </ExePackage>
+        Vital="yes" />
 
-      <!-- 3. ViGEmBus Virtual Gamepad Driver
-               Provides the virtual Xbox 360 / DS4 output device Primora maps to -->
       <ExePackage
         Id="vigembus"
-        Name="ViGEmBus Virtual Gamepad Driver"
+        Name="ViGEmBus_Setup_x64.exe"
+        Compressed="no"
         DownloadUrl="https://github.com/nefarius/ViGEmBus/releases/latest/download/ViGEmBus_Setup_x64.exe"
-        InstallCommand="/install /quiet /norestart"
+        InstallArguments="/install /quiet /norestart"
+        UninstallArguments="/uninstall /quiet /norestart"
         DetectCondition="HKLM://SYSTEM/CurrentControlSet/Services/ViGEmBus[@Start]"
         PerMachine="yes"
-        Vital="yes">
-        <ExePackagePayload
-          Name="ViGEmBus_Setup_x64.exe"
-          DownloadUrl="https://github.com/nefarius/ViGEmBus/releases/latest/download/ViGEmBus_Setup_x64.exe" />
-      </ExePackage>
+        Vital="yes" />
 
-      <!-- 4. Primora MSI (the actual application) -->
       <MsiPackage
         Id="PrimoraMsi"
-        Name="Primora"
-        SourceFile="..\PrimoraInstaller\bin\$(Configuration)\$(Platform)\en-US\PrimoraInstaller.msi"
+        SourceFile="$(MsiPath)"
         Vital="yes"
-        DisplayInternalUI="no"
         ForcePerMachine="yes" />
 
     </Chain>

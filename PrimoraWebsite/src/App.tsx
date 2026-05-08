@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
+import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ManifestoSection from './components/ManifestoSection';
 import GamepadSection from './components/GamepadSection';
 import NeuralSection from './components/NeuralSection';
 import Features from './components/Features';
@@ -17,6 +19,8 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
+
       <AnimatePresence>
         {isLoading && (
           <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />
@@ -30,9 +34,10 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
+          <ManifestoSection />
           <GamepadSection />
-          <NeuralSection />
           <Features />
+          <NeuralSection />
           <Stats />
           <Pricing />
           <Marketplace />

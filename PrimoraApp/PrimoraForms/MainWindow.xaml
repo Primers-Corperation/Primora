@@ -242,16 +242,10 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="{Binding ImportProfile, Source={StaticResource ImgLocPaths}}" />
                                     <TextBlock Text="{lex:Loc Import}" />
-
-
-5
-
-
-
-45
-'0;70[p7l['l0j9 0   nMviu k{L
-U:
-N"bgPulseImgNext;p7lonh                    </ToolBar>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </ToolBar>
 
                     <ListBox x:Name="profilesListBox" DockPanel.Dock="Bottom" SelectionChanged="ProfilesListBox_SelectionChanged" MouseDoubleClick="ProfilesListBox_MouseDoubleClick">
                         <ListBox.Resources>

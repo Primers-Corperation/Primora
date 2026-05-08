@@ -76,7 +76,7 @@ export default function Navbar() {
             style={{ background: 'linear-gradient(90deg, #89AACC, #4E85BF)' }}
           />
           <a
-            href="https://github.com/Primers-Corperation/Primora/releases/latest/download/Primora-2.0.0-Setup.exe"
+            href="/download"
             className="relative block text-xs sm:text-[13px] rounded-full px-4 py-1.5 sm:py-2 text-fg bg-surface border border-stroke whitespace-nowrap font-sans transition-colors duration-200"
           >
             Download ↗

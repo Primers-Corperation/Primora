@@ -39,7 +39,7 @@ if (-not $wixVer -or $wixVer -like "7.*") {
 }
 Write-OK "WiX $(wix --version 2>$null)"
 
-foreach ($ext in @("WixToolset.UI.wixext/4.0.6","WixToolset.Bal.wixext/4.0.6")) {
+foreach ($ext in @("WixToolset.UI.wixext/4.0.6","WixToolset.Bal.wixext/4.0.6","WixToolset.Util.wixext/4.0.6")) {
     $name = ($ext -split "/")[0]
     if (-not (wix extension list 2>$null | Select-String $name)) {
         wix extension add $ext 2>&1 | Out-Null
@@ -160,6 +160,8 @@ if (-not $SkipBootstrapper) {
     & wix build (Join-Path $bundleDir "Bundle.wxs") `
         -ext WixToolset.UI.wixext `
         -ext WixToolset.Bal.wixext `
+        -ext WixToolset.Util.wixext `
+        -b $bundleDir `
         -o $exeOut `
         -d ProductVersion=2.0.0 `
         -d MsiPath=$msiOut

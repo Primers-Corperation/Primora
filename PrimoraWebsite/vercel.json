@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/download",
+      "destination": "https://github.com/Primers-Corperation/Primora/releases/download/v2.0.0/Primora-2.0.0-Setup.exe",
+      "permanent": false
+    }
+  ]
+}

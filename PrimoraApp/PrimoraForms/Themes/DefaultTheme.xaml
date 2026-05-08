@@ -6,11 +6,11 @@
                     xmlns:themes1="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
 
     <!-- Brushes -->
-    <SolidColorBrush x:Key="BackgroundColor" Color="#0A0014" />
-    <SolidColorBrush x:Key="BorderColor" Color="#8A2BE2" />
+    <SolidColorBrush x:Key="BackgroundColor" Color="#0A0A0A" />
+    <SolidColorBrush x:Key="BorderColor" Color="#2A4A6A" />
     <SolidColorBrush x:Key="ForegroundColor" Color="#EAEAEA" />
-    <SolidColorBrush x:Key="SecondaryColor" Color="#1A0B2E" />
-    <SolidColorBrush x:Key="AccentColor" Color="#D500F9" />
+    <SolidColorBrush x:Key="SecondaryColor" Color="#0D1A2A" />
+    <SolidColorBrush x:Key="AccentColor" Color="#4E85BF" />
 
     <system:String x:Key="KeyImageImg">key-solid_white.png</system:String>
     <system:String x:Key="CancelImg">cancel_white.png</system:String>

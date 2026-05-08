@@ -107,4 +107,22 @@ tmp/
 .idea/
 *.swp
 *.swo
+Ghidra_Temp/
+OUT/
+rcedit.exe
+convert_icon.ps1
+test_xaml.ps1
 
+# WiX / MSI build outputs
+PrimoraInstaller/bin/
+PrimoraInstaller/obj/
+PrimoraBootstrapper/bin/
+PrimoraBootstrapper/obj/
+dist/
+*.wixpdb
+
+# Generated installer assets (auto-created by Build-MSI.ps1)
+PrimoraInstaller/Assets/Banner.bmp
+PrimoraInstaller/Assets/Dialog.bmp
+PrimoraInstaller/Assets/Logo.png
+PrimoraInstaller/Assets/primora.ico

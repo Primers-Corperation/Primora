@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Shortcuts.wxs - Desktop and Start Menu shortcuts for Primora
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <ComponentGroup Id="ShortcutComponents">
+
+    <!-- ============================================================ -->
+    <!-- Desktop Shortcut                                              -->
+    <!-- ============================================================ -->
+    <Component Id="comp_DesktopShortcut"
+               Directory="DesktopFolder"
+               Guid="1E2F3A4B-5C6D-7E8F-9A0B-1C2D3E4F5A6B">
+
+      <Shortcut Id="DesktopShortcut"
+                Name="Primora"
+                Description="Precision controller mapping for DualSense, DS4, Switch Pro &amp; JoyCons"
+                Target="[INSTALLFOLDER]Primora.exe"
+                WorkingDirectory="INSTALLFOLDER"
+                Icon="PrimoraIcon.exe" />
+
+      <!-- Registry keypath keeps the component honest across repair/uninstall -->
+      <RegistryValue
+        Root="HKCU"
+        Key="Software\Primers Corporation\Primora"
+        Name="DesktopShortcut"
+        Value="1"
+        Type="integer"
+        KeyPath="yes" />
+
+    </Component>
+
+    <!-- ============================================================ -->
+    <!-- Start Menu Shortcuts                                          -->
+    <!-- ============================================================ -->
+    <Component Id="comp_StartMenuShortcut"
+               Directory="PrimoraStartMenuFolder"
+               Guid="2F3A4B5C-6D7E-8F9A-0B1C-2D3E4F5A6B7C">
+
+      <!-- Main app shortcut -->
+      <Shortcut Id="StartMenuShortcut"
+                Name="Primora"
+                Description="Precision controller mapping for DualSense, DS4, Switch Pro &amp; JoyCons"
+                Target="[INSTALLFOLDER]Primora.exe"
+                WorkingDirectory="INSTALLFOLDER"
+                Icon="PrimoraIcon.exe" />
+
+      <!-- Website shortcut in Start Menu folder -->
+      <Shortcut Id="StartMenuWebsite"
+                Name="Primora Website"
+                Description="Visit the Primora website"
+                Target="https://primora-website.vercel.app" />
+
+      <!-- Uninstall shortcut in Start Menu folder -->
+      <Shortcut Id="StartMenuUninstall"
+                Name="Uninstall Primora"
+                Description="Remove Primora from this computer"
+                Target="[SystemFolder]msiexec.exe"
+                Arguments="/x [ProductCode]" />
+
+      <!-- Remove the Start Menu folder on uninstall -->
+      <RemoveFolder Id="RemovePrimoraStartMenuFolder"
+                    Directory="PrimoraStartMenuFolder"
+                    On="uninstall" />
+
+      <RegistryValue
+        Root="HKCU"
+        Key="Software\Primers Corporation\Primora"
+        Name="StartMenuShortcut"
+        Value="1"
+        Type="integer"
+        KeyPath="yes" />
+
+    </Component>
+
+  </ComponentGroup>
+
+</Wix>

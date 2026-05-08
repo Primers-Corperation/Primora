@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="WixToolset.Sdk/5.0.0">
+
+  <PropertyGroup>
+    <OutputType>Package</OutputType>
+    <ProductVersion>2.0.0</ProductVersion>
+    <Platform Condition="'$(Platform)' == ''">x64</Platform>
+    <OutputPath>bin\$(Configuration)\$(Platform)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
+    <DefineConstants>ProductVersion=$(ProductVersion);Platform=$(Platform)</DefineConstants>
+    <SuppressIces>ICE61</SuppressIces>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Package.wxs" />
+    <Compile Include="Files.wxs" />
+    <Compile Include="Shortcuts.wxs" />
+    <Compile Include="RegistryEntries.wxs" />
+  </ItemGroup>
+
+</Project>

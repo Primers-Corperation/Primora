@@ -97,3 +97,14 @@ tmp/
 !.gitkeep
 !scripts/
 !docs/
+
+# ============================================================================
+# Development & Personal Tools (IDE, Cowork, personal settings)
+# ============================================================================
+.claude/
+.openclaw/
+.vscode/
+.idea/
+*.swp
+*.swo
+

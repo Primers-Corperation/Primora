@@ -158,8 +158,7 @@ export default function Hero() {
             <span className="relative text-fg group-hover:text-fg/90 transition-colors">Explore Features</span>
           </a>
           <a
-            href="https://github.com/Primers-Corperation/Primora/raw/main/Release_v2.0.0_LiquidGlass/Primora.exe"
-            download
+            href="https://github.com/Primers-Corperation/Primora/releases/latest/download/Primora-2.0.0-Setup.exe"
             className="relative rounded-full text-sm px-8 py-3.5 font-sans font-medium text-bg transition-all duration-300 hover:scale-[1.04] hover:brightness-110"
             style={{ background: 'linear-gradient(135deg, #89AACC 0%, #4E85BF 55%, #3a70b0 100%)' }}
             data-cursor="↓"

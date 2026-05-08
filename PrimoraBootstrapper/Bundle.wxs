@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
-     xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+     xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal"
+     xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
 
   <Bundle
     Name="Primora"
@@ -18,6 +19,31 @@
         SuppressOptionsUI="yes" />
     </BootstrapperApplication>
 
+    <util:RegistrySearch
+      Id="SearchVCRedist"
+      Root="HKLM"
+      Key="SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\X64"
+      Value="Installed"
+      Variable="VCRedistInstalled"
+      Result="value"
+      Bitness="always64" />
+
+    <util:RegistrySearch
+      Id="SearchDotNet8"
+      Root="HKLM"
+      Key="SOFTWARE\dotnet\Setup\InstalledVersions\x64\sharedfx\Microsoft.WindowsDesktop.App"
+      Variable="DotNet8KeyExists"
+      Result="exists"
+      Bitness="always64" />
+
+    <util:RegistrySearch
+      Id="SearchViGEmBus"
+      Root="HKLM"
+      Key="SYSTEM\CurrentControlSet\Services\ViGEmBus"
+      Variable="ViGEmBusInstalled"
+      Result="exists"
+      Bitness="always64" />
+
     <Chain ParallelCache="yes">
 
       <ExePackage
@@ -28,7 +54,7 @@
         InstallArguments="/install /quiet /norestart"
         RepairArguments="/repair /quiet /norestart"
         UninstallArguments="/uninstall /quiet /norestart"
-        DetectCondition="HKLM://SOFTWARE/Microsoft/VisualStudio/14.0/VC/Runtimes/X64[@Installed=1]"
+        DetectCondition="VCRedistInstalled = 1"
         PerMachine="yes"
         Vital="no" />
 
@@ -40,18 +66,18 @@
         InstallArguments="/install /quiet /norestart"
         RepairArguments="/repair /quiet /norestart"
         UninstallArguments="/uninstall /quiet /norestart"
-        DetectCondition="HKLM://SOFTWARE/dotnet/Setup/InstalledVersions/x64/sharedfx/Microsoft.WindowsDesktop.App/[@8.*]"
+        DetectCondition="DotNet8KeyExists"
         PerMachine="yes"
         Vital="yes" />
 
       <ExePackage
         Id="vigembus"
-        Name="ViGEmBus_Setup_x64.exe"
+        Name="ViGEmBus_1.22.0_x64_x86_arm64.exe"
         Compressed="no"
-        DownloadUrl="https://github.com/nefarius/ViGEmBus/releases/latest/download/ViGEmBus_Setup_x64.exe"
+        DownloadUrl="https://github.com/nefarius/ViGEmBus/releases/download/v1.22.0/ViGEmBus_1.22.0_x64_x86_arm64.exe"
         InstallArguments="/install /quiet /norestart"
         UninstallArguments="/uninstall /quiet /norestart"
-        DetectCondition="HKLM://SYSTEM/CurrentControlSet/Services/ViGEmBus[@Start]"
+        DetectCondition="ViGEmBusInstalled"
         PerMachine="yes"
         Vital="yes" />
 

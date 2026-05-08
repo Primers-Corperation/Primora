@@ -63,8 +63,7 @@ export default function Footer() {
                 style={{ background: 'linear-gradient(90deg,#89AACC,#4E85BF)' }}
               />
               <a
-                href="https://github.com/Primers-Corperation/Primora/raw/main/Release_v2.0.0_LiquidGlass/Primora.exe"
-                download
+                href="https://github.com/Primers-Corperation/Primora/releases/latest/download/Primora-2.0.0-Setup.exe"
                 className="relative block rounded-full px-7 py-3.5 text-sm font-sans font-medium text-fg border border-stroke bg-bg transition-colors duration-200"
               >
                 Download v2.0.0 ↗

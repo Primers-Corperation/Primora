@@ -73,3 +73,32 @@ Note there are **two** copies of this redirect, `vercel.json` at the repo root a
 `PrimoraWebsite/vercel.json`. Only the one under the project's configured Root Directory is
 applied — the Vercel project reports framework `vite`, which points at `PrimoraWebsite`. Update
 both, or delete the unused one once you have confirmed which is live.
+
+## Website deployment is not wired to this repository
+
+Pushing to `Primers-Corperation/Primora` does **not** deploy the website. Checked against the
+Vercel API on 2026-08-08:
+
+- The `primora-website` project's Git integration points at **`Primers-Corperation/primers-sform`**,
+  a different application. Its git-triggered deployments carry
+  `githubRepo: primers-sform`.
+- Every deployment that actually contains this site was pushed **from a developer machine with the
+  Vercel CLI** (`gitDirty: 1`, no `githubRepo`), most recently `feat: add /privacy page`.
+- Two production deployments on 2026-04-22 came straight from `primers-sform/master`. A push to
+  that unrelated repository can therefore overwrite `primora-website.vercel.app`.
+
+Until the project is relinked to this repository, website changes ship only when someone runs a
+manual CLI deploy, and the live site is exposed to an unrelated repo's pushes.
+
+There is also a second, dead `primora` project on the same Vercel team. It is linked to the private
+personal repo `Jothankato05/primora`, and every production deployment has failed since March 2026
+(`src/App.tsx(1,1): error TS6133: 'React' is declared but its value is never read`). That error does
+not exist in this repository's website, which builds clean. The project can be deleted.
+
+## Cloud sync backend is paused
+
+The Supabase project `primora-backend` (`farajftfguxubminfsff`, via the Vercel Marketplace) was
+auto-paused after 7 days of inactivity on 2026-04-15, and Supabase warned on 2026-07-08 that it is
+scheduled to be **permanently frozen**. Cloud sync and the marketplace will not work against it
+regardless of how `SupabaseConfig` is configured, so it needs restoring or recreating before those
+features are switched on. This is why `CloudSyncService` fails soft rather than throwing.

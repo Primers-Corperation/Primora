@@ -29,13 +29,13 @@ namespace PrimoraTests
     public class ProfileMigrationTests
     {
         private const int EXPECTED_JAYS_MIGRATED_VERSION = 5;
-        private string ds4winPrimers CorperationOldProfile = string.Empty;
-        private string ds4winPrimers CorperationExpectedMigratedProfile = string.Empty;
+        private string ds4winOldProfile = string.Empty;
+        private string ds4winExpectedMigratedProfile = string.Empty;
 
         public ProfileMigrationTests()
         {
             #region TempDS4WinProfileXML
-            ds4winPrimers CorperationOldProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
+            ds4winOldProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
 
 <Primora>
   <flushHIDQueue>True</flushHIDQueue>
@@ -82,7 +82,7 @@ namespace PrimoraTests
   <ShiftControl />
 </Primora>";
 
-            ds4winPrimers CorperationExpectedMigratedProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
+            ds4winExpectedMigratedProfile = @"<?xml version=""1.0"" encoding=""utf-8""?>
 
 <Primora>
   <touchToggle>True</touchToggle>
@@ -357,7 +357,7 @@ namespace PrimoraTests
         [TestMethod]
         public void CheckMigration()
         {
-            ProfileMigration migration = new ProfileMigration(ds4winPrimers CorperationOldProfile);
+            ProfileMigration migration = new ProfileMigration(ds4winOldProfile);
             bool requiredMigration = migration.RequiresMigration();
 
             Assert.AreEqual(true, requiredMigration);
@@ -383,7 +383,7 @@ namespace PrimoraTests
         [TestMethod]
         public void CheckJaysProfileRead()
         {
-            ProfileMigration migration = new ProfileMigration(ds4winPrimers CorperationOldProfile);
+            ProfileMigration migration = new ProfileMigration(ds4winOldProfile);
             migration.Migrate();
             string profileXml = migration.CurrentMigrationText;
             migration.Close();
@@ -411,7 +411,7 @@ namespace PrimoraTests
 
             // Check that profile migration worked as expected
             string testMigratedProfileStr = ObtainConvertedJaysXML(tempStore);
-            Assert.AreEqual(ds4winPrimers CorperationExpectedMigratedProfile, testMigratedProfileStr);
+            Assert.AreEqual(ds4winExpectedMigratedProfile, testMigratedProfileStr);
         }
 
         private string ObtainConvertedJaysXML(BackingStore tempStore)

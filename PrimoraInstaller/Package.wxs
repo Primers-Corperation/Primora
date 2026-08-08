@@ -29,9 +29,8 @@
 
     <StandardDirectory Id="ProgramFiles6432Folder">
       <Directory Id="PrimoraCorporationFolder" Name="Primers Corporation">
-        <Directory Id="INSTALLFOLDER" Name="Primora">
-          <Directory Id="BezierCurveEditorFolder" Name="BezierCurveEditor" />
-        </Directory>
+        <!-- Subfolders such as BezierCurveEditor are created by the Files harvest. -->
+        <Directory Id="INSTALLFOLDER" Name="Primora" />
       </Directory>
     </StandardDirectory>
 
@@ -44,7 +43,6 @@
     <Feature Id="ProductFeature" Title="Primora" Level="1"
              ConfigurableDirectory="INSTALLFOLDER">
       <ComponentGroupRef Id="AppCoreComponents" />
-      <ComponentGroupRef Id="BezierEditorComponents" />
       <ComponentGroupRef Id="ShortcutComponents" />
       <ComponentGroupRef Id="RegistryComponents" />
     </Feature>
@@ -54,9 +52,11 @@
     <WixVariable Id="WixUIBannerBmp"  Value="PrimoraInstaller\Assets\Banner.bmp" />
     <WixVariable Id="WixUIDialogBmp"  Value="PrimoraInstaller\Assets\Dialog.bmp" />
 
+    <!-- Targets the installed path rather than a File id, because the payload is
+         harvested by Files.wxs and no longer declares individual file ids. -->
     <CustomAction Id="LaunchApplication"
-                  FileRef="PrimoraExeFile"
-                  ExeCommand=""
+                  Directory="INSTALLFOLDER"
+                  ExeCommand="[INSTALLFOLDER]Primora.exe"
                   Execute="immediate"
                   Impersonate="yes"
                   Return="asyncNoWait" />

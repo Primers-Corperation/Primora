@@ -1,69 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
+  <!--
+    The application payload is harvested from the `dotnet publish` output rather than
+    listed by hand. The previous hand-written list named seven files and was wrong in
+    both directions: it omitted all 38 dependency assemblies and the localized satellite
+    folders, and it referenced Actions.xml, Auto Profiles.xml, ControllerConfigs.xml,
+    LinkedProfiles.xml and Profiles.xml, which publish never produces — Primora writes
+    those into %AppData% at runtime.
+
+    PublishDir is supplied by the build: -d PublishDir=<path to publish output>.
+  -->
   <Fragment>
     <ComponentGroup Id="AppCoreComponents" Directory="INSTALLFOLDER">
 
-      <Component Id="comp_PrimoraExe" Guid="1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D">
-        <File Id="PrimoraExeFile"
-              Name="Primora.exe"
-              Source="Release_v2.0.0_LiquidGlass\Primora.exe"
-              KeyPath="yes" />
-      </Component>
-
-      <Component Id="comp_NLogConfig" Guid="2B3C4D5E-6F7A-8B9C-0D1E-2F3A4B5C6D7E">
-        <File Id="NLogConfigFile"
-              Name="NLog.config"
-              Source="Release_v2.0.0_LiquidGlass\NLog.config" />
-      </Component>
-
-      <Component Id="comp_ActionsXml" Guid="3C4D5E6F-7A8B-9C0D-1E2F-3A4B5C6D7E8F">
-        <File Id="ActionsXmlFile"
-              Name="Actions.xml"
-              Source="Release_v2.0.0_LiquidGlass\Actions.xml" />
-      </Component>
-
-      <Component Id="comp_AutoProfilesXml" Guid="4D5E6F7A-8B9C-0D1E-2F3A-4B5C6D7E8F9A">
-        <File Id="AutoProfilesXmlFile"
-              Name="Auto Profiles.xml"
-              Source="Release_v2.0.0_LiquidGlass\Auto Profiles.xml" />
-      </Component>
-
-      <Component Id="comp_ControllerConfigsXml" Guid="5E6F7A8B-9C0D-1E2F-3A4B-5C6D7E8F9A0B">
-        <File Id="ControllerConfigsXmlFile"
-              Name="ControllerConfigs.xml"
-              Source="Release_v2.0.0_LiquidGlass\ControllerConfigs.xml" />
-      </Component>
-
-      <Component Id="comp_LinkedProfilesXml" Guid="6F7A8B9C-0D1E-2F3A-4B5C-6D7E8F9A0B1C">
-        <File Id="LinkedProfilesXmlFile"
-              Name="LinkedProfiles.xml"
-              Source="Release_v2.0.0_LiquidGlass\LinkedProfiles.xml" />
-      </Component>
-
-      <Component Id="comp_ProfilesXml" Guid="7A8B9C0D-1E2F-3A4B-5C6D-7E8F9A0B1C2D">
-        <File Id="ProfilesXmlFile"
-              Name="Profiles.xml"
-              Source="Release_v2.0.0_LiquidGlass\Profiles.xml" />
-      </Component>
-
-    </ComponentGroup>
-  </Fragment>
-
-  <Fragment>
-    <ComponentGroup Id="BezierEditorComponents" Directory="BezierCurveEditorFolder">
-
-      <Component Id="comp_BezierBuildJs" Guid="9C0D1E2F-3A4B-5C6D-7E8F-9A0B1C2D3E4F">
-        <File Id="BezierBuildJsFile"
-              Name="build.js"
-              Source="Release_v2.0.0_LiquidGlass\BezierCurveEditor\build.js" />
-      </Component>
-
-      <Component Id="comp_BezierIndexHtml" Guid="0D1E2F3A-4B5C-6D7E-8F9A-0B1C2D3E4F5A">
-        <File Id="BezierIndexHtmlFile"
-              Name="index.html"
-              Source="Release_v2.0.0_LiquidGlass\BezierCurveEditor\index.html" />
-      </Component>
+      <!-- Primora.exe, its dependencies, the satellite culture folders and
+           the BezierCurveEditor subfolder. -->
+      <Files Include="$(PublishDir)\**" />
 
     </ComponentGroup>
   </Fragment>

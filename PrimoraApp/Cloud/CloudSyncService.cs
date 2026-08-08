@@ -12,15 +12,25 @@ namespace Primora.Cloud
 
         public CloudSyncService()
         {
+            if (!SupabaseConfig.IsConfigured)
+            {
+                // Leaves _client null so every cloud call below fails soft instead of throwing.
+                return;
+            }
+
             var options = new SupabaseOptions { AutoConnectRealtime = false };
             _client = new Supabase.Client(SupabaseConfig.Url, SupabaseConfig.AnonKey, options);
         }
+
+        /// <summary>True when a Supabase endpoint was supplied, i.e. cloud features are usable.</summary>
+        public bool IsConfigured => _client != null;
 
         /// <summary>
         /// Authenticates the user with the Primora Supabase instance.
         /// </summary>
         public async Task<bool> AuthenticateAsync(string email, string password)
         {
+            if (_client == null) return false;
             try
             {
                 var session = await _client.Auth.SignIn(email, password);
@@ -93,11 +103,15 @@ namespace Primora.Cloud
         }
 
         public bool IsAuthenticated => _isAuthenticated;
-        public string CurrentUserEmail => _client.Auth.CurrentUser?.Email;
+        public string CurrentUserEmail => _client?.Auth.CurrentUser?.Email;
 
         public async Task SignOutAsync()
         {
-            await _client.Auth.SignOut();
+            if (_client != null)
+            {
+                await _client.Auth.SignOut();
+            }
+
             _isAuthenticated = false;
         }
 

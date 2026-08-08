@@ -31,6 +31,8 @@ Release_v2.0.0_LiquidGlass/
 *.sln.docstates
 *.userprefs
 .DS_Store
+# Temp projects the WPF build generates next to the real .csproj
+*_wpftmp.csproj
 
 # ============================================================================
 # Build Results
@@ -126,3 +128,19 @@ PrimoraInstaller/Assets/Banner.bmp
 PrimoraInstaller/Assets/Dialog.bmp
 PrimoraInstaller/Assets/Logo.png
 PrimoraInstaller/Assets/primora.ico
+
+# ============================================================================
+# Vendored build inputs — MUST stay tracked
+# ============================================================================
+# PrimoraApp/libs/ holds third-party assemblies that Primora.csproj references by
+# path (FakerInputWrapper, SharpOSC). They are build inputs, not build outputs, so
+# the blanket "*.exe"/"*.dll" rules above must not swallow them — that is exactly
+# what broke every CI release build before v2.0.1. See docs/dev/vendored-libraries.md.
+#
+# The directory negations are load-bearing: the arch folders match the "[Xx]64/" and
+# "[Xx]86/" rules above, and git never descends into an excluded directory, so
+# negating the files alone would silently do nothing.
+!PrimoraApp/libs/
+!PrimoraApp/libs/**/
+!PrimoraApp/libs/**/*.dll
+!PrimoraApp/libs/**/*.exe

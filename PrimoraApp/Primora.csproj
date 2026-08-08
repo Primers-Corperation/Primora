@@ -360,4 +360,16 @@
 	<ItemGroup>
 		<Folder Remove="extras\" />
 	</ItemGroup>
+
+	<!-- FakerInputWrapper and SharpOSC are referenced by path out of libs\. When they are
+	     absent the compiler reports 14 unrelated-looking CS0246s, so fail early and say why. -->
+	<Target Name="VerifyVendoredLibraries" BeforeTargets="ResolveAssemblyReferences">
+		<PropertyGroup>
+			<_PrimoraLibsDir Condition="'$(Platform)' == 'x86'">$(MSBuildProjectDirectory)/libs/x86</_PrimoraLibsDir>
+			<_PrimoraLibsDir Condition="'$(_PrimoraLibsDir)' == ''">$(MSBuildProjectDirectory)/libs/x64</_PrimoraLibsDir>
+		</PropertyGroup>
+		<Error Condition="!Exists('$(_PrimoraLibsDir)/FakerInputWrapper/FakerInputWrapper.dll') Or !Exists('$(_PrimoraLibsDir)/SharpOSC/SharpOSC.dll')"
+		       Code="PRIMORA001"
+		       Text="Vendored libraries missing from '$(_PrimoraLibsDir)'. Primora builds against FakerInputWrapper.dll and SharpOSC.dll, which belong in PrimoraApp\libs\ and must be committed. See docs/dev/vendored-libraries.md." />
+	</Target>
 </Project>

@@ -35,35 +35,45 @@ export default function ManifestoSection() {
       });
 
       // Beat 0 — illuminate
-      lineRefs[0].current && tl.to(
-        lineRefs[0].current.querySelectorAll('.mc'),
-        { opacity: 1, stagger: 0.025, duration: 0.25 },
-        0
-      );
+      if (lineRefs[0].current) {
+        tl.to(
+          lineRefs[0].current.querySelectorAll('.mc'),
+          { opacity: 1, stagger: 0.025, duration: 0.25 },
+          0
+        );
+      }
 
       // Beat 1 — fade 0 out, illuminate 1
-      lineRefs[0].current && tl.to(
-        lineRefs[0].current.querySelectorAll('.mc'),
-        { opacity: 0.06, duration: 0.15 },
-        0.32
-      );
-      lineRefs[1].current && tl.to(
-        lineRefs[1].current.querySelectorAll('.mc'),
-        { opacity: 1, stagger: 0.03, duration: 0.25 },
-        0.35
-      );
+      if (lineRefs[0].current) {
+        tl.to(
+          lineRefs[0].current.querySelectorAll('.mc'),
+          { opacity: 0.06, duration: 0.15 },
+          0.32
+        );
+      }
+      if (lineRefs[1].current) {
+        tl.to(
+          lineRefs[1].current.querySelectorAll('.mc'),
+          { opacity: 1, stagger: 0.03, duration: 0.25 },
+          0.35
+        );
+      }
 
       // Beat 2 — fade 1 out, illuminate 2
-      lineRefs[1].current && tl.to(
-        lineRefs[1].current.querySelectorAll('.mc'),
-        { opacity: 0.06, duration: 0.15 },
-        0.64
-      );
-      lineRefs[2].current && tl.to(
-        lineRefs[2].current.querySelectorAll('.mc'),
-        { opacity: 1, stagger: 0.02, duration: 0.25 },
-        0.67
-      );
+      if (lineRefs[1].current) {
+        tl.to(
+          lineRefs[1].current.querySelectorAll('.mc'),
+          { opacity: 0.06, duration: 0.15 },
+          0.64
+        );
+      }
+      if (lineRefs[2].current) {
+        tl.to(
+          lineRefs[2].current.querySelectorAll('.mc'),
+          { opacity: 1, stagger: 0.02, duration: 0.25 },
+          0.67
+        );
+      }
 
       // Sub-label fade in with beat 2
       tl.to('.manifesto-sub', { opacity: 1, y: 0, duration: 0.2 }, 0.75);

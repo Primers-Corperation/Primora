@@ -1,8 +1,18 @@
-name: .NET Release
+name: Release
 
+# Publishing a release builds and attaches everything the website distributes:
+# the Setup EXE bootstrapper, the standalone MSI, and the portable zips.
+# workflow_dispatch builds the same artifacts without touching a release, so the
+# pipeline can be exercised without cutting a version.
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build, without the leading v (e.g. 2.1.0)'
+        required: true
+        default: '2.0.0'
 
 permissions:
   contents: write
@@ -10,45 +20,88 @@ permissions:
 jobs:
   release:
     runs-on: windows-latest
-    #this makes it not run if tests failed.
-    #needs: test
     steps:
-    - uses: actions/checkout@v4
-      with:
-           ref: ${{ github.event.release.tag_name }}
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Set envars for versions
-      run: | 
-        TAG=${{ github.event.release.tag_name }}
-        VERSION=${TAG#v}
-        echo Version: $VERSION
-        echo "VERSION=$VERSION" >> $GITHUB_ENV
-        echo "SHORT_VERSION=${VERSION%-*}" >> $GITHUB_ENV
-      shell: bash
-    - name: Build X64
-      run: dotnet publish .\PrimoraApp\Primora.csproj -c Release  /p:platform=x64 /p:AssemblyVersion=${{ env.SHORT_VERSION }} /p:FileVersion=${{ env.SHORT_VERSION }} /p:Version=${{ env.VERSION }} -o .\bin\x64\Release\output
-    - name: Zip X64
-      run: Compress-Archive -Path .\bin\x64\Release\output\* -DestinationPath Primora_${{ env.VERSION }}_x64.zip
-      shell: powershell
-    - name: Publish release Build X64
-      run: gh release upload ${{github.event.release.tag_name}} Primora_${{env.VERSION}}_x64.zip
-      env:
-        GITHUB_TOKEN: ${{ github.TOKEN }}
-    - name: Build X86
-      run: dotnet publish .\PrimoraApp\Primora.csproj -c Release  /p:platform=x86 /p:AssemblyVersion=${{ env.SHORT_VERSION }} /p:FileVersion=${{ env.SHORT_VERSION }} /p:Version=${{ env.VERSION }} -o .\bin\x86\Release\output
-    - name: Zip X86
-      run: Compress-Archive -Path .\bin\x86\Release\output\* -DestinationPath Primora_${{ env.VERSION }}_x86.zip
-      shell: powershell
-    - name: Publish release Build X86
-      run: gh release upload ${{github.event.release.tag_name}} Primora_${{env.VERSION}}_x86.zip
-      env:
-        GITHUB_TOKEN: ${{ github.TOKEN }}
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Resolve version
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.release.tag_name }}" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+            VERSION="${VERSION#v}"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+          fi
+          # MSI and bundle versions must be strictly numeric, so a prerelease
+          # tag like 2.1.0-beta packages as 2.1.0.
+          echo "VERSION=$VERSION"                >> $GITHUB_ENV
+          echo "SHORT_VERSION=${VERSION%%-*}"    >> $GITHUB_ENV
+          echo "Building $VERSION (product version ${VERSION%%-*})"
+
+      - name: Build MSI and Setup EXE
+        shell: pwsh
+        run: ./scripts/Build-MSI.ps1 -Version ${{ env.SHORT_VERSION }}
+
+      - name: Publish portable x64
+        run: >
+          dotnet publish .\PrimoraApp\Primora.csproj -c Release
+          /p:platform=x64
+          /p:AssemblyVersion=${{ env.SHORT_VERSION }}
+          /p:FileVersion=${{ env.SHORT_VERSION }}
+          /p:Version=${{ env.VERSION }}
+          -o .\bin\x64\Release\output
+
+      - name: Zip portable x64
+        shell: pwsh
+        run: Compress-Archive -Path .\bin\x64\Release\output\* -DestinationPath .\dist\Primora_${{ env.VERSION }}_x64.zip
+
+      - name: Publish portable x86
+        run: >
+          dotnet publish .\PrimoraApp\Primora.csproj -c Release
+          /p:platform=x86
+          /p:AssemblyVersion=${{ env.SHORT_VERSION }}
+          /p:FileVersion=${{ env.SHORT_VERSION }}
+          /p:Version=${{ env.VERSION }}
+          -o .\bin\x86\Release\output
+
+      - name: Zip portable x86
+        shell: pwsh
+        run: Compress-Archive -Path .\bin\x86\Release\output\* -DestinationPath .\dist\Primora_${{ env.VERSION }}_x86.zip
+
+      # Stable, version-less copies so the website can link at
+      # releases/latest/download/Primora-Setup.exe and never need editing again.
+      - name: Create stable-named aliases
+        shell: pwsh
+        run: |
+          Copy-Item ".\dist\Primora-${{ env.SHORT_VERSION }}-Setup.exe" ".\dist\Primora-Setup.exe"
+          Copy-Item ".\dist\Primora-${{ env.SHORT_VERSION }}-x64.msi"  ".\dist\Primora-x64.msi"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: primora-${{ env.VERSION }}
+          path: dist/*
+          if-no-files-found: error
+
+      # Only a published release gets assets attached. --clobber so re-running a
+      # failed release job replaces partial uploads instead of erroring.
+      - name: Attach assets to release
+        if: github.event_name == 'release'
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            "dist/Primora-${{ env.SHORT_VERSION }}-Setup.exe" \
+            "dist/Primora-${{ env.SHORT_VERSION }}-x64.msi" \
+            "dist/Primora-Setup.exe" \
+            "dist/Primora-x64.msi" \
+            "dist/Primora_${{ env.VERSION }}_x64.zip" \
+            "dist/Primora_${{ env.VERSION }}_x86.zip" \
+            --clobber

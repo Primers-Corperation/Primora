@@ -245,7 +245,19 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
+                        <Button x:Name="exportProfBtn" Margin="10,0,0,0" IsEnabled="False" Click="ExportProfBtn_Click">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding ExportProfile, Source={StaticResource ImgLocPaths}}" />
+                                    <TextBlock Text="{lex:Loc Export}" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
                     </ToolBar>
+
+                    <Grid x:Name="dupBoxBar" DockPanel.Dock="Top" Visibility="Collapsed">
+                        <local:DupBox x:Name="dupBox" HorizontalAlignment="Left" />
+                    </Grid>
 
                     <ListBox x:Name="profilesListBox" DockPanel.Dock="Bottom" SelectionChanged="ProfilesListBox_SelectionChanged" MouseDoubleClick="ProfilesListBox_MouseDoubleClick">
                         <ListBox.Resources>

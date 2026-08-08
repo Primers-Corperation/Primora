@@ -1,0 +1,95 @@
+name: Deploy Website
+
+# Deploys PrimoraWebsite to Vercel from this repository.
+#
+# This exists because the primora-website Vercel project's Git integration points
+# at Primers-Corperation/primers-sform, so pushing here deploys nothing and the
+# site has only ever shipped via manual CLI deploys. See
+# docs/dev/release-process.md.
+#
+# If the project is ever relinked to this repository, Vercel's native Git
+# integration supersedes this workflow — delete it then, rather than having both
+# deploy the same commit.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'PrimoraWebsite/**'
+      - 'vercel.json'
+      - '.github/workflows/deploy-website.yml'
+  pull_request:
+    paths:
+      - 'PrimoraWebsite/**'
+      - 'vercel.json'
+      - '.github/workflows/deploy-website.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-website-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Not secrets — these are public identifiers for the Vercel team and project.
+  # Only VERCEL_TOKEN is sensitive and it lives in repository secrets.
+  VERCEL_ORG_ID: team_MwxhyF3Jeim5PzdtqApbHDKG
+  VERCEL_PROJECT_ID: prj_FNVe0M9aHbvvmYAOb47V1mHDbMNh
+
+jobs:
+  deploy:
+    name: ${{ github.event_name == 'push' && 'Production' || 'Preview' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: PrimoraWebsite/package-lock.json
+
+      # Fail with something readable rather than a Vercel CLI auth error.
+      - name: Check credentials
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::error::VERCEL_TOKEN secret is not set. Create a token at" \
+                 "https://vercel.com/account/tokens and add it under" \
+                 "Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      # `vercel pull` fetches the project settings, including the Root Directory,
+      # which is what points the build at PrimoraWebsite. Run from the repo root
+      # so that setting is respected rather than second-guessed here.
+      - name: Pull project settings
+        run: vercel pull --yes --environment=${{ github.event_name == 'push' && 'production' || 'preview' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build
+        run: vercel build ${{ github.event_name == 'push' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy
+        id: deploy
+        run: |
+          URL=$(vercel deploy --prebuilt ${{ github.event_name == 'push' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "Deployed to $URL"
+
+      - name: Summary
+        run: |
+          {
+            echo "### Website deployed"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Environment | ${{ github.event_name == 'push' && 'production' || 'preview' }} |"
+            echo "| URL | ${{ steps.deploy.outputs.url }} |"
+            echo "| Commit | \`${{ github.sha }}\` |"
+          } >> $GITHUB_STEP_SUMMARY

@@ -114,6 +114,25 @@ the copy at the repo root is dead and should be deleted.
 Useful identifiers: team `team_MwxhyF3Jeim5PzdtqApbHDKG` (`primers`), project
 `prj_FNVe0M9aHbvvmYAOb47V1mHDbMNh` (`primora-website`).
 
+### Meanwhile: deploying from Actions
+
+`.github/workflows/deploy-website.yml` deploys the site from this repository without the Git
+integration — production on pushes to `main`, a preview on pull requests, both scoped to changes
+under `PrimoraWebsite/`. It needs one secret:
+
+1. Create a token at <https://vercel.com/account/tokens>, scoped to the `primers` team.
+2. Add it as **`VERCEL_TOKEN`** under Settings → Secrets and variables → Actions.
+
+The team and project IDs are in the workflow's `env:` block. They are public identifiers, not
+secrets. The workflow runs `vercel pull` from the repository root so the project's **Root
+Directory** setting decides what gets built — so that setting still needs to be `PrimoraWebsite`,
+exactly as for the Git integration.
+
+This is a stopgap, not the destination. Relinking is better: it restores per-PR preview
+deployments as a first-class Vercel feature, needs no long-lived token in GitHub, and is the only
+thing that stops `primers-sform` pushes reaching production. **If the project is relinked, delete
+this workflow** rather than leaving both to deploy the same commit.
+
 There is also a second, dead `primora` project on the same Vercel team. It is linked to the private
 personal repo `Jothankato05/primora`, and every production deployment has failed since March 2026
 (`src/App.tsx(1,1): error TS6133: 'React' is declared but its value is never read`). That error does

@@ -1,6 +1,35 @@
 version: 2
 updates:
+  # .NET packages. Directory "/" so Primora.sln drives discovery, which picks up
+  # PrimoraApp and PrimoraTests together.
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
       interval: "monthly"
+
+  # Website dependencies — React, Vite, Three.js, GSAP. These were not watched at
+  # all, so the site received neither version updates nor security alerts.
+  # Minor and patch bumps are grouped into one pull request to keep the noise down;
+  # majors still arrive separately because they are the ones worth reading.
+  - package-ecosystem: "npm"
+    directory: "/PrimoraWebsite"
+    schedule:
+      interval: "monthly"
+    groups:
+      website-minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Action versions used by the workflows in .github/workflows. Grouped, since
+  # these are near-always routine.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      actions:
+        patterns:
+          - "*"

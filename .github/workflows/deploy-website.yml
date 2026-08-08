@@ -51,38 +51,54 @@ jobs:
           cache: npm
           cache-dependency-path: PrimoraWebsite/package-lock.json
 
-      # Fail with something readable rather than a Vercel CLI auth error.
+      # Missing credentials fail a production deploy loudly, but only skip a
+      # preview — a pull request should not go red because an optional preview
+      # could not be published. Reports something readable either way, rather
+      # than an opaque Vercel CLI auth error.
       - name: Check credentials
+        id: creds
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          SETUP_HINT: >-
+            Create a token at https://vercel.com/account/tokens scoped to the
+            primers team, then add it as VERCEL_TOKEN under
+            Settings > Secrets and variables > Actions.
         run: |
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo "::error::VERCEL_TOKEN secret is not set. Create a token at" \
-                 "https://vercel.com/account/tokens and add it under" \
-                 "Settings > Secrets and variables > Actions."
+          if [ -n "$VERCEL_TOKEN" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::VERCEL_TOKEN is not set, skipping the preview deploy. $SETUP_HINT"
+          else
+            echo "::error::VERCEL_TOKEN is not set, cannot deploy. $SETUP_HINT"
             exit 1
           fi
 
       - name: Install Vercel CLI
+        if: steps.creds.outputs.configured == 'true'
         run: npm install --global vercel@latest
 
       # `vercel pull` fetches the project settings, including the Root Directory,
       # which is what points the build at PrimoraWebsite. Run from the repo root
       # so that setting is respected rather than second-guessed here.
       - name: Pull project settings
+        if: steps.creds.outputs.configured == 'true'
         run: vercel pull --yes --environment=${{ github.event_name == 'push' && 'production' || 'preview' }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build
+        if: steps.creds.outputs.configured == 'true'
         run: vercel build ${{ github.event_name == 'push' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy
         id: deploy
+        if: steps.creds.outputs.configured == 'true'
         run: |
           URL=$(vercel deploy --prebuilt ${{ github.event_name == 'push' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
           echo "url=$URL" >> $GITHUB_OUTPUT
           echo "Deployed to $URL"
 
       - name: Summary
+        if: steps.creds.outputs.configured == 'true'
         run: |
           {
             echo "### Website deployed"

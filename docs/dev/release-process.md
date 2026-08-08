@@ -90,6 +90,30 @@ Vercel API on 2026-08-08:
 Until the project is relinked to this repository, website changes ship only when someone runs a
 manual CLI deploy, and the live site is exposed to an unrelated repo's pushes.
 
+### Relinking it
+
+Either route works. Both need Vercel credentials, so this cannot be done from an agent session.
+
+From a clone of this repository:
+
+```bash
+vercel login
+vercel link --scope primers --project primora-website
+vercel git disconnect        # drops the primers-sform connection
+vercel git connect           # connects the origin of this clone
+```
+
+Or in the dashboard: **primers → primora-website → Settings → Git → Disconnect**, then **Connect Git
+Repository → `Primers-Corperation/Primora`**.
+
+**Then set Root Directory to `PrimoraWebsite`** under Settings → General. Without it the build runs
+at the repo root, finds no Vite app, and every deployment fails. It also decides which of the two
+`vercel.json` files applies — with the root directory set, `PrimoraWebsite/vercel.json` is live and
+the copy at the repo root is dead and should be deleted.
+
+Useful identifiers: team `team_MwxhyF3Jeim5PzdtqApbHDKG` (`primers`), project
+`prj_FNVe0M9aHbvvmYAOb47V1mHDbMNh` (`primora-website`).
+
 There is also a second, dead `primora` project on the same Vercel team. It is linked to the private
 personal repo `Jothankato05/primora`, and every production deployment has failed since March 2026
 (`src/App.tsx(1,1): error TS6133: 'React' is declared but its value is never read`). That error does

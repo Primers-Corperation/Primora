@@ -57,18 +57,35 @@ namespace PrimoraTests
             // Arrange
             string controllerId = "polling-test";
 
-            // Act - Record events with consistent timing
-            for (int i = 0; i < 500; i++)
+            // Act - Record events, timing how long it actually took.
+            //
+            // This used to assert the measured rate exceeded 100Hz on the assumption
+            // that Thread.Sleep(1) yields ~1ms. It does not: at Windows' default timer
+            // resolution a 1ms sleep lands nearer 11ms, so the assertion was really
+            // testing the host's scheduler and failed on CI at 90Hz. What is worth
+            // checking is that the dashboard's arithmetic reflects the rate that
+            // actually occurred, whatever the machine managed.
+            const int eventCount = 200;
+            var clock = System.Diagnostics.Stopwatch.StartNew();
+            for (int i = 0; i < eventCount; i++)
             {
                 dashboard.RecordInputEvent(controllerId, 1.0);
-                System.Threading.Thread.Sleep(1); // ~1ms per event = ~1000Hz
+                System.Threading.Thread.Sleep(1);
             }
+            clock.Stop();
 
+            double observedHz = eventCount / clock.Elapsed.TotalSeconds;
             var metrics = dashboard.GetControllerMetrics(controllerId);
 
-            // Assert - Should detect reasonable polling rate
-            Assert.IsTrue(metrics.CurrentPollingRateHz > 100,
-                $"Polling rate should be > 100Hz, got {metrics.CurrentPollingRateHz}");
+            // Assert - the reported rate should be in the same ballpark as the rate the
+            // loop genuinely achieved. Generous bounds: this is a sanity check on the
+            // calculation, not a benchmark.
+            Assert.IsTrue(metrics.CurrentPollingRateHz > 0,
+                $"Polling rate should be positive, got {metrics.CurrentPollingRateHz}");
+            Assert.IsTrue(metrics.CurrentPollingRateHz > observedHz * 0.4 &&
+                          metrics.CurrentPollingRateHz < observedHz * 2.5,
+                $"Reported {metrics.CurrentPollingRateHz:F1}Hz is not consistent with the " +
+                $"{observedHz:F1}Hz actually achieved");
         }
 
         [TestMethod]

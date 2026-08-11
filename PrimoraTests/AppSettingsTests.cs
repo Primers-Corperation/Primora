@@ -49,6 +49,7 @@ namespace PrimoraTests
   <formHeight>550</formHeight>
   <formLocationX>0</formLocationX>
   <formLocationY>0</formLocationY>
+  <ProcessPriority>0</ProcessPriority>
   <Controller1>Default</Controller1>
   <Controller2>Default</Controller2>
   <Controller3>Default</Controller3>
@@ -60,9 +61,12 @@ namespace PrimoraTests
   <LastChecked>12/05/2023 00:24:15</LastChecked>
   <CheckWhen>24</CheckWhen>
   <Notifications>2</Notifications>
+  <ProfileChangedNotification>False</ProfileChangedNotification>
   <DisconnectBTAtStop>False</DisconnectBTAtStop>
   <SwipeProfiles>True</SwipeProfiles>
   <QuickCharge>False</QuickCharge>
+  <UseMoonlight>false</UseMoonlight>
+  <UseAdvancedMoonlight>false</UseAdvancedMoonlight>
   <CloseMinimizes>False</CloseMinimizes>
   <UseLang />
   <DownloadLang>False</DownloadLang>

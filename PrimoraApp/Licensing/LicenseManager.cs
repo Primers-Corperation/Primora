@@ -156,7 +156,14 @@ namespace Primora.Licensing
         public static string GetLicenseInfo()
         {
             if (activeLicense == null)
-                return "License: Free (No key activated)";
+            {
+                // A tier can be granted without a key — AuthWindow sets CurrentTier from
+                // the signed-in account. Reporting "Free" there told a paying user they
+                // had nothing.
+                return CurrentTier == LicenseTier.Free
+                    ? "License: Free (No key activated)"
+                    : $"License: {CurrentTier} (account tier)";
+            }
 
             var expiryDays = (activeLicense.ExpiresAt - DateTime.UtcNow).Days;
             return $"License: {activeLicense.Tier} (Expires in {expiryDays} days)";

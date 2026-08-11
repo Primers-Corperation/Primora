@@ -106,16 +106,24 @@ namespace PrimoraTests
             string controller1 = "ctrl-1";
             string controller2 = "ctrl-2";
 
-            // Act - Record high drift for controller 1
+            // Drift is measured as variance, so the original version of this test could
+            // never pass: it fed each controller a constant value and called one of them
+            // "drifted". Both had zero variance and therefore identical scores.
+            //
+            // Values are in raw axis units (0-255, centred at 128), matching what the
+            // input path feeds the monitor and the scale its drift thresholds assume.
+
+            // Controller 1: noisy, swinging either side of centre.
             for (int i = 0; i < 20; i++)
             {
-                monitor.RecordStickInput(controller1, 0.9f, 0.9f, 0.0f, 0.0f);
+                byte noisy = (byte)(i % 2 == 0 ? 118 : 138);
+                monitor.RecordStickInput(controller1, noisy, noisy, 128, 128);
             }
 
-            // Record stable input for controller 2
+            // Controller 2: rock steady at centre.
             for (int i = 0; i < 20; i++)
             {
-                monitor.RecordStickInput(controller2, 0.5f, 0.5f, 0.0f, 0.0f);
+                monitor.RecordStickInput(controller2, 128, 128, 128, 128);
             }
 
             int score1 = monitor.GetFatigueScore(controller1);

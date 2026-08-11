@@ -28,6 +28,25 @@ namespace Primora.NeuroKinetic
             isInitialized = false;
         }
 
+        /// <summary>
+        /// Builds a filter with explicit coefficients.
+        /// </summary>
+        /// <param name="minCutoff">Cutoff in Hz when the signal is still. Lower means
+        /// more smoothing at rest.</param>
+        /// <param name="beta">How aggressively the cutoff opens up with speed. Higher
+        /// means less lag on fast motion.</param>
+        /// <param name="dCutoff">Cutoff in Hz for the velocity estimate itself. This one
+        /// has to scale with the polling rate — leaving it at 1 Hz on a 1000 Hz device
+        /// makes the velocity estimate respond so slowly that the adaptive cutoff barely
+        /// engages, which turns the filter into a very heavy fixed low-pass.</param>
+        public OneEuroFilter(float minCutoff, float beta, float dCutoff)
+            : this()
+        {
+            this.minCutoff = minCutoff;
+            this.beta = beta;
+            this.dCutoff = dCutoff;
+        }
+
         public float Filter(float rawValue, float dt)
         {
             if (!isInitialized)

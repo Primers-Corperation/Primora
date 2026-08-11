@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -27,10 +28,18 @@ namespace Primora.Health
 
     public class ControllerHealthMonitor
     {
-        private static ControllerHealthMonitor instance;
-        public static ControllerHealthMonitor Instance => instance ?? (instance = new ControllerHealthMonitor());
+        // Lazy<T> rather than a null check: this is now reached from the input path,
+        // where every connected controller runs its own report thread and two of them
+        // racing the old check could each construct a monitor and lose records.
+        private static readonly Lazy<ControllerHealthMonitor> lazyInstance =
+            new Lazy<ControllerHealthMonitor>(() => new ControllerHealthMonitor());
+        public static ControllerHealthMonitor Instance => lazyInstance.Value;
 
-        private Dictionary<string, ControllerHealthRecord> healthRecords = new Dictionary<string, ControllerHealthRecord>();
+        // Concurrent for the same reason — reports arrive on one thread per controller,
+        // and a plain Dictionary resized concurrently can corrupt or spin forever.
+        // Each record is only ever written by its own controller's thread.
+        private ConcurrentDictionary<string, ControllerHealthRecord> healthRecords =
+            new ConcurrentDictionary<string, ControllerHealthRecord>();
         private const int MaxHistorySize = 60; // ~1 second at 60Hz
 
         private ControllerHealthMonitor() { }

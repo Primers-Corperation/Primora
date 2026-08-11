@@ -32,6 +32,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using Primora.PrimoraForms;
+// Aliased rather than importing the namespace: Primora.NeuroKinetic.OneEuroFilter would
+// otherwise collide with Sensorit.Base.OneEuroFilter, which the gyro UDP server uses.
+using NeuroKineticPipeline = Primora.NeuroKinetic.NeuroKineticPipeline;
 using static Primora.Global;
 
 namespace Primora
@@ -56,6 +59,9 @@ namespace Primora
         public bool inServiceTask = false;
         private DS4State[] MappedState = new DS4State[MAX_DS4_CONTROLLER_COUNT];
         private DS4State[] CurrentState = new DS4State[MAX_DS4_CONTROLLER_COUNT];
+        // One pipeline per slot. The smoothing state this replaces was static, so all
+        // connected controllers shared a single filter and bled into one another.
+        private NeuroKineticPipeline[] neuroPipelines = new NeuroKineticPipeline[MAX_DS4_CONTROLLER_COUNT];
         private DS4State[] PreviousState = new DS4State[MAX_DS4_CONTROLLER_COUNT];
         private DS4State[] TempState = new DS4State[MAX_DS4_CONTROLLER_COUNT];
         public DS4StateExposed[] ExposedState = new DS4StateExposed[MAX_DS4_CONTROLLER_COUNT];
@@ -207,6 +213,7 @@ namespace Primora
                 PreviousState[i] = new DS4State();
                 ExposedState[i] = new DS4StateExposed(CurrentState[i]);
                 oscState[i] = new DS4State();
+                neuroPipelines[i] = new NeuroKineticPipeline(i);
 
                 int tempDev = i;
                 Global.L2OutputSettings[i].TwoStageModeChanged += (sender, e) =>
@@ -2641,14 +2648,18 @@ namespace Primora
                     tempControlState = CurrentState[ind];
                 }
 
-                // Primora: Apply Neuro-Kinetic Smoothing
-                cState.ApplyNeuroSmoothing();
-
-                // Primora: Low Power Mode Performance Throttle
-                if (Global.LowPowerActive)
+                // Primora: Neuro-Kinetic pipeline. Velocity-adaptive One-Euro smoothing,
+                // driven by this report's actual delta so the amount of smoothing does not
+                // change with polling rate, plus wear and latency telemetry.
+                NeuroKineticPipeline neuroPipeline = neuroPipelines[ind];
+                if (neuroPipeline != null)
                 {
-                    // Artificially reduce processing frequency to save CPU and controller battery
-                    Thread.Sleep(2); 
+                    if (Global.UseAssistiveSmoothing)
+                    {
+                        neuroPipeline.ApplySmoothing(cState, device.getLastTimeElapsedDouble());
+                    }
+
+                    neuroPipeline.RecordTelemetry(cState, device.Latency);
                 }
 
                 DS4State pState = device.getPreviousStateRef();

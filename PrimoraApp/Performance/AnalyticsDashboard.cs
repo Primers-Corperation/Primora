@@ -67,7 +67,17 @@ namespace Primora.Performance
 
     public class AnalyticsDashboard : INotifyPropertyChanged
     {
-        private Dictionary<string, ControllerMetrics> controllerMetrics = new Dictionary<string, ControllerMetrics>();
+        // Shared instance so every controller's reports land in one dashboard and the
+        // global figures mean something. Lazy<T> because the input path reaches this
+        // from one thread per controller.
+        private static readonly Lazy<AnalyticsDashboard> lazyInstance =
+            new Lazy<AnalyticsDashboard>(() => new AnalyticsDashboard());
+        public static AnalyticsDashboard Instance => lazyInstance.Value;
+
+        // Concurrent to match the queues below — reports arrive on one thread per
+        // controller, and a plain Dictionary resized concurrently can corrupt or spin.
+        private ConcurrentDictionary<string, ControllerMetrics> controllerMetrics =
+            new ConcurrentDictionary<string, ControllerMetrics>();
         private ConcurrentDictionary<string, ConcurrentQueue<double>> latencyHistories =
             new ConcurrentDictionary<string, ConcurrentQueue<double>>();
         private ConcurrentDictionary<string, ConcurrentQueue<long>> pollingIntervals =

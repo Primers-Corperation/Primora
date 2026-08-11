@@ -78,6 +78,12 @@ namespace Primora.Performance
         // controller, and a plain Dictionary resized concurrently can corrupt or spin.
         private ConcurrentDictionary<string, ControllerMetrics> controllerMetrics =
             new ConcurrentDictionary<string, ControllerMetrics>();
+
+        /// <summary>Events seen per controller, driving that controller's refresh cadence.</summary>
+        private ConcurrentDictionary<string, int> eventCounts = new ConcurrentDictionary<string, int>();
+
+        /// <summary>Events between full statistics recomputations, per controller.</summary>
+        private const int MetricsUpdateInterval = 100;
         private ConcurrentDictionary<string, ConcurrentQueue<double>> latencyHistories =
             new ConcurrentDictionary<string, ConcurrentQueue<double>>();
         private ConcurrentDictionary<string, ConcurrentQueue<long>> pollingIntervals =
@@ -152,8 +158,19 @@ namespace Primora.Performance
 
             TotalPacketsProcessed++;
 
-            // Update metrics every 100 events
-            if (TotalPacketsProcessed % 100 == 0)
+            // A controller appears in the dashboard as soon as it sends anything. This
+            // used to wait for a full statistics pass, so a pad could be connected and
+            // polling yet missing from the metrics list entirely.
+            controllerMetrics.GetOrAdd(controllerId,
+                id => new ControllerMetrics { ControllerId = id });
+
+            // Recompute the expensive statistics periodically, counted per controller.
+            // Gating this on the global packet count meant a controller only refreshed
+            // when the combined total happened to land on a multiple of the interval
+            // during one of its own events — with several pads polling at different
+            // rates, some refreshed rarely and some never.
+            int seen = eventCounts.AddOrUpdate(controllerId, 1, (_, current) => current + 1);
+            if (seen % MetricsUpdateInterval == 0)
             {
                 UpdateControllerMetrics(controllerId);
                 UpdateGlobalMetrics();

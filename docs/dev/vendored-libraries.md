@@ -33,6 +33,21 @@ To guard against a silent regression, `Primora.csproj` runs a `VerifyVendoredLib
 before assembly resolution. A missing file now fails immediately with error `PRIMORA001` and a
 message pointing here, instead of a wall of `CS0246`.
 
+## Provenance of the committed x64 files
+
+The x64 assemblies in this repository were recovered from Primora's own published
+`Primora-2.0.0-x64.msi`, because they existed nowhere else — not on NuGet, and not in any commit.
+The MSI's cabinet holds a self-contained single-file `Primora.exe`, whose .NET bundle embeds every
+managed and native dependency; the three files were extracted from that bundle and verified by
+compiling the application against them, which resolves every type and signature the source expects.
+
+They therefore match exactly what v2.0.0 shipped. If you have a newer local build, prefer yours and
+overwrite them.
+
+**x86 is still missing.** Only an x64 MSI was ever published, so there is no x86 copy to recover and
+the x86 build leg still fails with `PRIMORA001`. Either drop x86 from the build matrix or add x86
+builds of these two libraries.
+
 ## Restoring the files
 
 If your working copy is missing `libs/`, get the assemblies from a machine that has a working build,
